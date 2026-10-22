@@ -1,0 +1,114 @@
+{% extends 'base/layout.html' %}
+
+{% block title %}Главная{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="page-head">
+        <h1 class="page-head__title">Главное для вашего бизнеса</h1>
+    </div>
+
+    <div class="home-grid">
+        <div class="home-side">
+            {# Данные об аккаунте #}
+            <section class="card account" aria-labelledby="account-title">
+                <div class="account__user">
+                    <span class="avatar avatar--48" aria-hidden="true">{{ user.initials }}</span>
+                    <div>
+                        <h2 class="account__name" id="account-title">{{ user.name }}</h2>
+                        <p class="account__role">{{ user.role }}</p>
+                    </div>
+                </div>
+
+                <div class="account__company">
+                    <span class="avatar avatar--40 avatar--accent" aria-hidden="true">{{ company.initials }}</span>
+                    <div class="account__company-text">
+                        <p class="account__company-name">{{ company.name }}</p>
+                        <p class="account__company-meta">ИНН {{ company.inn }} · Клиент с {{ company.client_since }} года</p>
+                    </div>
+                </div>
+
+                <p class="account__caption">Профиль для подбора новостей</p>
+                <dl class="account__stats">
+                    <div><dt>Отрасль</dt><dd>{{ company.industry }}</dd></div>
+                    <div><dt>Регион</dt><dd>{{ company.region }}</dd></div>
+                    <div><dt>Выручка 2025</dt><dd>{{ company.revenue }}</dd></div>
+                    <div><dt>ВЭД</dt><dd>{{ company.foreign_trade }}</dd></div>
+                    <div class="account__stats-wide">
+                        <dt>Продукты в Альфа-Банке</dt>
+                        <dd>
+                            <ul class="tag-list">
+                                {% for product in company.products %}<li class="status status--neutral">{{ product }}</li>{% endfor %}
+                            </ul>
+                        </dd>
+                    </div>
+                </dl>
+            </section>
+
+            {# Срочные новости #}
+            <section class="card urgent" aria-labelledby="urgent-title">
+                <header class="urgent__head">
+                    <span class="squircle squircle--40 squircle--accent" aria-hidden="true">
+                        <svg class="icon icon--20"><use href="#i-bolt"></use></svg>
+                    </span>
+                    <div>
+                        <h2 class="card-title" id="urgent-title">Срочно</h2>
+                        <p class="card-subtitle">Прочитайте в первую очередь</p>
+                    </div>
+                    <span class="counter" aria-label="Срочных новостей: {{ urgent_news|length }}">{{ urgent_news|length }}</span>
+                </header>
+                <ul class="urgent__list">
+                    {% for n in urgent_news %}
+                    <li>
+                        <a class="urgent-item" href="{% url 'news_detail' n.id %}">
+                            <span class="urgent-item__time"><span class="pulse" aria-hidden="true"></span>{{ n.published }}</span>
+                            <span class="urgent-item__title">{{ n.title }}</span>
+                            <span class="urgent-item__reason">{{ n.urgent_reason }}</span>
+                            <svg class="icon icon--20 urgent-item__chevron" aria-hidden="true"><use href="#i-chevron-right"></use></svg>
+                        </a>
+                    </li>
+                    {% empty %}
+                    <li class="urgent__empty">Срочных событий нет — всё спокойно</li>
+                    {% endfor %}
+                </ul>
+            </section>
+
+            {# Свободный слот: пока здесь сводка по рынкам, блок можно заменить #}
+            {% include 'base/partials/_markets.html' %}
+        </div>
+
+        {# Лента новостей #}
+        <section class="feed" aria-labelledby="feed-title" data-feed>
+            <div class="feed__head">
+                <h2 class="feed__title" id="feed-title">Лента</h2>
+                <p class="feed__updated">По значимости для компании · обновлено в {{ feed_updated }}</p>
+            </div>
+
+            <div class="chips" role="toolbar" aria-label="Фильтр по темам">
+                <button class="chip" type="button" data-filter="all" aria-pressed="true">
+                    Все<span class="chip__count">{{ news|length }}</span>
+                </button>
+                {% for c in categories %}
+                <button class="chip" type="button" data-filter="{{ c.slug }}" aria-pressed="false">
+                    {{ c.label }}<span class="chip__count">{{ c.count }}</span>
+                </button>
+                {% endfor %}
+            </div>
+
+            <div class="news-list">
+                {% for n in news %}
+                    {% include 'base/partials/_news_card.html' %}
+                {% endfor %}
+            </div>
+
+            <div class="empty-state" data-feed-empty hidden>
+                <span class="squircle squircle--48 squircle--neutral" aria-hidden="true">
+                    <svg class="icon"><use href="#i-search"></use></svg>
+                </span>
+                <p class="empty-state__title">В этой теме пока нет новостей</p>
+                <p class="empty-state__text">Мы покажем их, как только появятся события, важные для компании</p>
+            </div>
+        </section>
+    </div>
+</div>
+{% endblock %}

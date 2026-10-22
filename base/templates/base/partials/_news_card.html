@@ -1,0 +1,35 @@
+<article class="news-card" data-category="{{ n.category }}">
+    <div class="news-card__meta">
+        <span class="status status--neutral">{{ n.category_label }}</span>
+        {% if n.urgent %}<span class="status status--red"><svg class="icon icon--12" aria-hidden="true"><use href="#i-bolt"></use></svg>Срочно</span>{% endif %}
+        <span class="news-card__source">{{ n.source }}&nbsp;<span class="dot-sep">·</span> {{ n.published }}</span>
+    </div>
+
+    <h3 class="news-card__title">
+        <a class="news-card__link" href="{% url 'news_detail' n.id %}">{{ n.title }}</a>
+    </h3>
+    <p class="news-card__summary">{{ n.summary }}</p>
+
+    <div class="why">
+        <svg class="icon icon--20 why__icon" aria-hidden="true"><use href="#i-sparkle"></use></svg>
+        <p><span class="why__label">Для вашей компании.</span> {{ n.why }}</p>
+    </div>
+
+    <div class="news-card__foot">
+        <span class="impact-pill impact-pill--risk" title="Риски для компании">
+            <svg class="icon icon--16" aria-hidden="true"><use href="#i-trend-down"></use></svg>
+            Риски<span class="impact-pill__count">{{ n.risks|length }}</span>
+        </span>
+        <span class="impact-pill impact-pill--opp" title="Возможности для компании">
+            <svg class="icon icon--16" aria-hidden="true"><use href="#i-trend-up"></use></svg>
+            Возможности<span class="impact-pill__count">{{ n.opportunities|length }}</span>
+        </span>
+        {% if n.bank_view %}
+        <span class="bank-pill" title="Есть позиция аналитиков Альфа-Банка">
+            <svg class="bank-pill__logo" viewBox="0 0 33 50" aria-hidden="true"><use href="#logo-alfa"></use></svg>
+            Аналитика банка
+        </span>
+        {% endif %}
+        {% include 'base/partials/_relevance.html' with value=n.relevance %}
+    </div>
+</article>

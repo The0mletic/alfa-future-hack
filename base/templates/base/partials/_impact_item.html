@@ -1,0 +1,18 @@
+<li class="impact-item impact-item--{{ kind }}">
+    <span class="squircle squircle--40 squircle--{% if kind == 'risk' %}red{% else %}green{% endif %}" aria-hidden="true">
+        <svg class="icon icon--20"><use href="#i-trend-{% if kind == 'risk' %}down{% else %}up{% endif %}"></use></svg>
+    </span>
+    <div class="impact-item__content">
+        <h3 class="impact-item__title">{{ x.title }}</h3>
+        <p class="impact-item__text">{{ x.text }}</p>
+        <div class="impact-item__meta">
+            <span class="level level--{{ x.level }}">
+                <span class="level__dots" aria-hidden="true"><i></i><i></i><i></i></span>
+                {% if kind == 'risk' %}{% if x.level == 'high' %}Высокая{% elif x.level == 'medium' %}Средняя{% else %}Низкая{% endif %} вероятность{% else %}{% if x.level == 'high' %}Высокий{% elif x.level == 'medium' %}Средний{% else %}Низкий{% endif %} потенциал{% endif %}
+            </span>
+            <span class="impact-item__horizon">
+                <svg class="icon icon--16" aria-hidden="true"><use href="#i-clock"></use></svg>{{ x.horizon }}
+            </span>
+        </div>
+    </div>
+</li>

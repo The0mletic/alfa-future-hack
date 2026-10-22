@@ -1,0 +1,15 @@
+<section class="card markets" aria-labelledby="markets-title">
+    <header class="markets__head">
+        <h2 class="card-title" id="markets-title">Рынки</h2>
+        <span class="card-subtitle">{{ markets.updated }}</span>
+    </header>
+    <ul class="markets__grid">
+        {% for m in markets.rows %}
+        <li class="market-tile">
+            <span class="market-tile__name">{{ m.name }}</span>
+            <span class="market-tile__value">{{ m.value }}</span>
+            <span class="delta delta--{{ m.trend }}">{{ m.delta }}</span>
+        </li>
+        {% endfor %}
+    </ul>
+</section>

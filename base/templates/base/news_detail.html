@@ -1,0 +1,184 @@
+{% extends 'base/layout.html' %}
+
+{% block title %}{{ item.title }}{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="article-grid">
+        <div class="article-col">
+            <a class="button button--secondary button--40 back-link" href="{% url 'index' %}">
+                <svg class="icon icon--20" aria-hidden="true"><use href="#i-arrow-left"></use></svg>
+                К ленте
+            </a>
+
+            <article class="card article">
+                <div class="article__meta">
+                    <span class="status status--neutral">{{ item.category_label }}</span>
+                    {% if item.urgent %}<span class="status status--red"><svg class="icon icon--12" aria-hidden="true"><use href="#i-bolt"></use></svg>Срочно</span>{% endif %}
+                    <span class="article__source">{{ item.source }}&nbsp;<span class="dot-sep">·</span> {{ item.published }}&nbsp;<span class="dot-sep">·</span> {{ item.read_time }}&nbsp;чтения</span>
+                </div>
+
+                <h1 class="article__title">{{ item.title }}</h1>
+
+                <p class="article__lead">{{ item.summary }}</p>
+
+                <section class="facts" aria-labelledby="facts-title">
+                    <div class="facts__head">
+                        <h2 class="facts__title" id="facts-title">Что произошло</h2>
+                        <span class="facts__note">Подтверждённые факты из источников</span>
+                    </div>
+                    <ul class="facts__list">
+                        {% for fact in item.facts %}
+                        <li>
+                            <svg class="icon icon--20" aria-hidden="true"><use href="#i-check"></use></svg>
+                            <span>{{ fact }}</span>
+                        </li>
+                        {% endfor %}
+                    </ul>
+                </section>
+
+                <div class="article__body">
+                    {% for paragraph in item.body %}<p>{{ paragraph }}</p>{% endfor %}
+                </div>
+
+                {% if item.bank_view %}
+                <section class="bank-view" aria-labelledby="bank-view-title">
+                    <div class="bank-view__head">
+                        <span class="squircle squircle--40 squircle--accent" aria-hidden="true">
+                            <svg class="bank-view__logo" viewBox="0 0 33 50"><use href="#logo-alfa"></use></svg>
+                        </span>
+                        <div>
+                            <h2 class="bank-view__title" id="bank-view-title">Позиция Альфа-Банка</h2>
+                            <p class="bank-view__author">{{ item.bank_view.author }}</p>
+                        </div>
+                    </div>
+                    <blockquote class="bank-view__quote">{{ item.bank_view.text }}</blockquote>
+                    <div class="bank-view__doc">
+                        <svg class="icon icon--16" aria-hidden="true"><use href="#i-doc"></use></svg>
+                        <span>«{{ item.bank_view.doc }}», {{ item.bank_view.date }}</span>
+                    </div>
+                </section>
+                {% endif %}
+
+                <section class="sources" aria-labelledby="sources-title">
+                    <h2 class="sources__title" id="sources-title">Источники</h2>
+                    <ul class="sources__list">
+                        {% for s in item.sources %}
+                        <li>
+                            {% if s.url %}<a class="source" href="{{ s.url }}" target="_blank" rel="noopener noreferrer">{% else %}<div class="source">{% endif %}
+                                <span class="squircle squircle--32 squircle--neutral" aria-hidden="true">
+                                    <svg class="icon icon--16"><use href="#i-doc"></use></svg>
+                                </span>
+                                <span class="source__text">
+                                    <span class="source__name">{{ s.title }}</span>
+                                    <span class="source__meta">{{ s.name }}</span>
+                                </span>
+                                {% if s.url %}<svg class="icon icon--20 source__ext" aria-hidden="true"><use href="#i-external"></use></svg>{% endif %}
+                            {% if s.url %}</a>{% else %}</div>{% endif %}
+                        </li>
+                        {% endfor %}
+                    </ul>
+                </section>
+            </article>
+
+            {% if related %}
+            <section class="related" aria-labelledby="related-title">
+                <h2 class="related__title" id="related-title">Другие новости для вас</h2>
+                <div class="related__grid">
+                    {% for n in related %}
+                    <a class="related-card" href="{% url 'news_detail' n.id %}">
+                        <span class="related-card__meta">{{ n.category_label }} · {{ n.published }}</span>
+                        <span class="related-card__title">{{ n.title }}</span>
+                        {% include 'base/partials/_relevance.html' with value=n.relevance %}
+                    </a>
+                    {% endfor %}
+                </div>
+            </section>
+            {% endif %}
+        </div>
+
+        <aside class="insight-col" aria-label="Анализ для компании">
+            {# Риски и возможности #}
+            <section class="card insight" aria-labelledby="insight-title">
+                <header class="insight__head">
+                    <h2 class="insight__title" id="insight-title">Что это значит для компании</h2>
+                    <p class="insight__sub">
+                        <span class="ai-badge"><svg class="icon icon--16" aria-hidden="true"><use href="#i-sparkle"></use></svg>AI</span>
+                        Анализ по профилю {{ company.name }}
+                    </p>
+                </header>
+
+                <div class="segmented" role="tablist" aria-label="Влияние на бизнес" data-tabs>
+                    <button class="segmented__tab" type="button" role="tab" id="tab-risks" aria-controls="panel-risks" aria-selected="true">
+                        Риски<span class="segmented__count segmented__count--red">{{ item.risks|length }}</span>
+                    </button>
+                    <button class="segmented__tab" type="button" role="tab" id="tab-opps" aria-controls="panel-opps" aria-selected="false" tabindex="-1">
+                        Возможности<span class="segmented__count segmented__count--green">{{ item.opportunities|length }}</span>
+                    </button>
+                </div>
+
+                <div class="insight__body">
+                    <ul class="impact-list" role="tabpanel" id="panel-risks" aria-labelledby="tab-risks" tabindex="0">
+                        {% for x in item.risks %}
+                            {% include 'base/partials/_impact_item.html' with kind='risk' %}
+                        {% empty %}
+                            <li class="impact-list__empty">Существенных рисков для компании не выявлено</li>
+                        {% endfor %}
+                    </ul>
+                    <ul class="impact-list" role="tabpanel" id="panel-opps" aria-labelledby="tab-opps" tabindex="0" hidden>
+                        {% for x in item.opportunities %}
+                            {% include 'base/partials/_impact_item.html' with kind='opp' %}
+                        {% empty %}
+                            <li class="impact-list__empty">Возможностей для компании не выявлено</li>
+                        {% endfor %}
+                    </ul>
+
+                    <div class="insight__basis">
+                        <span class="insight__basis-label">Вывод основан на</span>
+                        <ul class="tag-list">
+                            {% for b in item.basis %}<li class="status status--outline">{{ b }}</li>{% endfor %}
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            {# Мини-чат с LLM. data-endpoint — URL бэкенда; пока пустой, работает демо-режим #}
+            <section class="card chat" aria-labelledby="chat-title" data-chat data-endpoint="" data-news-id="{{ item.id }}">
+                <header class="chat__head">
+                    <span class="squircle squircle--36 squircle--ai" aria-hidden="true">
+                        <svg class="icon icon--20"><use href="#i-sparkle"></use></svg>
+                    </span>
+                    <div class="chat__head-text">
+                        <h2 class="chat__title" id="chat-title">AI-аналитик</h2>
+                        <p class="chat__status"><span class="chat__online" aria-hidden="true"></span>Знает контекст вашей компании</p>
+                    </div>
+                    <button class="icon-button chat__toggle" type="button" aria-expanded="true" aria-controls="chat-body" data-chat-toggle>
+                        <svg class="icon icon--20" aria-hidden="true"><use href="#i-chevron-down"></use></svg>
+                        <span class="visually-hidden">Свернуть чат</span>
+                    </button>
+                </header>
+
+                <div class="chat__body" id="chat-body">
+                    <div class="chat__messages" data-chat-messages aria-live="polite">
+                        <div class="msg msg--ai">Я изучил новость с учётом профиля компании. Что хотите уточнить?</div>
+                    </div>
+                    <div class="chat__suggest" data-chat-suggest>
+                        <button class="suggest" type="button">Влияние на финансы</button>
+                        <button class="suggest" type="button">Что делать сейчас?</button>
+                        <button class="suggest" type="button">На чём основан вывод?</button>
+                    </div>
+                </div>
+
+                <form class="chat__form" data-chat-form>
+                    <label class="visually-hidden" for="chat-input">Вопрос AI-аналитику</label>
+                    <textarea class="chat__input" id="chat-input" rows="1" placeholder="Спросите о новости" maxlength="1000" data-chat-input></textarea>
+                    <button class="chat__send" type="submit" disabled data-chat-send>
+                        <svg class="icon icon--20" aria-hidden="true"><use href="#i-arrow-up"></use></svg>
+                        <span class="visually-hidden">Отправить</span>
+                    </button>
+                </form>
+            </section>
+        </aside>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,47 @@
+{% load static %}<!doctype html>
+<html lang="ru">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#ffffff">
+    <title>{% block title %}Новостная аналитика{% endblock %} — Альфа-Бизнес</title>
+    <link rel="preconnect" href="https://alfabank.servicecdn.ru" crossorigin>
+    <link rel="icon" type="image/svg+xml" href="{% static 'base/img/favicon.svg' %}">
+    <link rel="stylesheet" href="{% static 'base/css/app.css' %}">
+</head>
+<body>
+{% include 'base/partials/_icons.html' %}
+
+<header class="header">
+    <div class="container header__inner">
+        <a class="brand" href="{% url 'index' %}" aria-label="На главную">
+            <svg class="brand__logo" viewBox="0 0 33 50" aria-hidden="true"><use href="#logo-alfa"></use></svg>
+            <span class="brand__name">Альфа-Бизнес</span>
+            <span class="brand__divider" aria-hidden="true"></span>
+            <span class="brand__product">Новостная аналитика</span>
+        </a>
+
+        <div class="header__user">
+            <div class="header__user-text">
+                <span class="header__user-name">{{ user.name }}</span>
+                <span class="header__user-company">{{ company.name }}</span>
+            </div>
+            <span class="avatar avatar--40" aria-hidden="true">{{ user.initials }}</span>
+        </div>
+    </div>
+</header>
+
+<main class="page">
+    {% block content %}{% endblock %}
+</main>
+
+<footer class="footer">
+    <div class="container footer__inner">
+        <span>Прототип сервиса новостной аналитики · Хакатон «Альфа Будущее» 2026</span>
+        <span>Выводы с пометкой <span class="footer__ai"><svg class="icon icon--16" aria-hidden="true"><use href="#i-sparkle"></use></svg>AI</span> сформированы моделью и не являются инвестиционной рекомендацией</span>
+    </div>
+</footer>
+
+<script src="{% static 'base/js/app.js' %}" defer></script>
+</body>
+</html>
