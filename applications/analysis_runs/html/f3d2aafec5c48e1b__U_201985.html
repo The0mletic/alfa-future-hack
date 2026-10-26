@@ -1,0 +1,2583 @@
+<!doctype html>
+<html lang="ru">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#ffffff">
+    <title>Почему ЦБ сохранил ставку 14% и как это повлияет на рубль и инвестиции — Альфа-Бизнес</title>
+    <link rel="preconnect" href="https://alfabank.servicecdn.ru" crossorigin>
+    
+    <style>/* ==========================================================================
+   Новостная аналитика · Альфа-Бизнес
+   Токены повторяют дизайн-систему Альфа-Банка (Core DS): цвета, радиусы,
+   размеры контролов, шрифт Alfa Interface Sans и форма иконок-«сквирклов».
+   ========================================================================== */
+
+@font-face {
+    font-family: "Alfa Interface Sans";
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+    src: url("https://alfabank.servicecdn.ru/media/fonts/alfa-interface-sans_regular.woff2") format("woff2");
+}
+
+@font-face {
+    font-family: "Alfa Interface Sans";
+    font-style: normal;
+    font-weight: 500;
+    font-display: swap;
+    src: url("https://alfabank.servicecdn.ru/media/fonts/alfa-interface-sans_medium.woff2") format("woff2");
+}
+
+@font-face {
+    font-family: "Alfa Interface Sans";
+    font-style: normal;
+    font-weight: 700;
+    font-display: swap;
+    src: url("https://alfabank.servicecdn.ru/media/fonts/alfa-interface-sans_bold.woff2") format("woff2");
+}
+
+:root {
+    color-scheme: light;
+    --font: "Alfa Interface Sans", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Helvetica, sans-serif;
+
+    /* Текст */
+    --text-primary: rgba(3, 3, 6, .88);
+    --text-secondary: rgba(4, 4, 19, .55);
+    --text-tertiary: rgba(5, 8, 29, .38);
+    --text-inverted: rgba(255, 255, 255, .94);
+    --text-link: #2a77ef;
+
+    /* Фоны */
+    --bg-page: #f2f3f5;
+    --bg-primary: #fff;
+    --bg-secondary: #f2f3f5;
+    --bg-inverted: #212124;
+    --bg-inverted-hover: #36363a;
+    --bg-neutral: rgba(11, 31, 53, .07);
+    --bg-neutral-hover: rgba(10, 29, 49, .1351);
+    --bg-neutral-active: rgba(9, 26, 45, .2095);
+
+    /* Границы */
+    --border: #e7e8eb;
+    --border-strong: rgba(15, 25, 55, .1);
+    --graphic-muted: #d2d3d9;
+
+    /* Акцент */
+    --accent: #ef3124;
+    --accent-hover: #e32a17;
+    --accent-active: #d72505;
+
+    /* Статусы */
+    --red: #d91d0b;
+    --red-bg: #ffebeb;
+    --green: #0b7d2f;
+    --green-icon: #0d9336;
+    --green-bg: #dff8e5;
+    --green-dot: #0cc44d;
+    --ai: #7a63f1;
+    --ai-text: #5a46d1;
+    --ai-bg: #efecfe;
+
+    /* Тени Core DS */
+    --shadow-hover: 0 12px 16px rgba(0, 0, 0, .04), 0 4px 8px rgba(0, 0, 0, .04), 0 0 1px rgba(0, 0, 0, .04);
+    --shadow-control: 0 1px 4px rgba(0, 0, 0, .08), 0 0 1px rgba(0, 0, 0, .1);
+
+    /* Сквиркл — фирменная форма иконок Альфа-Банка */
+    --squircle: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cpath d='M.5 8.2A9 9 0 0 1 8.2.5a55 55 0 0 1 15.6 0 9 9 0 0 1 7.7 7.7 55 55 0 0 1 0 15.6 9 9 0 0 1-7.7 7.7 55 55 0 0 1-15.6 0 9 9 0 0 1-7.7-7.7 55 55 0 0 1 0-15.6'/%3E%3C/svg%3E");
+
+    --header-h: 72px;
+    --gutter: 32px;
+    --gap: 24px;
+    --ease: cubic-bezier(.4, 0, .2, 1);
+}
+
+/* ---------- База ---------- */
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+[hidden] {
+    display: none !important;
+}
+
+html {
+    -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    margin: 0;
+    background: var(--bg-page);
+    color: var(--text-primary);
+    font-family: var(--font);
+    font-size: 16px;
+    line-height: 24px;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+}
+
+h1, h2, h3, p, ul, ol, dl, dd, blockquote {
+    margin: 0;
+}
+
+ul, ol {
+    padding: 0;
+    list-style: none;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+button, input, textarea {
+    font: inherit;
+    color: inherit;
+    letter-spacing: inherit;
+}
+
+button {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    background: none;
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+}
+
+:focus-visible {
+    outline: 2px solid var(--text-link);
+    outline-offset: 2px;
+}
+
+::selection {
+    background: rgba(239, 49, 36, .16);
+}
+
+.icon {
+    flex-shrink: 0;
+    width: 24px;
+    height: 24px;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 1.8;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+.icon--12 { width: 12px; height: 12px; }
+.icon--16 { width: 16px; height: 16px; }
+.icon--20 { width: 20px; height: 20px; }
+
+.visually-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    padding: 0;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    white-space: nowrap;
+    border: 0;
+}
+
+.container {
+    width: 100%;
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 var(--gutter);
+}
+
+.dot-sep {
+    color: var(--text-tertiary);
+}
+
+/* ---------- Примитивы ---------- */
+
+.card {
+    background: var(--bg-primary);
+    border-radius: 24px;
+    padding: 24px;
+}
+
+.card-title {
+    font-size: 18px;
+    line-height: 24px;
+    font-weight: 700;
+}
+
+.card-subtitle {
+    font-size: 14px;
+    line-height: 20px;
+    color: var(--text-secondary);
+}
+
+.squircle,
+.avatar {
+    display: inline-grid;
+    place-items: center;
+    flex-shrink: 0;
+    -webkit-mask: var(--squircle) center / 100% 100% no-repeat;
+    mask: var(--squircle) center / 100% 100% no-repeat;
+}
+
+.squircle--32 { width: 32px; height: 32px; }
+.squircle--36 { width: 36px; height: 36px; }
+.squircle--40 { width: 40px; height: 40px; }
+.squircle--48 { width: 48px; height: 48px; }
+
+.squircle--accent { background: var(--accent); color: #fff; }
+.squircle--neutral { background: var(--bg-neutral); color: var(--text-primary); }
+.squircle--red { background: var(--red-bg); color: var(--red); }
+.squircle--green { background: var(--green-bg); color: var(--green-icon); }
+.squircle--ai { background: var(--ai-bg); color: var(--ai); }
+
+.avatar {
+    background: var(--bg-neutral);
+    color: var(--text-primary);
+    font-weight: 500;
+    letter-spacing: .2px;
+}
+
+.avatar--40 { width: 40px; height: 40px; font-size: 14px; }
+.avatar--48 { width: 48px; height: 48px; font-size: 16px; }
+.avatar--accent { background: var(--accent); color: #fff; }
+
+.status {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    height: 24px;
+    padding: 0 8px;
+    border-radius: 6px;
+    font-size: 12px;
+    line-height: 16px;
+    font-weight: 500;
+    letter-spacing: .19px;
+    white-space: nowrap;
+}
+
+.status--neutral { background: var(--bg-neutral); color: var(--text-primary); }
+.status--red { background: var(--red-bg); color: var(--red); }
+.status--outline { box-shadow: inset 0 0 0 1px var(--border-strong); color: var(--text-secondary); }
+
+.tag-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+}
+
+.button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    border-radius: 12px;
+    font-weight: 500;
+    white-space: nowrap;
+    transition: background-color .15s var(--ease);
+}
+
+.button--40 {
+    height: 40px;
+    padding: 0 16px 0 12px;
+    font-size: 14px;
+    line-height: 20px;
+    letter-spacing: .07px;
+}
+
+.button--secondary { background: var(--bg-neutral); color: var(--text-primary); }
+.button--secondary:hover { background: var(--bg-neutral-hover); }
+.button--secondary:active { background: var(--bg-neutral-active); }
+
+.icon-button {
+    display: inline-grid;
+    place-items: center;
+    flex-shrink: 0;
+    width: 32px;
+    height: 32px;
+    border-radius: 8px;
+    color: var(--text-secondary);
+    transition: background-color .15s var(--ease), color .15s var(--ease);
+}
+
+.icon-button:hover { background: var(--bg-neutral); color: var(--text-primary); }
+.icon-button:active { background: var(--bg-neutral-hover); }
+
+.relevance {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 14px;
+    line-height: 20px;
+    color: var(--text-secondary);
+    white-space: nowrap;
+}
+
+.relevance__bars {
+    display: inline-flex;
+    align-items: flex-end;
+    gap: 2px;
+    height: 14px;
+}
+
+.relevance__bars i {
+    width: 4px;
+    border-radius: 1px;
+    background: var(--graphic-muted);
+}
+
+.relevance__bars i:nth-child(1) { height: 6px; }
+.relevance__bars i:nth-child(2) { height: 10px; }
+.relevance__bars i:nth-child(3) { height: 14px; }
+
+.relevance--1 i:nth-child(-n + 1),
+.relevance--2 i:nth-child(-n + 2),
+.relevance--3 i {
+    background: var(--text-primary);
+}
+
+/* ---------- Шапка ---------- */
+
+.header {
+    position: sticky;
+    top: 0;
+    z-index: 30;
+    background: var(--bg-primary);
+    box-shadow: 0 1px 0 var(--border);
+}
+
+.header__inner {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    height: var(--header-h);
+}
+
+.brand {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    min-width: 0;
+    border-radius: 8px;
+}
+
+.brand__logo {
+    flex-shrink: 0;
+    width: 19px;
+    height: 28px;
+    color: var(--accent);
+}
+
+.brand__name {
+    font-size: 18px;
+    line-height: 24px;
+    font-weight: 700;
+    white-space: nowrap;
+}
+
+.brand__divider {
+    width: 1px;
+    height: 20px;
+    background: var(--border-strong);
+}
+
+.brand__product {
+    font-size: 16px;
+    line-height: 20px;
+    color: var(--text-secondary);
+    white-space: nowrap;
+}
+
+.header__user {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-left: auto;
+    min-width: 0;
+    text-align: right;
+}
+
+.header__user-text {
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+}
+
+.header__user-name {
+    font-size: 14px;
+    line-height: 20px;
+    font-weight: 500;
+}
+
+.header__user-company {
+    font-size: 12px;
+    line-height: 16px;
+    color: var(--text-secondary);
+    white-space: nowrap;
+}
+
+/* ---------- Страница ---------- */
+
+.page {
+    flex: 1 0 auto;
+    padding: 32px 0 64px;
+}
+
+.page-head {
+    margin-bottom: 24px;
+}
+
+.page-head__title {
+    font-size: 30px;
+    line-height: 36px;
+    font-weight: 700;
+}
+
+.footer {
+    padding: 0 0 32px;
+    font-size: 12px;
+    line-height: 16px;
+    color: var(--text-secondary);
+}
+
+.footer__inner {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 8px 24px;
+    padding-top: 24px;
+    border-top: 1px solid var(--border-strong);
+}
+
+.footer__ai {
+    display: inline-flex;
+    align-items: center;
+    gap: 2px;
+    color: var(--ai-text);
+    font-weight: 700;
+    vertical-align: top;
+}
+
+.footer__ai .icon {
+    color: var(--ai);
+}
+
+/* ==========================================================================
+   Главная
+   ========================================================================== */
+
+.home-grid {
+    display: grid;
+    grid-template-columns: 360px minmax(0, 1fr);
+    gap: var(--gap);
+    align-items: start;
+}
+
+.home-side {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+/* Аккаунт */
+
+.account__user {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.account__name {
+    font-size: 18px;
+    line-height: 24px;
+    font-weight: 700;
+}
+
+.account__role {
+    font-size: 14px;
+    line-height: 20px;
+    color: var(--text-secondary);
+}
+
+.account__company {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-top: 20px;
+    padding: 12px;
+    border-radius: 16px;
+    background: var(--bg-secondary);
+}
+
+.account__company-text {
+    min-width: 0;
+}
+
+.account__company-name {
+    font-size: 16px;
+    line-height: 20px;
+    font-weight: 500;
+}
+
+.account__company-meta {
+    margin-top: 2px;
+    font-size: 12px;
+    line-height: 16px;
+    color: var(--text-secondary);
+}
+
+.account__caption {
+    margin: 20px 0 12px;
+    font-size: 12px;
+    line-height: 16px;
+    font-weight: 700;
+    letter-spacing: 1.25px;
+    text-transform: uppercase;
+    color: var(--text-secondary);
+}
+
+.account__stats {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px 16px;
+}
+
+.account__stats dt {
+    font-size: 12px;
+    line-height: 16px;
+    color: var(--text-secondary);
+}
+
+.account__stats dd {
+    margin-top: 2px;
+    font-size: 14px;
+    line-height: 20px;
+    font-weight: 500;
+}
+
+.account__stats-wide {
+    grid-column: 1 / -1;
+}
+
+.account__stats-wide dd {
+    margin-top: 6px;
+}
+
+/* Рынки (свободный слот) */
+
+.markets__head {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 12px;
+    margin-bottom: 12px;
+}
+
+.markets__grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 8px;
+}
+
+.market-tile {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    column-gap: 6px;
+    padding: 12px;
+    border-radius: 16px;
+    background: var(--bg-secondary);
+}
+
+.market-tile__name {
+    flex-basis: 100%;
+    font-size: 12px;
+    line-height: 16px;
+    color: var(--text-secondary);
+}
+
+.market-tile__value {
+    margin-top: 4px;
+    font-size: 18px;
+    line-height: 24px;
+    font-weight: 500;
+    font-variant-numeric: tabular-nums;
+}
+
+.delta {
+    font-size: 12px;
+    line-height: 16px;
+    font-weight: 500;
+    font-variant-numeric: tabular-nums;
+    white-space: nowrap;
+}
+
+.delta--up { color: var(--green); }
+.delta--down { color: var(--red); }
+.delta--flat { color: var(--text-secondary); }
+
+/* Срочное */
+
+.urgent {
+    padding: 0;
+}
+
+.urgent__head {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 20px 24px 8px;
+}
+
+.counter {
+    min-width: 24px;
+    height: 24px;
+    margin-left: auto;
+    padding: 0 8px;
+    border-radius: 99px;
+    background: var(--accent);
+    color: #fff;
+    font-size: 12px;
+    line-height: 24px;
+    font-weight: 700;
+    text-align: center;
+}
+
+.urgent__list {
+    padding: 0 8px 8px;
+}
+
+.urgent__list > li + li {
+    position: relative;
+}
+
+.urgent__list > li + li::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 16px;
+    left: 16px;
+    height: 1px;
+    background: var(--border);
+}
+
+.urgent-item {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 20px;
+    column-gap: 12px;
+    row-gap: 4px;
+    padding: 14px 16px;
+    border-radius: 16px;
+    transition: background-color .15s var(--ease);
+}
+
+.urgent-item:hover {
+    background: var(--bg-secondary);
+}
+
+.urgent-item__time,
+.urgent-item__title,
+.urgent-item__reason {
+    grid-column: 1;
+}
+
+.urgent-item__time {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 12px;
+    line-height: 16px;
+    color: var(--text-secondary);
+}
+
+.urgent-item__title {
+    display: -webkit-box;
+    overflow: hidden;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3;
+    line-clamp: 3;
+    font-size: 16px;
+    line-height: 20px;
+    font-weight: 500;
+}
+
+.urgent-item__reason {
+    font-size: 14px;
+    line-height: 20px;
+    color: var(--text-secondary);
+}
+
+.urgent-item__chevron {
+    grid-column: 2;
+    grid-row: 1 / span 3;
+    align-self: center;
+    color: var(--text-tertiary);
+    transition: transform .15s var(--ease), color .15s var(--ease);
+}
+
+.urgent-item:hover .urgent-item__chevron {
+    color: var(--text-primary);
+    transform: translateX(2px);
+}
+
+.urgent__empty {
+    padding: 12px 16px 16px;
+    font-size: 14px;
+    line-height: 20px;
+    color: var(--text-secondary);
+}
+
+.pulse {
+    position: relative;
+    flex-shrink: 0;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--accent);
+}
+
+.pulse::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    background: var(--accent);
+    animation: pulse 2s var(--ease) infinite;
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); opacity: .45; }
+    80%, 100% { transform: scale(2.75); opacity: 0; }
+}
+
+/* Лента */
+
+.feed {
+    min-width: 0;
+}
+
+.feed__head {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 4px 16px;
+    margin-bottom: 16px;
+}
+
+.feed__title {
+    font-size: 22px;
+    line-height: 28px;
+    font-weight: 700;
+}
+
+.feed__updated {
+    font-size: 14px;
+    line-height: 20px;
+    color: var(--text-secondary);
+}
+
+.chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 16px;
+}
+
+.chip {
+    display: inline-flex;
+    align-items: center;
+    height: 40px;
+    padding: 0 16px;
+    border-radius: 99px;
+    background: var(--bg-primary);
+    font-size: 14px;
+    line-height: 20px;
+    font-weight: 500;
+    letter-spacing: .07px;
+    white-space: nowrap;
+    transition: background-color .15s var(--ease), color .15s var(--ease), box-shadow .15s var(--ease);
+}
+
+.chip:hover {
+    box-shadow: var(--shadow-hover);
+}
+
+.chip[aria-pressed="true"] {
+    background: var(--bg-inverted);
+    color: var(--text-inverted);
+}
+
+.chip[aria-pressed="true"]:hover {
+    background: var(--bg-inverted-hover);
+}
+
+.chip__count {
+    margin-left: 6px;
+    color: var(--text-tertiary);
+    font-variant-numeric: tabular-nums;
+}
+
+.chip[aria-pressed="true"] .chip__count {
+    color: rgba(255, 255, 255, .56);
+}
+
+.news-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.news-card {
+    position: relative;
+    padding: 24px;
+    border-radius: 24px;
+    background: var(--bg-primary);
+    transition: box-shadow .2s var(--ease);
+}
+
+.news-card:hover {
+    box-shadow: var(--shadow-hover);
+}
+
+.news-card__meta {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 12px;
+}
+
+.news-card__source {
+    font-size: 14px;
+    line-height: 20px;
+    color: var(--text-secondary);
+}
+
+.news-card__title {
+    font-size: 20px;
+    line-height: 28px;
+    font-weight: 500;
+    letter-spacing: -.15px;
+    text-wrap: pretty;
+}
+
+.news-card__link::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: 24px;
+}
+
+.news-card__link:focus-visible {
+    outline: none;
+}
+
+.news-card__link:focus-visible::after {
+    outline: 2px solid var(--text-link);
+    outline-offset: 2px;
+}
+
+.news-card__summary {
+    display: -webkit-box;
+    overflow: hidden;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    line-clamp: 2;
+    margin-top: 8px;
+    color: var(--text-secondary);
+}
+
+.why {
+    display: flex;
+    gap: 10px;
+    margin-top: 16px;
+    padding: 12px 16px;
+    border-radius: 16px;
+    background: var(--bg-secondary);
+    font-size: 14px;
+    line-height: 20px;
+}
+
+.why__icon {
+    color: var(--ai);
+}
+
+.why__label {
+    font-weight: 500;
+}
+
+.news-card__foot {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 8px;
+    margin-top: 16px;
+}
+
+.news-card__foot .relevance {
+    margin-left: auto;
+}
+
+.impact-pill,
+.bank-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    height: 28px;
+    border-radius: 99px;
+    font-size: 14px;
+    line-height: 20px;
+    font-weight: 500;
+    white-space: nowrap;
+}
+
+.impact-pill {
+    padding: 0 10px 0 8px;
+}
+
+.impact-pill--risk { background: var(--red-bg); color: var(--red); }
+.impact-pill--opp { background: var(--green-bg); color: var(--green); }
+
+.impact-pill__count {
+    margin-left: 2px;
+    font-weight: 700;
+    font-variant-numeric: tabular-nums;
+}
+
+.bank-pill {
+    padding: 0 10px;
+    background: var(--bg-neutral);
+}
+
+.bank-pill__logo {
+    flex-shrink: 0;
+    width: 9px;
+    height: 14px;
+    color: var(--accent);
+}
+
+.empty-state {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    padding: 48px 24px;
+    border-radius: 24px;
+    background: var(--bg-primary);
+    text-align: center;
+}
+
+.empty-state__title {
+    margin-top: 8px;
+    font-size: 18px;
+    line-height: 24px;
+    font-weight: 700;
+}
+
+.empty-state__text {
+    max-width: 360px;
+    font-size: 14px;
+    line-height: 20px;
+    color: var(--text-secondary);
+}
+
+/* ==========================================================================
+   Страница новости
+   ========================================================================== */
+
+.back-link {
+    align-self: flex-start;
+    margin-bottom: -16px;
+}
+
+.article-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 400px;
+    gap: var(--gap);
+    align-items: start;
+}
+
+.article-col {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+    min-width: 0;
+}
+
+.article {
+    padding: 40px 48px 48px;
+}
+
+.article__meta {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 4px 8px;
+    margin-bottom: 16px;
+    font-size: 14px;
+    line-height: 20px;
+    color: var(--text-secondary);
+}
+
+.article__title {
+    font-size: 34px;
+    line-height: 40px;
+    font-weight: 700;
+    letter-spacing: -.3px;
+    text-wrap: pretty;
+}
+
+.article__lead {
+    margin-top: 16px;
+    font-size: 18px;
+    line-height: 28px;
+}
+
+.facts {
+    margin-top: 32px;
+    padding: 24px;
+    border-radius: 16px;
+    background: var(--bg-secondary);
+}
+
+.facts__head {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 4px 16px;
+    margin-bottom: 12px;
+}
+
+.facts__title {
+    font-size: 18px;
+    line-height: 24px;
+    font-weight: 700;
+}
+
+.facts__note {
+    font-size: 12px;
+    line-height: 16px;
+    color: var(--text-secondary);
+}
+
+.facts__list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.facts__list li {
+    display: flex;
+    gap: 12px;
+}
+
+.facts__list .icon {
+    margin-top: 2px;
+    color: var(--green-icon);
+}
+
+.article__body {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin-top: 32px;
+    font-size: 17px;
+    line-height: 28px;
+}
+
+.bank-view {
+    margin-top: 32px;
+    padding: 24px;
+    border-radius: 16px;
+    box-shadow: inset 0 0 0 1px var(--border);
+}
+
+.bank-view__head {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.bank-view__logo {
+    width: 14px;
+    height: 21px;
+    color: #fff;
+}
+
+.bank-view__title {
+    font-size: 16px;
+    line-height: 20px;
+    font-weight: 700;
+}
+
+.bank-view__author {
+    font-size: 14px;
+    line-height: 20px;
+    color: var(--text-secondary);
+}
+
+.bank-view__quote {
+    margin-top: 16px;
+    font-size: 16px;
+    line-height: 24px;
+}
+
+.bank-view__doc {
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+    margin-top: 16px;
+    font-size: 14px;
+    line-height: 20px;
+    color: var(--text-secondary);
+}
+
+.bank-view__doc .icon {
+    margin-top: 2px;
+}
+
+.sources {
+    margin-top: 32px;
+    padding-top: 24px;
+    border-top: 1px solid var(--border);
+}
+
+.sources__title {
+    margin-bottom: 8px;
+    font-size: 16px;
+    line-height: 20px;
+    font-weight: 700;
+}
+
+.source {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin: 0 -8px;
+    padding: 8px;
+    border-radius: 12px;
+    transition: background-color .15s var(--ease);
+}
+
+a.source:hover {
+    background: var(--bg-secondary);
+}
+
+.source__text {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    min-width: 0;
+}
+
+.source__name {
+    font-size: 14px;
+    line-height: 20px;
+    font-weight: 500;
+}
+
+.source__meta {
+    font-size: 12px;
+    line-height: 16px;
+    color: var(--text-secondary);
+}
+
+.source__ext {
+    color: var(--text-tertiary);
+}
+
+a.source:hover .source__ext {
+    color: var(--text-primary);
+}
+
+/* Похожие */
+
+.related__title {
+    margin-bottom: 16px;
+    font-size: 22px;
+    line-height: 28px;
+    font-weight: 700;
+}
+
+.related__grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 12px;
+}
+
+.related-card {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    padding: 20px;
+    border-radius: 24px;
+    background: var(--bg-primary);
+    transition: box-shadow .2s var(--ease);
+}
+
+.related-card:hover {
+    box-shadow: var(--shadow-hover);
+}
+
+.related-card__meta {
+    overflow: hidden;
+    font-size: 12px;
+    line-height: 16px;
+    color: var(--text-secondary);
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.related-card__title {
+    display: -webkit-box;
+    flex: 1;
+    overflow: hidden;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 4;
+    line-clamp: 4;
+    font-size: 16px;
+    line-height: 20px;
+    font-weight: 500;
+}
+
+.related-card .relevance {
+    margin-top: 4px;
+    font-size: 12px;
+    line-height: 16px;
+}
+
+/* Панель влияния */
+
+.insight-col {
+    position: sticky;
+    top: calc(var(--header-h) + 32px);
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    max-height: calc(100vh - var(--header-h) - 56px);
+    max-height: calc(100dvh - var(--header-h) - 56px);
+}
+
+.insight {
+    display: flex;
+    flex: 0 1 auto;
+    flex-direction: column;
+    min-height: 200px;
+    padding: 0;
+}
+
+.insight__head,
+.insight .segmented {
+    flex-shrink: 0;
+}
+
+.insight__head {
+    padding: 24px 24px 16px;
+}
+
+.insight__title {
+    font-size: 20px;
+    line-height: 28px;
+    font-weight: 700;
+}
+
+.insight__sub {
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+    margin-top: 4px;
+    font-size: 14px;
+    line-height: 20px;
+    color: var(--text-secondary);
+}
+
+.ai-badge {
+    display: inline-flex;
+    flex-shrink: 0;
+    align-items: center;
+    gap: 2px;
+    height: 20px;
+    padding: 0 6px 0 4px;
+    border-radius: 6px;
+    background: var(--ai-bg);
+    color: var(--ai-text);
+    font-size: 12px;
+    line-height: 16px;
+    font-weight: 700;
+}
+
+.ai-badge .icon {
+    color: var(--ai);
+}
+
+.segmented {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    margin: 0 24px;
+    padding: 2px;
+    border-radius: 12px;
+    background: var(--bg-neutral);
+}
+
+.segmented__tab {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    height: 36px;
+    border-radius: 10px;
+    color: var(--text-secondary);
+    font-size: 14px;
+    line-height: 20px;
+    font-weight: 500;
+    transition: background-color .2s var(--ease), color .2s var(--ease), box-shadow .2s var(--ease);
+}
+
+.segmented__tab:hover {
+    color: var(--text-primary);
+}
+
+.segmented__tab[aria-selected="true"] {
+    background: var(--bg-primary);
+    color: var(--text-primary);
+    box-shadow: var(--shadow-control);
+}
+
+.segmented__count {
+    min-width: 20px;
+    height: 20px;
+    padding: 0 6px;
+    border-radius: 99px;
+    font-size: 12px;
+    line-height: 20px;
+    font-weight: 700;
+    font-variant-numeric: tabular-nums;
+}
+
+.segmented__count--red { background: var(--red-bg); color: var(--red); }
+.segmented__count--green { background: var(--green-bg); color: var(--green); }
+
+.insight__body {
+    flex: 1 1 auto;
+    min-height: 0;
+    padding: 4px 24px 8px;
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    scrollbar-width: thin;
+    /* Тени-подсказки, когда список прокручивается внутри панели */
+    background:
+        linear-gradient(var(--bg-primary) 30%, rgba(255, 255, 255, 0)) top / 100% 24px no-repeat local,
+        linear-gradient(rgba(255, 255, 255, 0), var(--bg-primary) 70%) bottom / 100% 24px no-repeat local,
+        linear-gradient(rgba(11, 31, 53, .08), rgba(11, 31, 53, 0)) top / 100% 8px no-repeat scroll,
+        linear-gradient(rgba(11, 31, 53, 0), rgba(11, 31, 53, .08)) bottom / 100% 8px no-repeat scroll;
+}
+
+.impact-list:focus-visible {
+    outline-offset: -2px;
+    border-radius: 12px;
+}
+
+.impact-list__empty {
+    padding: 16px 0;
+    font-size: 14px;
+    line-height: 20px;
+    color: var(--text-secondary);
+}
+
+.impact-item {
+    display: flex;
+    gap: 12px;
+    padding: 16px 0;
+}
+
+.impact-item + .impact-item {
+    border-top: 1px solid var(--border);
+}
+
+.impact-item--risk { --kind: var(--red); }
+.impact-item--opp { --kind: var(--green-icon); }
+
+.impact-item__content {
+    min-width: 0;
+}
+
+.impact-item__title {
+    font-size: 16px;
+    line-height: 20px;
+    font-weight: 500;
+}
+
+.impact-item__text {
+    margin-top: 4px;
+    font-size: 14px;
+    line-height: 20px;
+    color: var(--text-secondary);
+}
+
+.impact-item__meta {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 4px 16px;
+    margin-top: 10px;
+    font-size: 12px;
+    line-height: 16px;
+    color: var(--text-secondary);
+}
+
+.level {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    color: var(--text-primary);
+    font-weight: 500;
+}
+
+.level__dots {
+    display: inline-flex;
+    gap: 2px;
+}
+
+.level__dots i {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--graphic-muted);
+}
+
+.level--low .level__dots i:nth-child(-n + 1),
+.level--medium .level__dots i:nth-child(-n + 2),
+.level--high .level__dots i {
+    background: var(--kind);
+}
+
+.impact-item__horizon {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.insight__basis {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    padding: 16px 0 12px;
+    border-top: 1px solid var(--border);
+}
+
+.insight__basis-label {
+    font-size: 12px;
+    line-height: 16px;
+    color: var(--text-secondary);
+}
+
+/* Мини-чат */
+
+.chat {
+    display: flex;
+    flex: 0 0 auto;
+    flex-direction: column;
+    padding: 0;
+}
+
+.chat__head {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 16px 16px 12px 20px;
+}
+
+.chat__head-text {
+    flex: 1;
+    min-width: 0;
+}
+
+.chat__title {
+    font-size: 16px;
+    line-height: 20px;
+    font-weight: 700;
+}
+
+.chat__status {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 12px;
+    line-height: 16px;
+    color: var(--text-secondary);
+}
+
+.chat__online {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--green-dot);
+}
+
+.chat__toggle .icon {
+    transition: transform .2s var(--ease);
+}
+
+.chat.is-collapsed .chat__toggle .icon {
+    transform: rotate(180deg);
+}
+
+.chat.is-collapsed .chat__body {
+    display: none;
+}
+
+.chat__body {
+    display: flex;
+    flex-direction: column;
+}
+
+.chat__messages {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    max-height: min(280px, 28vh);
+    padding: 0 20px 12px;
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    scrollbar-width: thin;
+}
+
+.msg {
+    max-width: 88%;
+    padding: 10px 14px;
+    border-radius: 16px;
+    font-size: 14px;
+    line-height: 20px;
+    white-space: pre-line;
+    overflow-wrap: anywhere;
+}
+
+.msg--new {
+    animation: msg-in .2s var(--ease);
+}
+
+.msg--ai {
+    align-self: flex-start;
+    border-bottom-left-radius: 6px;
+    background: var(--bg-secondary);
+}
+
+.msg--user {
+    align-self: flex-end;
+    border-bottom-right-radius: 6px;
+    background: var(--bg-inverted);
+    color: var(--text-inverted);
+}
+
+.msg--typing {
+    display: inline-flex;
+    gap: 4px;
+    padding: 16px 14px;
+}
+
+.msg--typing i {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--text-tertiary);
+    animation: typing 1.2s var(--ease) infinite;
+}
+
+.msg--typing i:nth-child(2) { animation-delay: .15s; }
+.msg--typing i:nth-child(3) { animation-delay: .3s; }
+
+@keyframes typing {
+    0%, 60%, 100% { transform: translateY(0); opacity: .5; }
+    30% { transform: translateY(-3px); opacity: 1; }
+}
+
+@keyframes msg-in {
+    from { transform: translateY(4px); opacity: 0; }
+    to { transform: none; opacity: 1; }
+}
+
+.chat__suggest {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    padding: 0 20px 12px;
+}
+
+.suggest {
+    min-height: 32px;
+    padding: 6px 12px;
+    border-radius: 16px;
+    background: var(--bg-neutral);
+    font-size: 14px;
+    line-height: 20px;
+    text-align: left;
+    transition: background-color .15s var(--ease);
+}
+
+.suggest:hover { background: var(--bg-neutral-hover); }
+.suggest:active { background: var(--bg-neutral-active); }
+
+.chat__form {
+    display: flex;
+    align-items: flex-end;
+    gap: 8px;
+    margin: 0 12px 12px;
+    padding: 4px 4px 4px 16px;
+    border-radius: 16px;
+    background: var(--bg-secondary);
+    transition: background-color .15s var(--ease), box-shadow .15s var(--ease);
+}
+
+.chat__form:focus-within {
+    background: var(--bg-primary);
+    box-shadow: inset 0 0 0 1px rgba(11, 31, 53, .3);
+}
+
+.chat__input {
+    flex: 1;
+    min-width: 0;
+    height: 40px;
+    max-height: 120px;
+    padding: 10px 0;
+    border: 0;
+    outline: none;
+    background: transparent;
+    font-size: 14px;
+    line-height: 20px;
+    resize: none;
+}
+
+.chat__input::placeholder {
+    color: var(--text-secondary);
+}
+
+.chat__send {
+    display: grid;
+    flex-shrink: 0;
+    place-items: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 12px;
+    background: var(--accent);
+    color: #fff;
+    transition: background-color .15s var(--ease), color .15s var(--ease);
+}
+
+.chat__send:hover:not(:disabled) { background: var(--accent-hover); }
+.chat__send:active:not(:disabled) { background: var(--accent-active); }
+
+.chat__send:disabled {
+    background: var(--bg-neutral);
+    color: var(--text-tertiary);
+    cursor: default;
+}
+
+/* ==========================================================================
+   Адаптив
+   ========================================================================== */
+
+@media (max-width: 1199px) {
+    .home-grid {
+        grid-template-columns: 320px minmax(0, 1fr);
+    }
+
+    .article-grid {
+        grid-template-columns: minmax(0, 1fr) 360px;
+    }
+
+    .article {
+        padding: 32px;
+    }
+
+    .article__title {
+        font-size: 30px;
+        line-height: 36px;
+    }
+
+    .related__grid {
+        grid-template-columns: minmax(0, 1fr);
+    }
+
+    .related-card__title {
+        -webkit-line-clamp: 2;
+        line-clamp: 2;
+    }
+}
+
+@media (max-width: 1023px) {
+    .home-grid {
+        grid-template-columns: minmax(0, 1fr);
+    }
+
+    .home-side {
+        display: contents;
+    }
+
+    .account { order: 1; }
+    .urgent { order: 2; }
+    .feed { order: 3; }
+    .markets { order: 4; }
+
+    .article-grid {
+        grid-template-columns: minmax(0, 1fr);
+    }
+
+    .article-col {
+        display: contents;
+    }
+
+    .back-link {
+        justify-self: start;
+        margin-bottom: 0;
+    }
+
+    .article { order: 1; }
+    .insight-col { order: 2; }
+    .related { order: 3; }
+
+    .insight-col {
+        position: static;
+        max-height: none;
+    }
+
+    .insight__body {
+        overflow: visible;
+        background: none;
+    }
+
+    .chat__messages {
+        max-height: 360px;
+    }
+
+    .related__grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .related-card__title {
+        -webkit-line-clamp: 4;
+        line-clamp: 4;
+    }
+}
+
+@media (min-width: 768px) and (max-width: 1023px) {
+    .home-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        align-items: stretch;
+    }
+
+    .feed,
+    .markets {
+        grid-column: 1 / -1;
+    }
+
+    .markets__grid {
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 767px) {
+    .related__grid {
+        grid-template-columns: minmax(0, 1fr);
+    }
+}
+
+@media (max-width: 639px) {
+    :root {
+        --gutter: 16px;
+        --gap: 16px;
+        --header-h: 64px;
+    }
+
+    .page {
+        padding: 20px 0 48px;
+    }
+
+    .brand__divider,
+    .brand__product,
+    .header__user-text {
+        display: none;
+    }
+
+    .page-head__title {
+        font-size: 26px;
+        line-height: 32px;
+    }
+
+    .account__caption,
+    .account__stats {
+        display: none;
+    }
+
+    .account__company {
+        margin-top: 16px;
+    }
+
+    .card,
+    .news-card {
+        padding: 20px;
+    }
+
+    .urgent,
+    .insight,
+    .chat {
+        padding: 0;
+    }
+
+    .urgent__head {
+        padding: 16px 20px 8px;
+    }
+
+    .urgent__list {
+        padding: 0 4px 4px;
+    }
+
+    .chips {
+        flex-wrap: nowrap;
+        margin: 0 calc(var(--gutter) * -1) 16px;
+        padding: 0 var(--gutter);
+        overflow-x: auto;
+        scrollbar-width: none;
+    }
+
+    .chips::-webkit-scrollbar {
+        display: none;
+    }
+
+    .news-card__title {
+        font-size: 18px;
+        line-height: 24px;
+    }
+
+    .article {
+        padding: 24px 20px;
+    }
+
+    .article__title {
+        font-size: 26px;
+        line-height: 32px;
+        letter-spacing: -.2px;
+    }
+
+    .article__lead {
+        font-size: 17px;
+        line-height: 26px;
+    }
+
+    .article__body {
+        font-size: 16px;
+        line-height: 26px;
+    }
+
+    .facts,
+    .bank-view {
+        padding: 20px;
+    }
+
+    .insight__head {
+        padding: 20px 20px 12px;
+    }
+
+    .segmented {
+        margin: 0 20px;
+    }
+
+    .insight__body {
+        padding: 4px 20px 8px;
+    }
+
+    .footer__inner {
+        flex-direction: column;
+    }
+}
+
+@media (max-height: 640px) and (min-width: 1024px) {
+    .insight-col {
+        position: static;
+        max-height: none;
+    }
+
+    .insight__body {
+        overflow: visible;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: .01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: .01ms !important;
+    }
+}
+
+
+.trace { margin: 32px auto 48px; display: grid; grid-template-columns: minmax(0, 1fr); gap: 16px; }
+.trace td, .trace p, .trace li, .trace summary { overflow-wrap: anywhere; }
+.trace .debug__body { grid-template-columns: minmax(0, 1fr); }
+.trace table { table-layout: fixed; }
+.trace .card { padding: 24px; }
+.trace h2 { font-size: 22px; line-height: 28px; margin: 0 0 4px; }
+.trace h3 { font-size: 17px; line-height: 24px; margin: 16px 0 8px; }
+.trace p, .trace li, .trace td, .trace th { font-size: 14px; line-height: 20px; }
+.trace .muted { color: #86868a; }
+.trace table { width: 100%; border-collapse: collapse; }
+.trace th, .trace td { text-align: left; vertical-align: top; padding: 8px 10px; border-bottom: 1px solid #ececed; }
+.trace th { color: #86868a; font-weight: 500; }
+.trace ul { margin: 4px 0 0; padding-left: 18px; }
+.trace .chips { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 8px; }
+.trace .chip { padding: 4px 10px; border-radius: 8px; background: #f3f4f5; font-size: 13px; }
+.trace .chip--red { background: #feeceb; color: #c41f12; } .trace .chip--green { background: #e8f6ec; color: #0f7a35; }
+.trace .chain { color: #3c3c3f; margin: 6px 0; }
+.trace .item { padding: 12px 0; border-bottom: 1px solid #ececed; } .trace .item:last-child { border-bottom: 0; }
+.trace pre { white-space: pre-wrap; word-break: break-word; font-size: 12px; background: #f7f7f8; padding: 8px; border-radius: 8px; margin: 6px 0 0; }
+.trace details summary { cursor: pointer; font-weight: 500; }
+.trace .debug { background: #fff; border-radius: 24px; padding: 16px 24px; }
+.trace .debug > summary { font-size: 17px; line-height: 24px; padding: 8px 0; }
+.trace .debug > summary .muted { font-size: 13px; font-weight: 400; margin-left: 8px; }
+.trace .debug__body { display: grid; gap: 16px; margin-top: 12px; }
+.trace .debug__body .card { box-shadow: none; border: 1px solid #ececed; }
+</style>
+</head>
+<body>
+<svg xmlns="http://www.w3.org/2000/svg" style="display:none" aria-hidden="true">
+    <symbol id="logo-alfa" viewBox="0 0 33 50">
+        <path fill="currentColor" fill-rule="evenodd" clip-rule="evenodd" d="M0 49.982v-6.825h32.61v6.825H0zm11.646-28.764h9.064L16.39 7.526h-.17l-4.573 13.692h-.001zm10.587-16.22l9.615 28.887h-7.115l-2.16-6.866H9.698l-2.33 6.867H.679l10.09-28.887C11.746 2.197 12.887 0 16.559 0s4.744 2.206 5.674 4.999v-.001z"/>
+    </symbol>
+    <symbol id="i-arrow-left" viewBox="0 0 24 24">
+        <path d="M19 12H5m6-6-6 6 6 6"/>
+    </symbol>
+    <symbol id="i-chevron-right" viewBox="0 0 24 24">
+        <path d="m10 7 5 5-5 5"/>
+    </symbol>
+    <symbol id="i-chevron-down" viewBox="0 0 24 24">
+        <path d="m7 10 5 5 5-5"/>
+    </symbol>
+    <symbol id="i-sparkle" viewBox="0 0 24 24">
+        <path fill="currentColor" stroke="none" d="M10 5.5c0 4.14 3.36 7.5 7.5 7.5-4.14 0-7.5 3.36-7.5 7.5 0-4.14-3.36-7.5-7.5-7.5 4.14 0 7.5-3.36 7.5-7.5Z"/>
+        <path fill="currentColor" stroke="none" d="M18 2.5c0 1.93 1.57 3.5 3.5 3.5-1.93 0-3.5 1.57-3.5 3.5 0-1.93-1.57-3.5-3.5-3.5 1.93 0 3.5-1.57 3.5-3.5Z"/>
+    </symbol>
+    <symbol id="i-bolt" viewBox="0 0 24 24">
+        <path fill="currentColor" d="M13.5 2.5 5 13.5h6.5l-1 8 8.5-11h-6.5l1-8Z"/>
+    </symbol>
+    <symbol id="i-trend-down" viewBox="0 0 24 24">
+        <path d="m3 7 6.5 6.5 4-4L21 17"/>
+        <path d="M21 11v6h-6"/>
+    </symbol>
+    <symbol id="i-trend-up" viewBox="0 0 24 24">
+        <path d="m3 17 6.5-6.5 4 4L21 7"/>
+        <path d="M21 13V7h-6"/>
+    </symbol>
+    <symbol id="i-arrow-up" viewBox="0 0 24 24">
+        <path d="M12 19V5m-6 6 6-6 6 6"/>
+    </symbol>
+    <symbol id="i-doc" viewBox="0 0 24 24">
+        <path d="M13.5 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8.5L13.5 3Z"/>
+        <path d="M13.5 3v5.5H19M9 13h6M9 17h4"/>
+    </symbol>
+    <symbol id="i-external" viewBox="0 0 24 24">
+        <path d="M14 4h6v6m0-6-8.5 8.5M18 14v4a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4"/>
+    </symbol>
+    <symbol id="i-check" viewBox="0 0 24 24">
+        <path d="m5 12.5 4.5 4.5L19 7.5"/>
+    </symbol>
+    <symbol id="i-search" viewBox="0 0 24 24">
+        <circle cx="11" cy="11" r="6.5"/>
+        <path d="m16 16 4 4"/>
+    </symbol>
+    <symbol id="i-clock" viewBox="0 0 24 24">
+        <circle cx="12" cy="12" r="8.5"/>
+        <path d="M12 7.5V12l3 2"/>
+    </symbol>
+</svg>
+
+
+<header class="header">
+    <div class="container header__inner">
+        <a class="brand" href="index.html" aria-label="На главную">
+            <svg class="brand__logo" viewBox="0 0 33 50" aria-hidden="true"><use href="#logo-alfa"></use></svg>
+            <span class="brand__name">Альфа-Бизнес</span>
+            <span class="brand__divider" aria-hidden="true"></span>
+            <span class="brand__product">Новостная аналитика</span>
+        </a>
+
+        <div class="header__user">
+            <div class="header__user-text">
+                <span class="header__user-name">Ирина Котова</span>
+                <span class="header__user-company">компании U_201985</span>
+            </div>
+            <span class="avatar avatar--40" aria-hidden="true">ИК</span>
+        </div>
+    </div>
+</header>
+
+<main class="page">
+    
+<div class="container">
+    <div class="article-grid">
+        <div class="article-col">
+            <a class="button button--secondary button--40 back-link" href="index.html">
+                <svg class="icon icon--20" aria-hidden="true"><use href="#i-arrow-left"></use></svg>
+                К ленте
+            </a>
+
+            <article class="card article">
+                <div class="article__meta">
+                    <span class="status status--neutral">Макроэкономика</span>
+                    <span class="status status--red"><svg class="icon icon--12" aria-hidden="true"><use href="#i-bolt"></use></svg>Срочно</span>
+                    <span class="article__source">РБК Инвестиции&nbsp;<span class="dot-sep">·</span> 23 октября 2026&nbsp;<span class="dot-sep">·</span> 3 мин&nbsp;чтения</span>
+                </div>
+
+                <h1 class="article__title">Почему ЦБ сохранил ставку 14% и как это повлияет на рубль и инвестиции</h1>
+
+                <p class="article__lead">Совет директоров Банка России 23 октября 2026 года сохранил ключевую ставку на уровне 14% годовых, что стало второй подряд паузой в цикле смягчения. Решение совпало с ожиданиями большинства аналитиков, однако эксперты указывают на сохраняющееся инфляционное давление и неопределенность в динамике валютного курса и фондового рынка.</p>
+
+                <section class="facts" aria-labelledby="facts-title">
+                    <div class="facts__head">
+                        <h2 class="facts__title" id="facts-title">Что произошло</h2>
+                        <span class="facts__note">Подтверждённые факты из источников</span>
+                    </div>
+                    <ul class="facts__list">
+                        
+                        <li>
+                            <svg class="icon icon--20" aria-hidden="true"><use href="#i-check"></use></svg>
+                            <span>23 октября 2026 года совет директоров Банка России сохранил ключевую ставку на уровне 14% годовых.</span>
+                        </li>
+                        
+                        <li>
+                            <svg class="icon icon--20" aria-hidden="true"><use href="#i-check"></use></svg>
+                            <span>Это вторая подряд пауза в цикле смягчения денежно-кредитной политики, начавшемся в июне 2025 года.</span>
+                        </li>
+                        
+                        <li>
+                            <svg class="icon icon--20" aria-hidden="true"><use href="#i-check"></use></svg>
+                            <span>27 из 30 аналитиков консенсус-прогноза РБК ожидали сохранения ставки.</span>
+                        </li>
+                        
+                        <li>
+                            <svg class="icon icon--20" aria-hidden="true"><use href="#i-check"></use></svg>
+                            <span>Инфляционные ожидания населения в октябре снизились на 1 п.п. до 13,2% (по опросу инФОМ).</span>
+                        </li>
+                        
+                        <li>
+                            <svg class="icon icon--20" aria-hidden="true"><use href="#i-check"></use></svg>
+                            <span>Оценка наблюдаемой годовой инфляции составила 14,5% против 15,1% месяцем ранее.</span>
+                        </li>
+                        
+                        <li>
+                            <svg class="icon icon--20" aria-hidden="true"><use href="#i-check"></use></svg>
+                            <span>Курс юаня на Мосбирже снизился с 12,015 руб. до 12,005 руб. в период с 13:29 до 13:39 мск 23 октября.</span>
+                        </li>
+                        
+                    </ul>
+                </section>
+
+                <div class="article__body">
+                    <p>Пересказ статьи (сайт РБК не отдаёт текст простому загрузчику; оригинал — по ссылке).</p><p>Что произошло. 23 октября 2026 года совет директоров Банка России сохранил ключевую ставку на уровне 14% годовых. Решение совпало с ожиданиями: 27 из 30 аналитиков консенсус-прогноза РБК ждали сохранения ставки. Это вторая подряд пауза в цикле смягчения денежно-кредитной политики, начавшемся в июне 2025 года. Банки ориентируются на ключевую ставку при установлении ставок по вкладам и кредитам.</p><p>Причины, по мнению экспертов. Ольга Беленькая (ФГ «Финам») называет три фактора: рост инфляционного давления в третьем квартале 2026 года, включая устойчивую инфляцию; замедление роста денежной массы и корпоративного кредитования, которое всё же остаётся выше прогноза регулятора; отсутствие признаков перегрева экономики. Иван Копейкин («СберСтрахование жизни») считает, что это продление паузы, а не конец цикла смягчения: ЦБ хочет больше подтверждений устойчивого снижения базовой инфляции. По опросу инФОМ для ЦБ, инфляционные ожидания населения в октябре снизились на 1 п.п., до 13,2%; оценка наблюдаемой годовой инфляции — 14,5% против 15,1% месяцем ранее.</p><p>Рубль. После решения рубль продолжил укрепляться: по данным Мосбиржи курс юаня снизился с 12,015 руб. (13:29 мск) до 12,005 руб. (13:39 мск); накануне юань подешевел на 1,32%. Алексей Головинов («Вектор Капитал»): для курса важнее, как долго продержатся высокие ставки; прогноз — 85 руб. за доллар к концу декабря; ключевые факторы — экспортная выручка, спрос импортёров на валюту, валютные операции государства и геополитика. Николай Дудченко («Финам»): решение уже заложено в курс. Наталья Ващелюк («УК «Первая»): поддержка рублю будет незначительной или нейтральной; главный фактор — высокие нефтяные цены с августа, укрепление рубля обычно приходит через 1–3 месяца после роста цен на нефть. Наталия Пырьева («Цифра брокер»): важнее цены на экспортные товары, импорт нефтепродуктов, операции Минфина и ЦБ, спрос на валюту. Юрий Кравченко («Велес Капитал»): высокий процентный дифференциал продолжит поддерживать рубль, но рынок это уже учёл; базовый прогноз на конец октября и ноябрь — 83–85 руб. за доллар.</p><p>Акции. Индекс Мосбиржи после решения снизился: около 2433 пунктов в 13:29 мск, минимум 2418, в 13:35 — 2424 пункта (−0,22% к закрытию вечерней сессии четверга). Наталья Малых («Финам»): хуже рынка могут торговаться компании с высокой долговой нагрузкой, масштабными инвестпрограммами и девелоперы; лучше — компании с чистой денежной позицией и Мосбиржа. Андрей Смирнов («БКС Мир инвестиций»): решение уже в котировках; индекс может двигаться к 2500 пунктам, при жёсткой риторике ЦБ или ухудшении геополитики возможен возврат к 2380–2400; предпочтение — компаниям с устойчивым денежным потоком, умеренным долгом и рентабельностью при высоких ставках.</p><p>Облигации. Индекс гособлигаций RGBI снизился с 111,94 до 111,83 пункта (−0,15%). Виталий Наумов («Эйлер»): первая реакция связана с повышением нижней границы прогноза средней ключевой ставки на 2027 год до 12,5%, но в целом ни решение, ни прогноз не стали сюрпризом. Алексей Ковалев («Финам»): в котировках заложено отсутствие нормализации ставок в среднесрочной перспективе; базовый сценарий — ставки существенно не меняются в ближайшие месяцы. Эксперты советуют короткие качественные облигации с фиксированным купоном, флоатеры и бумаги эмитентов с рейтингом от AA-. Минфин планирует увеличить госзаимствования в 2027 году до 7,72 трлн руб., в 2028 году — 7,43 трлн руб., в 2029 году — 8 трлн руб.</p><p>Последствия по оценкам экспертов в статье. Кредиты остаются дорогими, снижения ставок по кредитам в ближайшие месяцы не ожидается; доходность вкладов и облигаций с фиксированной ставкой остаётся высокой. Под давлением — компании с высоким долгом, крупными инвестпрограммами и девелоперы; выигрывают компании с чистой денежной позицией. Курс рубля будет зависеть от экспортной выручки, цен на нефть и спроса импортёров.</p><p>Комментариев аналитиков Альфа-Банка в статье нет.</p>
+                </div>
+
+                
+                <section class="bank-view" aria-labelledby="bank-view-title">
+                    <div class="bank-view__head">
+                        <span class="squircle squircle--40 squircle--accent" aria-hidden="true">
+                            <svg class="bank-view__logo" viewBox="0 0 33 50"><use href="#logo-alfa"></use></svg>
+                        </span>
+                        <div>
+                            <h2 class="bank-view__title" id="bank-view-title">Позиция Альфа-Банка</h2>
+                            <p class="bank-view__author">Аналитики Альфа-Банка</p>
+                        </div>
+                    </div>
+                    <blockquote class="bank-view__quote">«Мы ожидаем сохранения паузы на заседании 23 октября… мы ожидаем ее сохранения на текущем значении 14,0% до конца года. При этом наш прогноз по ставке на конец 2027 г. остается на уровне 12,0%». Прогноз по инфляции на конец 2026 г. — 7,5% дек./дек.</blockquote>
+                    <div class="bank-view__doc">
+                        <svg class="icon icon--16" aria-hidden="true"><use href="#i-doc"></use></svg>
+                        <span>«Ключевая ставка ЦБ РФ: ставка без изменения на 14,0%, риторика стала жестче», 11.09.2026</span>
+                    </div>
+                </section>
+                
+
+                <section class="sources" aria-labelledby="sources-title">
+                    <h2 class="sources__title" id="sources-title">Источники</h2>
+                    <ul class="sources__list">
+                        
+                        <li>
+                            <a class="source" href="https://www.rbc.ru/quote/23/10/2026/6ad9baaa9a79479d9086c056" target="_blank" rel="noopener noreferrer">
+                                <span class="squircle squircle--32 squircle--neutral" aria-hidden="true">
+                                    <svg class="icon icon--16"><use href="#i-doc"></use></svg>
+                                </span>
+                                <span class="source__text">
+                                    <span class="source__name">Почему ЦБ сохранил ставку 14% и как это повлияет на рубль и инвестиции</span>
+                                    <span class="source__meta">РБК Инвестиции</span>
+                                </span>
+                                <svg class="icon icon--20 source__ext" aria-hidden="true"><use href="#i-external"></use></svg>
+                            </a>
+                        </li>
+                        
+                        <li>
+                            <div class="source">
+                                <span class="squircle squircle--32 squircle--neutral" aria-hidden="true">
+                                    <svg class="icon icon--16"><use href="#i-doc"></use></svg>
+                                </span>
+                                <span class="source__text">
+                                    <span class="source__name">Ключевая ставка ЦБ РФ: ставка без изменения на 14,0%, риторика стала жестче (ALFA-Macro_Insights-Policy_Rate_11Sep.pdf, стр. 1)</span>
+                                    <span class="source__meta">Альфа-Банк</span>
+                                </span>
+                                
+                            </div>
+                        </li>
+                        
+                        <li>
+                            <div class="source">
+                                <span class="squircle squircle--32 squircle--neutral" aria-hidden="true">
+                                    <svg class="icon icon--16"><use href="#i-doc"></use></svg>
+                                </span>
+                                <span class="source__text">
+                                    <span class="source__name">Ключевая ставка ЦБ РФ: ставка без изменения на 14,0%, риторика стала жестче (ALFA-Macro_Insights-Policy_Rate_11Sep.pdf, стр. 2)</span>
+                                    <span class="source__meta">Альфа-Банк</span>
+                                </span>
+                                
+                            </div>
+                        </li>
+                        
+                    </ul>
+                </section>
+            </article>
+
+            
+        </div>
+
+        <aside class="insight-col" aria-label="Анализ для компании">
+            
+            <section class="card insight" aria-labelledby="insight-title">
+                <header class="insight__head">
+                    <h2 class="insight__title" id="insight-title">Что это значит для компании</h2>
+                    <p class="insight__sub">
+                        <span class="ai-badge"><svg class="icon icon--16" aria-hidden="true"><use href="#i-sparkle"></use></svg>AI</span>
+                        Анализ по профилю компании U_201985
+                    </p>
+                </header>
+
+                <div class="segmented" role="tablist" aria-label="Влияние на бизнес" data-tabs>
+                    <button class="segmented__tab" type="button" role="tab" id="tab-risks" aria-controls="panel-risks" aria-selected="true">
+                        Риски<span class="segmented__count segmented__count--red">3</span>
+                    </button>
+                    <button class="segmented__tab" type="button" role="tab" id="tab-opps" aria-controls="panel-opps" aria-selected="false" tabindex="-1">
+                        Возможности<span class="segmented__count segmented__count--green">1</span>
+                    </button>
+                </div>
+
+                <div class="insight__body">
+                    <ul class="impact-list" role="tabpanel" id="panel-risks" aria-labelledby="tab-risks" tabindex="0">
+                        
+                            <li class="impact-item impact-item--risk">
+    <span class="squircle squircle--40 squircle--red" aria-hidden="true">
+        <svg class="icon icon--20"><use href="#i-trend-down"></use></svg>
+    </span>
+    <div class="impact-item__content">
+        <h3 class="impact-item__title">Лизинг не подешевеет: стоимость единственного долга остается высокой</h3>
+        <p class="impact-item__text">Лизинг — единственный долговой инструмент компании. Пока ставка держится на 14%, платежи по действующим и новым договорам не снизятся, а экономия на обновлении техники не появится.</p>
+        <div class="impact-item__meta">
+            <span class="level level--high">
+                <span class="level__dots" aria-hidden="true"><i></i><i></i><i></i></span>
+                Высокая вероятность
+            </span>
+            <span class="impact-item__horizon">
+                <svg class="icon icon--16" aria-hidden="true"><use href="#i-clock"></use></svg>3–6 мес.
+            </span>
+        </div>
+    </div>
+</li>
+
+                        
+                            <li class="impact-item impact-item--risk">
+    <span class="squircle squircle--40 squircle--red" aria-hidden="true">
+        <svg class="icon icon--20"><use href="#i-trend-down"></use></svg>
+    </span>
+    <div class="impact-item__content">
+        <h3 class="impact-item__title">Дорогая ипотека сдерживает спрос на жилье</h3>
+        <p class="impact-item__text">Бизнес компании — жилищное строительство, где продажи определяются доступностью ипотеки. При ставке 14% ипотека остается дорогой, поэтому спрос на жилье может быть сдержанным. Прямой эффект на денежные потоки ограничен: платежи покупателей через банк составляют лишь 12,6 млн ₽, и оценка опирается на отраслевую чувствительность, а не на эти поступления.</p>
+        <div class="impact-item__meta">
+            <span class="level level--medium">
+                <span class="level__dots" aria-hidden="true"><i></i><i></i><i></i></span>
+                Средняя вероятность
+            </span>
+            <span class="impact-item__horizon">
+                <svg class="icon icon--16" aria-hidden="true"><use href="#i-clock"></use></svg>3–6 мес.
+            </span>
+        </div>
+    </div>
+</li>
+
+                        
+                            <li class="impact-item impact-item--risk">
+    <span class="squircle squircle--40 squircle--red" aria-hidden="true">
+        <svg class="icon icon--20"><use href="#i-trend-down"></use></svg>
+    </span>
+    <div class="impact-item__content">
+        <h3 class="impact-item__title">Поставщики стройматериалов могут переносить дорогое финансирование в цены</h3>
+        <p class="impact-item__text">Основные закупки — бетон и металлы. Поставщики также финансируются по высоким ставкам и могут индексировать цены или сокращать отсрочки, что повышает себестоимость строительства.</p>
+        <div class="impact-item__meta">
+            <span class="level level--medium">
+                <span class="level__dots" aria-hidden="true"><i></i><i></i><i></i></span>
+                Средняя вероятность
+            </span>
+            <span class="impact-item__horizon">
+                <svg class="icon icon--16" aria-hidden="true"><use href="#i-clock"></use></svg>3–6 мес.
+            </span>
+        </div>
+    </div>
+</li>
+
+                        
+                    </ul>
+                    <ul class="impact-list" role="tabpanel" id="panel-opps" aria-labelledby="tab-opps" tabindex="0" hidden>
+                        
+                            <li class="impact-item impact-item--opp">
+    <span class="squircle squircle--40 squircle--green" aria-hidden="true">
+        <svg class="icon icon--20"><use href="#i-trend-up"></use></svg>
+    </span>
+    <div class="impact-item__content">
+        <h3 class="impact-item__title">Укрепление рубля может удешевить закупки по турецкому направлению</h3>
+        <p class="impact-item__text">Высокий процентный дифференциал поддерживает рубль. Если компания закупает материалы или оборудование в Турции, рублевая стоимость таких контрактов может снизиться в ближайшие 1–3 месяца. Эффект ограничен: направление и валюта расчетов в данных не указаны.</p>
+        <div class="impact-item__meta">
+            <span class="level level--medium">
+                <span class="level__dots" aria-hidden="true"><i></i><i></i><i></i></span>
+                Средний потенциал
+            </span>
+            <span class="impact-item__horizon">
+                <svg class="icon icon--16" aria-hidden="true"><use href="#i-clock"></use></svg>1–3 мес.
+            </span>
+        </div>
+    </div>
+</li>
+
+                        
+                    </ul>
+
+                    <div class="insight__basis">
+                        <span class="insight__basis-label">Вывод основан на</span>
+                        <ul class="tag-list">
+                            <li class="status status--outline">Строительство</li><li class="status status--outline">Лизинг</li><li class="status status--outline">Ипотечный спрос</li><li class="status status--outline">Концентрация расчетов</li><li class="status status--outline">ВЭД Турция</li><li class="status status--outline">Аналитика Альфа-Банка</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            
+            <section class="card chat" aria-labelledby="chat-title" data-chat data-endpoint="" data-news-id="0">
+                <header class="chat__head">
+                    <span class="squircle squircle--36 squircle--ai" aria-hidden="true">
+                        <svg class="icon icon--20"><use href="#i-sparkle"></use></svg>
+                    </span>
+                    <div class="chat__head-text">
+                        <h2 class="chat__title" id="chat-title">AI-аналитик</h2>
+                        <p class="chat__status"><span class="chat__online" aria-hidden="true"></span>Знает контекст вашей компании</p>
+                    </div>
+                    <button class="icon-button chat__toggle" type="button" aria-expanded="true" aria-controls="chat-body" data-chat-toggle>
+                        <svg class="icon icon--20" aria-hidden="true"><use href="#i-chevron-down"></use></svg>
+                        <span class="visually-hidden">Свернуть чат</span>
+                    </button>
+                </header>
+
+                <div class="chat__body" id="chat-body">
+                    <div class="chat__messages" data-chat-messages aria-live="polite">
+                        <div class="msg msg--ai">Я изучил новость с учётом профиля компании. Что хотите уточнить?</div>
+                    </div>
+                    <div class="chat__suggest" data-chat-suggest>
+                        <button class="suggest" type="button">Влияние на финансы</button>
+                        <button class="suggest" type="button">Что делать сейчас?</button>
+                        <button class="suggest" type="button">На чём основан вывод?</button>
+                    </div>
+                </div>
+
+                <form class="chat__form" data-chat-form>
+                    <label class="visually-hidden" for="chat-input">Вопрос AI-аналитику</label>
+                    <textarea class="chat__input" id="chat-input" rows="1" placeholder="Спросите о новости" maxlength="1000" data-chat-input></textarea>
+                    <button class="chat__send" type="submit" disabled data-chat-send>
+                        <svg class="icon icon--20" aria-hidden="true"><use href="#i-arrow-up"></use></svg>
+                        <span class="visually-hidden">Отправить</span>
+                    </button>
+                </form>
+            </section>
+        </aside>
+    </div>
+</div>
+
+<div class="container trace"><h1 class="article__title">Подробнее об анализе</h1><section class="card"><h2>Итог для компании</h2>
+<div class="chips"><span class="chip">Влияние: высокое (78/100)</span>
+<span class="chip">Уверенность: средняя</span><span class="chip">Срочно: да — Зафиксировать параметры лизинга до конца месяца</span></div>
+<h3>Почему важно компании</h3><p>Компания — застройщик жилья: долговое финансирование у неё представлено только лизингом, а спрос на продукт зависит от ипотеки. Сохранение ставки 14% означает, что стоимость денег и ипотечные условия останутся жёсткими минимум до конца 2026 года — под давлением и себестоимость, и спрос.</p>
+<h3>Признаки компании, на которых держится вывод</h3>
+<table><tr><th>Признак</th><th>Почему важно</th></tr>
+<tr><td>Строительство</td><td>Прямое пересечение с каналами C1 (стоимость заемных средств) и C4 (замедление кредитного спроса).</td></tr><tr><td>Лизинг — единственный долговой инструмент</td><td>Стоимость лизинговых платежей привязана к стоимости денег в экономике, а других долговых инструментов у компании нет.</td></tr><tr><td>Драйверы спроса: жилищное строительство, ипотека</td><td>Продажи жилья зависят от доступности ипотеки, а она определяется уровнем ключевой ставки.</td></tr><tr><td>100% платежей покупателям через Альфа-Банк приходится на 4 контрагента</td><td>Это доля в расчетах через банк, а не в выручке компании: она означает высокую концентрацию расчетных потоков, а не подтвержденную зависимость выручки.</td></tr><tr><td>Турция — единственная страна ВЭД</td><td>Курс рубля (канал C3) может влиять на стоимость закупок, если по этому направлению есть импорт.</td></tr></table>
+</section><section class="card"><h2>Риски</h2><div class="item"><b>Лизинг не подешевеет: стоимость единственного долга остается высокой</b><div class="chips"><span class="chip chip--red">высокое</span><span class="chip">3–6 мес.</span><span class="chip">источник: вывод AI</span></div><p>Лизинг — единственный долговой инструмент компании. Пока ставка держится на 14%, платежи по действующим и новым договорам не снизятся, а экономия на обновлении техники не появится.</p><p class="chain">Цепочка: ЦБ сохранил ключевую ставку 14% → Стоимость заемного финансирования не снижается → Лизинговые платежи и стоимость новых договоров остаются на текущем уровне → Издержки не сокращаются, давление на маржу</p><p class='muted'>Основано на:</p><ul><li><b>факт новости</b> — 23 октября 2026 года ставка сохранена на уровне 14% годовых.</li><li><b>канал влияния</b> — Сохранение высокой ставки → сохранение стоимости кредитов → давление на заемщиков.</li><li><b>поле профиля</b> — Единственный долговой инструмент — лизинг; кредитов и депозитов нет.</li><li><b>вызов инструмента</b> — Свободного кэша нет: компания не может компенсировать стоимость долга процентным доходом.</li></ul></div><div class="item"><b>Дорогая ипотека сдерживает спрос на жилье</b><div class="chips"><span class="chip chip--red">среднее</span><span class="chip">3–6 мес.</span><span class="chip">источник: вывод AI</span></div><p>Бизнес компании — жилищное строительство, где продажи определяются доступностью ипотеки. При ставке 14% ипотека остается дорогой, поэтому спрос на жилье может быть сдержанным. Прямой эффект на денежные потоки ограничен: платежи покупателей через банк составляют лишь 12,6 млн ₽, и оценка опирается на отраслевую чувствительность, а не на эти поступления.</p><p class="chain">Цепочка: Ключевая ставка сохраняется на 14% → Ипотечные ставки остаются высокими, спрос населения на жилье сдержан → Продажи и поступления у застройщиков растут медленнее → Сдержанные объемы строительства и более осторожные цены закупок</p><p class='muted'>Основано на:</p><ul><li><b>канал влияния</b> — Высокие ставки → замедление спроса на кредиты → снижение темпов роста денежной массы; затронуты корпоративный сектор и потребители.</li><li><b>поле профиля</b> — Драйверы спроса — жилищное строительство, ипотека, инвестиции в коммерческую недвижимость.</li><li><b>поле профиля</b> — Отрасль зависит от проектного финансирования, эскроу-счетов и программ льготной ипотеки.</li></ul></div><div class="item"><b>Поставщики стройматериалов могут переносить дорогое финансирование в цены</b><div class="chips"><span class="chip chip--red">среднее</span><span class="chip">3–6 мес.</span><span class="chip">источник: вывод AI</span></div><p>Основные закупки — бетон и металлы. Поставщики также финансируются по высоким ставкам и могут индексировать цены или сокращать отсрочки, что повышает себестоимость строительства.</p><p class="chain">Цепочка: Ставка остается на 14% → Стоимость денег у поставщиков бетона и металла не снижается → Поставщики индексируют цены или ужесточают отсрочки → Рост себестоимости строительства</p><p class='muted'>Основано на:</p><ul><li><b>вызов инструмента</b> — Топ-поставщики: производство товарного бетона — 16,5% и 8% платежей, оптовая торговля металлами — 1,9%; top-5 поставщиков — 70% платежей через банк.</li><li><b>канал влияния</b> — Под давлением — компании с высокой долговой нагрузкой и масштабными инвестпрограммами.</li><li><b>поле профиля</b> — Производство стройматериалов — 26% платежей поставщикам через банк.</li></ul></div></section>
+<section class="card"><h2>Возможности</h2><div class="item"><b>Укрепление рубля может удешевить закупки по турецкому направлению</b><div class="chips"><span class="chip chip--green">среднее</span><span class="chip">1–3 мес.</span><span class="chip">источник: вывод AI</span></div><p>Высокий процентный дифференциал поддерживает рубль. Если компания закупает материалы или оборудование в Турции, рублевая стоимость таких контрактов может снизиться в ближайшие 1–3 месяца. Эффект ограничен: направление и валюта расчетов в данных не указаны.</p><p class="chain">Цепочка: Сохранение ставки 14% при снижающихся инфляционных ожиданиях → Сохранение высокого процентного дифференциала, поддержка рубля → Удешевление импортных закупок в рублях → Возможное снижение себестоимости по части контрактов</p><p class='muted'>Основано на:</p><ul><li><b>канал влияния</b> — Высокий процентный дифференциал → поддержка курса рубля; импортеры выигрывают.</li><li><b>факт новости</b> — Курс юаня на Мосбирже снизился с 12,015 до 12,005 руб. после решения; накануне юань подешевел на 1,32%.</li><li><b>поле профиля</b> — Единственная страна ВЭД — Турция; направление расчетов и валюта в данных не указаны.</li><li><b>вызов инструмента</b> — В кросс-сейл возможностях банка указаны ВЭД-сервисы (валютный контроль, конверсия, хеджирование) — использование в данных не видно.</li></ul></div></section><section class="card"><h2>Что делать</h2><div class="item"><b>Согласовать параметры лизинговой программы</b><div class="chips"><span class="chip">решение</span><span class="chip">до 1 мес.</span></div><p>Обсудить с менеджером Альфа-Банка условия действующих и планируемых договоров лизинга: фиксацию ставки, график платежей, возможность досрочного погашения. Задача — не допустить роста платежей при пролонгации.</p><p class='muted'>Основано на:</p><ul><li><b>факт новости</b> — Ставка сохранена на 14%: снижения стоимости денег в ближайшие месяцы не ожидается.</li><li><b>вызов инструмента</b> — Лизинг — единственный долговой инструмент компании, свободного кэша нет; кредитов и депозитов нет.</li><li><b>аналитика банка</b> — Банк ожидает сохранения ставки 14,0% до конца 2026 года (оценка от 11.09.2026).</li></ul></div><div class="item"><b>Проверить валютную структуру турецких контрактов</b><div class="chips"><span class="chip">проверить</span><span class="chip">до 1 мес.</span></div><p>Запросить у финансовой службы перечень действующих контрактов по ВЭД: валюта, направление, отсрочки. Определить, выигрывает ли компания от укрепления рубля или несет курсовой риск по обязательствам.</p><p class='muted'>Основано на:</p><ul><li><b>поле профиля</b> — Направление (импорт или экспорт) и валюта расчетов в данных не указаны — валюты выведены по странам предположительно.</li><li><b>канал влияния</b> — Импортеры выигрывают от укрепления рубля, экспортеры проигрывают.</li><li><b>вызов инструмента</b> — Банк видит для компании потребность в ВЭД-сервисах и хеджировании, но факт их использования в данных не подтвержден.</li></ul></div><div class="item"><b>Отслеживать спрос и расчеты по жилищному сегменту</b><div class="chips"><span class="chip">отслеживать</span><span class="chip">1–3 мес.</span></div><p>Ежемесячно смотреть выдачу ипотеки и продажи жилья в Москве, а также динамику поступлений от покупателей через банк. Сигнал к пересмотру условий — снижение поступлений два месяца подряд или новое повышение ставки.</p><p class='muted'>Основано на:</p><ul><li><b>канал влияния</b> — Высокие ставки замедляют кредитование и спрос; затронут корпоративный сектор.</li><li><b>вызов инструмента</b> — Поступления от покупателей через банк — 12,6 млн ₽ за период датасета, 92% из них от одного застройщика (U_148792); это доля в расчетах через банк, а не в выручке 25 млрд ₽.</li><li><b>поле профиля</b> — Основной драйвер спроса — ипотека и жилищное строительство.</li></ul></div>
+<h3>Что выяснить, чтобы уточнить оценку</h3><ul><li>Какая валюта и направление (ввоз или вывоз) по контрактам с Турцией, есть ли курсовой риск?</li><li>По каким ставкам заключены действующие договоры лизинга: фиксированные или плавающие, когда ближайшая пролонгация?</li><li>Насколько полны данные о расчетах через Альфа-Банк: какая часть выручки 25 млрд ₽ проходит через счета в других банках и связана ли динамика банковских поступлений с продажами компании?</li><li>Есть ли у компании или группы обязательства по проектному финансированию и эскроу, чувствительные к ставке?</li></ul>
+<h3>Ограничения анализа</h3><ul><li>Доли контрагентов из результатов инструментов — доли в платежах через Альфа-Банк за период датасета, а не в выручке или закупках: поступления от покупателей через банк (12,6 млн ₽) несопоставимы с выручкой 25 млрд ₽, поэтому влияние спроса оценено через отраслевую чувствительность, а не через эти платежи.</li><li>Направление и валюта расчетов по ВЭД (Турция) в данных не указаны, поэтому выгода от укрепления рубля оценена как вероятностная.</li><li>Более ранний прогноз банка от 05.08.2026 (два снижения до 13,5% к концу года) устарел; опора сделана на оценку от 11.09.2026.</li></ul></section><details class="debug"><summary>Отладка: агенты и шаги <span class="muted">статус: ok · связь: прямая · эффект: существенный · доработок: 1 · 2.51 ед. API · 399.5 с</span></summary><div class="debug__body"><section class="card"><h2>Позиция банка: как искали</h2><p>«Мы ожидаем сохранения паузы на заседании 23 октября… мы ожидаем ее сохранения на текущем значении 14,0% до конца года. При этом наш прогноз по ставке на конец 2027 г. остается на уровне 12,0%». Прогноз по инфляции на конец 2026 г. — 7,5% дек./дек.</p><p class='muted'>Аналитики Альфа-Банка · «Ключевая ставка ЦБ РФ: ставка без изменения на 14,0%, риторика стала жестче» · 11.09.2026 · источник: аналитика Альфа-Банка · ссылки: policy_rate_2026_09_11-p01-b01-c02, policy_rate_2026_09_11-p02-b01-c01</p>
+<h3>Что нашёл обязательный поиск по аналитике банка</h3>
+<p class="muted">Запросы: прогноз ключевой ставки ЦБ; динамика инфляции в России; курс рубля прогноз; рынок облигаций РФ; инфляционные ожидания населения · документы не позже 2026-10-23</p><ul><li>Макростатистика 7М26: данные по рынку труда не подтверждают охлаждения экономики — <span class='muted'>macro_7m26-p03-b02-c01, score 6.82427</span></li><li>Ключевая ставка ЦБ РФ: ставка без изменения на 14,0%, риторика стала жестче — <span class='muted'>policy_rate_2026_09_11-p02-b01-c01, score 6.77017</span></li><li>Долговой рынок: тактический взгляд на 3-й квартал 2026 г. — <span class='muted'>fixed_income_3q26-p12-b02-c01, score 6.28629</span></li><li>Ключевая ставка ЦБ РФ: ставка без изменения на 14,0%, риторика стала жестче — <span class='muted'>policy_rate_2026_09_11-p01-b01-c02, score 6.25459</span></li><li>Потребление на пике — <span class='muted'>consumption_2026_08_05-p02-b04-c01, score 5.82706</span></li></ul></section><section class="card"><h2>Агент 1 — разбор новости</h2>
+<p class="muted">Категория: macro · тип события: решение регулятора · язык: ru</p>
+<h3>Факты</h3><table><tr><th>ID</th><th>Тип</th><th>Кто сказал</th><th>Утверждение</th></tr><tr><td>F1</td><td>факт</td><td></td><td>23 октября 2026 года совет директоров Банка России сохранил ключевую ставку на уровне 14% годовых.</td></tr><tr><td>F2</td><td>факт</td><td></td><td>Это вторая подряд пауза в цикле смягчения денежно-кредитной политики, начавшемся в июне 2025 года.</td></tr><tr><td>F3</td><td>факт</td><td>РБК</td><td>27 из 30 аналитиков консенсус-прогноза РБК ожидали сохранения ставки.</td></tr><tr><td>F4</td><td>факт</td><td></td><td>Инфляционные ожидания населения в октябре снизились на 1 п.п. до 13,2% (по опросу инФОМ).</td></tr><tr><td>F5</td><td>факт</td><td></td><td>Оценка наблюдаемой годовой инфляции составила 14,5% против 15,1% месяцем ранее.</td></tr><tr><td>F6</td><td>факт</td><td></td><td>Курс юаня на Мосбирже снизился с 12,015 руб. до 12,005 руб. в период с 13:29 до 13:39 мск 23 октября.</td></tr><tr><td>F7</td><td>факт</td><td></td><td>Индекс Мосбиржи снизился на 0,22% до уровня около 2424 пунктов по итогам сессии.</td></tr><tr><td>F8</td><td>факт</td><td></td><td>Индекс гособлигаций RGBI снизился с 111,94 до 111,83 пункта.</td></tr><tr><td>F9</td><td>факт</td><td></td><td>Минфин планирует увеличить госзаимствования в 2027 году до 7,72 трлн руб., в 2028 году — до 7,43 трлн руб., в 2029 году — до 8 трлн руб.</td></tr></table>
+<h3>Каналы влияния</h3><table><tr><th>ID</th><th>Механизм</th><th>Кого касается</th><th>Направление, горизонт</th></tr><tr><td>C1</td><td>сохранение высокой ставки → сохранение стоимости кредитов → давление на заемщиков с высоким долгом</td><td>компании с высокой долговой нагрузкой, девелоперы, компании с масштабными инвестпрограммами</td><td>negative, 3–6 мес.</td></tr><tr><td>C2</td><td>высокая ставка → высокая доходность по вкладам и облигациям → приток средств в инструменты с фиксированным купоном</td><td>инвесторы, эмитенты облигаций</td><td>positive, сейчас</td></tr><tr><td>C3</td><td>высокий процентный дифференциал → поддержка курса рубля → укрепление национальной валюты</td><td>импортеры (выигрывают), экспортеры (проигрывают)</td><td>positive, 1–3 мес.</td></tr><tr><td>C4</td><td>высокие ставки → замедление спроса на кредиты → снижение темпов роста денежной массы</td><td>корпоративный сектор, потребители</td><td>negative, 3–6 мес.</td></tr></table>
+<h3>Комментарии Альфа-Банка в новости</h3><ul><li class='muted'>нет</li></ul>
+<h3>Что неизвестно</h3><ul><li>динамика инфляционных ожиданий</li><li>геополитическая ситуация</li><li>прогноз курса доллара</li><li>динамика цен на экспортные товары</li></ul></section><section class="card"><h2>Агент 2 — план и сбор данных</h2>
+<p class="muted">Предварительная сила связи: direct</p>
+<h3>Гипотезы</h3><ul><li>Сохранение ставки 14% удерживает стоимость проектного финансирования и ипотечных ставок на высоком уровне — у жилищного застройщика это одновременно давит на себестоимость проектов и на платёжеспособный спрос, что может замедлить продажи и растянуть сроки окупаемости. <span class='muted'>(C1, C4)</span></li><li>Лизинг — единственный отражённый в профиле долговой инструмент компании; ставки лизинга привязаны к стоимости денег, поэтому пауза в снижении ключевой ставки означает отсутствие удешевления обновления парка техники в ближайшие месяцы при отсутствии свободного кэша. <span class='muted'>(C1)</span></li><li>Высокий процентный дифференциал поддерживает рубль, а Турция — единственная страна ВЭД компании: если по этому направлению идут закупки стройматериалов из-за рубежа, укрепление рубля снижает их рублёвую стоимость; направление расчётов в данных не указано, поэтому эффект неопределён. <span class='muted'>(C3)</span></li><li>Высокая доходность инструментов с фиксированным купоном делает размещение временно свободных средств на депозитах выгодным, но профиль компании не показывает свободного кэша — возможность реальна скорее на уровне группы, чем самой компании. <span class='muted'>(C2)</span></li><li>Каналы влияния пересекаются со строительной отраслью напрямую, поэтому версия «влияния нет» отвергается: сохраняющаяся жёсткая ДКП затрагивает и финансирование, и спрос на жильё, а предельно высокая концентрация покупателей делает выручку чувствительной к решениям единичных заказчиков. <span class='muted'>(C1, C2, C3, C4)</span></li></ul><h3>Что решил запросить</h3><ul><li><b>get_company_section</b> — Проверить, какие долговые инструменты и продукты банка реально активны (кредиты, лизинг, гарантии) — от этого зависит сила канала C1 по стоимости финансирования</li><li><b>get_counterparties</b> — Уточнить состав и отраслевую структуру поставщиков и покупателей: есть ли импорт стройматериалов и расчёты в валюте, насколько велика зависимость от 1–2 покупателей</li><li><b>find_counterparties_by_keywords</b> — Найти контрагентов, связанных с Турцией и стройматериалами, чтобы оценить валютный канал C3</li><li><b>get_group_companies</b> — Посмотреть отрасли и масштаб компаний группы: есть ли внутри холдинга девелоперы с долговой нагрузкой или структуры со свободной ликвидностью (канал C2)</li><li><b>search_bank_analytics</b> — Найти свежую аналитику банка по ключевой ставке, ипотеке и девелопменту, чтобы корректно сформировать позицию банка</li><li><b>get_company_card</b> — Получить карточку компании целиком для проверки финансовых и чувствительных полей профиля</li></ul>
+<h3>Вызовы инструментов (начало ответа)</h3><details class='item'><summary>T1 get_company_section({&quot;section&quot;: &quot;bank_relationship&quot;})</summary><pre>{&quot;section&quot;: &quot;bank_relationship&quot;, &quot;path&quot;: &quot;/bank_relationship&quot;, &quot;data&quot;: {&quot;client_status_raw&quot;: &quot;CLIENT&quot;, &quot;client_status&quot;: &quot;действующий клиент Альфа-Банка&quot;, &quot;is_active_client&quot;: true, &quot;products&quot;: {&quot;rko&quot;: {&quot;has&quot;: true, &quot;name&quot;: &quot;Расчётно-кассовое обслуживание (РКО)&quot;, &quot;meaning&quot;: &quot;у компании открыт расчётны</pre></details><details class='item'><summary>T2 get_counterparties({&quot;role&quot;: &quot;suppliers&quot;, &quot;top_n&quot;: 10})</summary><pre>{&quot;role&quot;: &quot;suppliers&quot;, &quot;meaning&quot;: &quot;кому компания платит&quot;, &quot;counterparties_total&quot;: 74, &quot;volume_total&quot;: &quot;1,6 млрд ₽&quot;, &quot;top&quot;: [{&quot;company_id&quot;: &quot;U_151390&quot;, &quot;share&quot;: 0.354, &quot;volume&quot;: &quot;557,0 млн ₽&quot;, &quot;payments&quot;: 14, &quot;okved&quot;: &quot;нет данных (компании нет в датасете)&quot;}, {&quot;company_id&quot;: &quot;U_225818&quot;, &quot;share&quot;: 0.165, </pre></details><details class='item'><summary>T3 get_counterparties({&quot;role&quot;: &quot;customers&quot;, &quot;top_n&quot;: 5})</summary><pre>{&quot;role&quot;: &quot;customers&quot;, &quot;meaning&quot;: &quot;кто платит компании&quot;, &quot;counterparties_total&quot;: 4, &quot;volume_total&quot;: &quot;12,6 млн ₽&quot;, &quot;top&quot;: [{&quot;company_id&quot;: &quot;U_148792&quot;, &quot;share&quot;: 0.922, &quot;volume&quot;: &quot;11,6 млн ₽&quot;, &quot;payments&quot;: 6, &quot;okved&quot;: &quot;Строительство жилых и нежилых зданий&quot;, &quot;sector&quot;: &quot;Строительство&quot;, &quot;region&quot;: &quot;Москва&quot;, &quot;</pre></details><details class='item'><summary>T4 find_counterparties_by_keywords({&quot;keywords&quot;: [&quot;строительн&quot;, &quot;материал&quot;, &quot;оптов&quot;], &quot;role&quot;: &quot;both&quot;})</summary><pre>{&quot;keywords&quot;: [&quot;строительн&quot;, &quot;материал&quot;, &quot;оптов&quot;], &quot;suppliers&quot;: {&quot;matched_count&quot;: 34, &quot;matched_share&quot;: 0.12, &quot;matched_volume&quot;: &quot;188,9 млн ₽&quot;, &quot;unknown_sector_share&quot;: 0.589, &quot;matched&quot;: [{&quot;company_id&quot;: &quot;U_64936&quot;, &quot;share&quot;: 0.037, &quot;volume&quot;: &quot;58,9 млн ₽&quot;, &quot;payments&quot;: 8, &quot;okved&quot;: &quot;Строительство жилых и неж</pre></details><details class='item'><summary>T5 get_group_companies({})</summary><pre>{&quot;group_size&quot;: 369, &quot;total_revenue&quot;: &quot;302,7 млрд ₽&quot;, &quot;sectors&quot;: [{&quot;sector&quot;: &quot;Недвижимость&quot;, &quot;companies&quot;: 79}, {&quot;sector&quot;: &quot;Профессиональные и консалтинговые услуги&quot;, &quot;companies&quot;: 70}, {&quot;sector&quot;: &quot;Строительство&quot;, &quot;companies&quot;: 51}, {&quot;sector&quot;: &quot;Финансы и страхование&quot;, &quot;companies&quot;: 45}, {&quot;sector&quot;: &quot;Оптов</pre></details><details class='item'><summary>T6 search_bank_analytics({&quot;query&quot;: &quot;ключевая ставка ипотека девелопмент строительство&quot;})</summary><pre>{&quot;query&quot;: &quot;ключевая ставка ипотека девелопмент строительство&quot;, &quot;as_of&quot;: &quot;2026-10-23&quot;, &quot;fragments&quot;: [{&quot;id&quot;: &quot;consumption_2026_08_05-p03-b01-c01&quot;, &quot;document&quot;: &quot;Потребление на пике&quot;, &quot;published_at&quot;: &quot;2026-08-05&quot;, &quot;page&quot;: 3, &quot;citation&quot;: &quot;ALFA-consumption.pdf, стр. 3&quot;, &quot;kind&quot;: &quot;text&quot;, &quot;score&quot;: 4.82157, &quot;</pre></details></section><section class='card'><h2>Агент 3 — критик</h2><div class='item'><b>Круг 0: на доработку</b> <span class='muted'>(accuracy 4, grounding 3, personalization 4, consistency 3, bank_separation 5)</span><p>Анализ в целом персонализирован и корректно использует позицию Альфа-Банка (прогноз от 11.09.2026 о сохранении ставки 14% до конца года — самый свежий релевантный документ, прогноз не выдан за факт). Основные проблемы: (1) неверная атрибуция evidence (T1 не содержит данных о зависимости спроса на жилье от ипотеки) и завышенная оценка риска по покупателю — объем платежей через банк (12,6 млн ₽) ничтожен относительно выручки 25 млрд ₽, а доля 100% покупателей — это доля в платежах через банк, не в выручке; (2) мелкие неточности в обосновании валютной возможности (юань vs лира) и в urgent_reason, предполагающем существование валютных контрактов. Требуется доработка.</p><ul><li><b>major</b> [critic] risks[1].evidence[2] и risks[1].chain: Evidence приписывает T1 утверждение «Спрос на жилье зависит от ипотеки», но T1 — это раздел bank_relationship (продукты Альфа-Банка), таких данных там нет. Кроме того, риск «Спад спроса на жилье у ключевого покупателя» оценен как high при том, что весь объем платежей от покупателей через банк — 12,6 млн ₽ (менее 0,1% выручки 25 млрд ₽), т.е. влияние этого канала на выручку сильно преувеличено. <span class='muted'>→ Убрать ссылку на T1 из этого пункта evidence; опираться на профиль (/industry/demand_drivers: ипотека) и канал C4. Дополнительно: объем платежей от U_148792 — 11,6 млн ₽ при выручке компании 25 млрд ₽, поэтому формулировку «бьет по выручке» смягчить (например, «может затронуть часть расчетов») либо обосновать, что платежи через банк — лишь часть расчетов.</span></li><li><b>major</b> [critic] company_links[3] (Контрагенты, signal 1.0): Доля top5_customers_share = 1.0 — это доля в платежах через Альфа-Банк, а не в выручке компании. Формулировка «Критическая зависимость от 4 покупателей» подает ее как зависимость выручки, что не подтверждено данными (оговорка есть в limitations, но в основном тексте вывод звучит как факт). <span class='muted'>→ Переформулировать company_links: «концентрация расчетов через Альфа-Банк очень высокая (100% платежей покупателям приходится на 4 контрагентов)», не называя это критической зависимостью выручки; сохранить оговорку из limitations и в тексте.</span></li><li><b>minor</b> [critic] opportunities[0].evidence[0] и actions[1].evidence[0]: Укрепление рубля подтверждается курсом юаня (F6), а ВЭД компании — с Турцией (вероятно, лира по предположению профиля). Прямая связь курса юаня с турецкими контрактами не показана; направление ВЭД (импорт/экспорт) неизвестно. <span class='muted'>→ Сослаться на F6 как на индикатор общего укрепления рубля (с оговоркой), а вопрос о валюте расчетов с Турцией оставить в questions_to_check; не утверждать «вероятно, в лирах» как обоснование действия.</span></li><li><b>minor</b> [critic] urgent_reason: «Проверить хеджирование турецких контрактов до конца месяца» предполагает, что валютные контракты существуют, тогда как данные о них отсутствуют (это признано в limitations и questions_to_check). <span class='muted'>→ Смягчить: «Если по турецким контрактам есть открытые валютные позиции, имеет смысл до конца месяца обсудить с менеджером варианты фиксации курса».</span></li></ul></div><div class='item'><b>Круг 1: принято</b> <span class='muted'>(accuracy 5, grounding 5, personalization 5, consistency 5, bank_separation 5)</span><p>Анализ точен и хорошо персонализирован: корректно использованы профиль (лизинг как единственный долг, драйвер спроса — ипотека, ВЭД Турция), результаты инструментов и каналы влияния. Доли контрагентов везде правильно названы долями в платежах через банк, а не в выручке/закупках. bank_view взят из актуального документа Альфа-Банка от 11.09.2026 (более ранний прогноз от 05.08.2026 корректно помечен как устаревший), прогноз банка не выдан за факт. Предположения (валюта турецких контрактов, тип ставки лизинга) явно помечены как вероятностные и вынесены в вопросы. Единственное замечание — minor: категоричная формулировка о платежах по действующим договорам лизинга без учёта типа ставки.</p><ul><li><b>minor</b> [critic] risks[0]: Утверждение «платежи по действующим договорам не снизятся» избыточно категорично: по договорам с фиксированной ставкой платежи и так не изменились бы, а тип ставки в данных неизвестен (это отражено в questions_to_check, но в тексте риска подано как факт). <span class='muted'>→ Уточнить формулировку: «платежи по новым договорам лизинга останутся высокими; по действующим — риск зависит от типа ставки (фиксированная/плавающая), что требует проверки (см. questions_to_check)».</span></li></ul></div></section><section class="card"><h2>Все шаги</h2>
+<table><tr><th>#</th><th>Шаг</th><th>Модель</th><th>Время</th><th>Токены вход / выход</th><th>Стоимость</th></tr><tr><td>1</td><td>аналитик новости</td><td>cache</td><td></td><td></td><td></td></tr><tr><td>2</td><td>поиск по аналитике банка</td><td>code</td><td></td><td></td><td></td></tr><tr><td>3</td><td>аналитик влияния: план <span class='muted'>impact_plan</span></td><td>deepseek/deepseek-v4.1-flash</td><td>18.91 с</td><td>9071 / 2206</td><td>0.240</td></tr><tr><td>4</td><td>аналитик влияния: сбор данных <span class='muted'>impact_research</span></td><td>deepseek/deepseek-v4.1-flash</td><td>5.08 с</td><td>11022 / 487</td><td>0.127</td></tr><tr><td>5</td><td>инструмент T1: get_company_section</td><td>—</td><td>0.0 с</td><td></td><td></td></tr><tr><td>6</td><td>инструмент T2: get_counterparties</td><td>—</td><td>0.054 с</td><td></td><td></td></tr><tr><td>7</td><td>инструмент T3: get_counterparties</td><td>—</td><td>0.0 с</td><td></td><td></td></tr><tr><td>8</td><td>инструмент T4: find_counterparties_by_keywords</td><td>—</td><td>0.0 с</td><td></td><td></td></tr><tr><td>9</td><td>инструмент T5: get_group_companies</td><td>—</td><td>0.122 с</td><td></td><td></td></tr><tr><td>10</td><td>инструмент T6: search_bank_analytics</td><td>—</td><td>0.004 с</td><td></td><td></td></tr><tr><td>11</td><td>аналитик влияния: сбор данных <span class='muted'>impact_research</span></td><td>deepseek/deepseek-v4.1-flash</td><td>10.49 с</td><td>17438 / 1053</td><td>0.188</td></tr><tr><td>12</td><td>аналитик влияния: итог</td><td>fallback</td><td></td><td></td><td></td></tr><tr><td>13</td><td>аналитик влияния: итог <span class='muted'>impact_write</span></td><td>qwen/qwen3.6-35b-a3b</td><td>242.6 с</td><td>15988 / 4985</td><td>0.663</td></tr><tr><td>14</td><td>проверка кодом</td><td>code</td><td></td><td></td><td></td></tr><tr><td>15</td><td>критик <span class='muted'>critic</span></td><td>z-ai/glm-5.3-flash</td><td>21.38 с</td><td>14648 / 1507</td><td>0.340</td></tr><tr><td>16</td><td>impact_revise_research1 <span class='muted'>impact_revise_research1</span></td><td>deepseek/deepseek-v4.1-flash</td><td>28.97 с</td><td>21536 / 4296</td><td>0.374</td></tr><tr><td>17</td><td>impact_revise1 <span class='muted'>impact_revise1</span></td><td>deepseek/deepseek-v4.1-flash</td><td>22.29 с</td><td>24882 / 3963</td><td>0.394</td></tr><tr><td>18</td><td>проверка кодом</td><td>code</td><td></td><td></td><td></td></tr><tr><td>19</td><td>критик <span class='muted'>critic</span></td><td>z-ai/glm-5.3-flash</td><td>11.09 с</td><td>15557 / 718</td><td>0.186</td></tr></table></section></div></details></div></main>
+
+<footer class="footer">
+    <div class="container footer__inner">
+        <span>Прототип сервиса новостной аналитики · Хакатон «Альфа Будущее» 2026</span>
+        <span>Выводы с пометкой <span class="footer__ai"><svg class="icon icon--16" aria-hidden="true"><use href="#i-sparkle"></use></svg>AI</span> сформированы моделью и не являются инвестиционной рекомендацией</span>
+    </div>
+</footer>
+
+<script>(function () {
+    'use strict';
+
+    /* ---------- Фильтр ленты ---------- */
+
+    function initFeed(feed) {
+        var chips = feed.querySelectorAll('[data-filter]');
+        var cards = feed.querySelectorAll('.news-card');
+        var empty = feed.querySelector('[data-feed-empty]');
+
+        chips.forEach(function (chip) {
+            chip.addEventListener('click', function () {
+                var filter = chip.dataset.filter;
+                var visible = 0;
+
+                chips.forEach(function (c) {
+                    c.setAttribute('aria-pressed', String(c === chip));
+                });
+                cards.forEach(function (card) {
+                    var show = filter === 'all' || card.dataset.category === filter;
+                    card.hidden = !show;
+                    if (show) visible += 1;
+                });
+                if (empty) empty.hidden = visible > 0;
+            });
+        });
+    }
+
+    /* ---------- Табы (сегментированный контрол) ---------- */
+
+    function initTabs(tablist) {
+        var tabs = Array.prototype.slice.call(tablist.querySelectorAll('[role="tab"]'));
+
+        function select(tab, focus) {
+            tabs.forEach(function (t) {
+                var active = t === tab;
+                var panel = document.getElementById(t.getAttribute('aria-controls'));
+                t.setAttribute('aria-selected', String(active));
+                t.tabIndex = active ? 0 : -1;
+                panel.hidden = !active;
+                if (active) panel.parentElement.scrollTop = 0;
+            });
+            if (focus) tab.focus();
+        }
+
+        tabs.forEach(function (tab, i) {
+            tab.addEventListener('click', function () {
+                select(tab, false);
+            });
+            tab.addEventListener('keydown', function (e) {
+                var next = null;
+                if (e.key === 'ArrowRight') next = tabs[(i + 1) % tabs.length];
+                if (e.key === 'ArrowLeft') next = tabs[(i - 1 + tabs.length) % tabs.length];
+                if (e.key === 'Home') next = tabs[0];
+                if (e.key === 'End') next = tabs[tabs.length - 1];
+                if (next) {
+                    e.preventDefault();
+                    select(next, true);
+                }
+            });
+        });
+    }
+
+    /* ---------- Мини-чат с AI-аналитиком ---------- */
+
+    // Демо-ответы, пока не подключён бэкенд (data-endpoint пустой).
+    var DEMO_ANSWERS = [
+        {
+            match: /финанс|кредит|долг|деньг|ставк|выручк/i,
+            text: 'Я оцениваю влияние через три канала: процентные расходы, стоимость закупок ' +
+                'и спрос со стороны клиентов. Ключевые риски и возможности по этой новости собраны ' +
+                'в панели выше, а детальный расчёт по вашим договорам появится после подключения модели.'
+        },
+        {
+            match: /делать|действ|месяц|рекоменд|план/i,
+            text: 'На ближайший месяц я бы предложил:\n' +
+                '1. Сверить риски из панели с действующими договорами и бюджетом.\n' +
+                '2. Выбрать возможности, которые реально реализовать за квартал.\n' +
+                '3. Обсудить выбранные шаги с персональным менеджером.'
+        },
+        {
+            match: /основан|источник|почему|откуда/i,
+            text: 'Вывод опирается на профиль компании, текст новости и аналитические материалы ' +
+                'Альфа-Банка. Признаки компании перечислены в блоке «Основано на», источники — ' +
+                'в конце статьи.'
+        }
+    ];
+
+    var DEMO_FALLBACK = 'Это демо-режим: модель ещё не подключена. ' +
+        'Когда бэкенд будет готов, здесь появится ответ с учётом профиля компании и аналитики банка.';
+
+    function demoAnswer(question) {
+        for (var i = 0; i < DEMO_ANSWERS.length; i += 1) {
+            if (DEMO_ANSWERS[i].match.test(question)) return DEMO_ANSWERS[i].text;
+        }
+        return DEMO_FALLBACK;
+    }
+
+    function getCookie(name) {
+        var match = document.cookie.match(new RegExp('(?:^|; )' + name + '=([^;]*)'));
+        return match ? decodeURIComponent(match[1]) : '';
+    }
+
+    function initChat(chat) {
+        var messages = chat.querySelector('[data-chat-messages]');
+        var suggest = chat.querySelector('[data-chat-suggest]');
+        var form = chat.querySelector('[data-chat-form]');
+        var input = chat.querySelector('[data-chat-input]');
+        var send = chat.querySelector('[data-chat-send]');
+        var toggle = chat.querySelector('[data-chat-toggle]');
+        var endpoint = chat.dataset.endpoint;
+        var busy = false;
+
+        function setCollapsed(collapsed) {
+            chat.classList.toggle('is-collapsed', collapsed);
+            toggle.setAttribute('aria-expanded', String(!collapsed));
+            toggle.querySelector('.visually-hidden').textContent = collapsed ? 'Развернуть чат' : 'Свернуть чат';
+        }
+
+        function scrollToEnd() {
+            messages.scrollTop = messages.scrollHeight;
+        }
+
+        function addMessage(role, text) {
+            var el = document.createElement('div');
+            el.className = 'msg msg--new msg--' + role;
+            el.textContent = text;
+            messages.appendChild(el);
+            scrollToEnd();
+            return el;
+        }
+
+        function addTyping() {
+            var el = document.createElement('div');
+            el.className = 'msg msg--new msg--ai msg--typing';
+            el.setAttribute('aria-label', 'AI-аналитик печатает');
+            el.innerHTML = '<i></i><i></i><i></i>';
+            messages.appendChild(el);
+            scrollToEnd();
+            return el;
+        }
+
+        function autosize() {
+            input.style.height = 'auto';
+            input.style.height = Math.min(input.scrollHeight, 120) + 'px';
+        }
+
+        function syncSend() {
+            send.disabled = busy || !input.value.trim();
+        }
+
+        function requestAnswer(question) {
+            if (!endpoint) {
+                return new Promise(function (resolve) {
+                    setTimeout(function () {
+                        resolve(demoAnswer(question));
+                    }, 900);
+                });
+            }
+            return fetch(endpoint, {
+                method: 'POST',
+                headers: {'Content-Type': 'application/json', 'X-CSRFToken': getCookie('csrftoken')},
+                body: JSON.stringify({message: question, news_id: chat.dataset.newsId})
+            }).then(function (res) {
+                if (!res.ok) throw new Error(res.status);
+                return res.json();
+            }).then(function (data) {
+                return data.answer;
+            });
+        }
+
+        function ask(question) {
+            question = question.trim();
+            if (!question || busy) return;
+
+            busy = true;
+            setCollapsed(false);
+            suggest.hidden = true;
+            addMessage('user', question);
+            input.value = '';
+            autosize();
+            syncSend();
+
+            var typing = addTyping();
+            requestAnswer(question)
+                .then(function (answer) {
+                    typing.remove();
+                    addMessage('ai', answer);
+                })
+                .catch(function () {
+                    typing.remove();
+                    addMessage('ai', 'Не получилось получить ответ. Попробуйте ещё раз чуть позже.');
+                })
+                .then(function () {
+                    busy = false;
+                    syncSend();
+                });
+        }
+
+        form.addEventListener('submit', function (e) {
+            e.preventDefault();
+            ask(input.value);
+        });
+
+        input.addEventListener('input', function () {
+            autosize();
+            syncSend();
+        });
+
+        input.addEventListener('keydown', function (e) {
+            if (e.key === 'Enter' && !e.shiftKey && !e.isComposing) {
+                e.preventDefault();
+                ask(input.value);
+            }
+        });
+
+        suggest.addEventListener('click', function (e) {
+            var btn = e.target.closest('.suggest');
+            if (btn) ask(btn.textContent);
+        });
+
+        toggle.addEventListener('click', function () {
+            setCollapsed(!chat.classList.contains('is-collapsed'));
+        });
+
+        // На невысоких экранах чат стартует свёрнутым, чтобы не сжимать панель рисков
+        if (window.matchMedia('(min-width: 1024px) and (max-height: 819px)').matches) {
+            setCollapsed(true);
+        }
+    }
+
+    document.querySelectorAll('[data-feed]').forEach(initFeed);
+    document.querySelectorAll('[data-tabs]').forEach(initTabs);
+    document.querySelectorAll('[data-chat]').forEach(initChat);
+})();
+</script>
+</body>
+</html>

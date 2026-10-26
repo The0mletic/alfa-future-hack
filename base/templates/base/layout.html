@@ -21,13 +21,16 @@
             <span class="brand__product">Новостная аналитика</span>
         </a>
 
+        {% if company %}
         <div class="header__user">
             <div class="header__user-text">
                 <span class="header__user-name">{{ user.name }}</span>
                 <span class="header__user-company">{{ company.name }}</span>
             </div>
             <span class="avatar avatar--40" aria-hidden="true">{{ user.initials }}</span>
+            <a class="button button--secondary button--40 header__logout" href="{% url 'logout' %}">Выйти</a>
         </div>
+        {% endif %}
     </div>
 </header>
 
@@ -43,5 +46,6 @@
 </footer>
 
 <script src="{% static 'base/js/app.js' %}" defer></script>
+{% block scripts %}{% endblock %}
 </body>
 </html>

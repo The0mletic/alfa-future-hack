@@ -1,4 +1,5 @@
-<span class="relevance relevance--{% if value >= 85 %}3{% elif value >= 70 %}2{% else %}1{% endif %}" title="Значимость для компании: {{ value }}%">
+{# Пороги — по шкале агента релевантности (relevance_agent/CONTRACT.md): 60+ существенно, 35–59 умеренно #}
+<span class="relevance relevance--{% if value >= 60 %}3{% elif value >= 35 %}2{% else %}1{% endif %}" title="Значимость для компании: {{ value }} из 100">
     <span class="relevance__bars" aria-hidden="true"><i></i><i></i><i></i></span>
-    Значимость {% if value >= 85 %}высокая{% elif value >= 70 %}средняя{% else %}низкая{% endif %}
+    Значимость {% if value >= 60 %}высокая{% elif value >= 35 %}средняя{% else %}низкая{% endif %}
 </span>

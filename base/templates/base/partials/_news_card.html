@@ -1,4 +1,4 @@
-<article class="news-card" data-category="{{ n.category }}">
+<article class="news-card{% if n.loading %} news-card--loading{% endif %}" data-category="{{ n.category }}"{% if n.loading %} aria-busy="true"{% endif %}>
     <div class="news-card__meta">
         <span class="status status--neutral">{{ n.category_label }}</span>
         {% if n.urgent %}<span class="status status--red"><svg class="icon icon--12" aria-hidden="true"><use href="#i-bolt"></use></svg>Срочно</span>{% endif %}
@@ -6,16 +6,28 @@
     </div>
 
     <h3 class="news-card__title">
+        {% if n.loading %}
+        <span class="news-card__link news-card__link--disabled" title="Аналитика ещё готовится">{{ n.title }}</span>
+        {% else %}
         <a class="news-card__link" href="{% url 'news_detail' n.id %}">{{ n.title }}</a>
+        {% endif %}
     </h3>
     <p class="news-card__summary">{{ n.summary }}</p>
 
+    {% if n.why %}
     <div class="why">
         <svg class="icon icon--20 why__icon" aria-hidden="true"><use href="#i-sparkle"></use></svg>
         <p><span class="why__label">Для вашей компании.</span> {{ n.why }}</p>
     </div>
+    {% endif %}
 
     <div class="news-card__foot">
+        {% if n.loading %}
+        <span class="loading-pill" role="status">
+            <span class="spinner spinner--16" aria-hidden="true"></span>
+            Готовим аналитику…
+        </span>
+        {% elif n.analysis_ready %}
         <span class="impact-pill impact-pill--risk" title="Риски для компании">
             <svg class="icon icon--16" aria-hidden="true"><use href="#i-trend-down"></use></svg>
             Риски<span class="impact-pill__count">{{ n.risks|length }}</span>
@@ -29,6 +41,9 @@
             <svg class="bank-pill__logo" viewBox="0 0 33 50" aria-hidden="true"><use href="#logo-alfa"></use></svg>
             Аналитика банка
         </span>
+        {% endif %}
+        {% else %}
+        <span class="status status--outline" title="Полный разбор можно запустить на странице новости">Краткая оценка</span>
         {% endif %}
         {% include 'base/partials/_relevance.html' with value=n.relevance %}
     </div>

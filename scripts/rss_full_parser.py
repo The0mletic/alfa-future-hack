@@ -198,7 +198,8 @@ async def fetch_article_text(
             if resp.status != 200:
                 print(f"[warn] {url} -> HTTP {resp.status}", file=sys.stderr)
                 return ""
-            html = await resp.text()
+            # Часть страниц (например, документы cbr.ru) отдаёт не UTF-8: не падаем, а заменяем символы.
+            html = await resp.text(errors="replace")
     except Exception as exc:
         print(f"[warn] {url}: {exc}", file=sys.stderr)
         return ""
@@ -308,6 +309,17 @@ async def build_report(feeds: list[str], max_items_per_feed: int = 15) -> dict:
             process_feed(session, feed, max_items_per_feed) for feed in feeds
         ]
         results = await asyncio.gather(*tasks)
+
+    # Одна статья может прийти из нескольких лент (общая и рубрика) — оставляем первую.
+    seen_links: set[str] = set()
+    for r in results:
+        unique = []
+        for item in r["items"]:
+            key = item["link"].strip().lower()
+            if key not in seen_links:
+                seen_links.add(key)
+                unique.append(item)
+        r["items"] = unique
 
     # Убираем пустые источники
     results = [r for r in results if r["items"]]

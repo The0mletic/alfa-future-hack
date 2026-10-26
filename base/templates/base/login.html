@@ -1,0 +1,27 @@
+{% extends 'base/layout.html' %}
+
+{% block title %}Вход{% endblock %}
+
+{% block content %}
+<div class="container login">
+    <section class="card login__card" aria-labelledby="login-title">
+        <span class="squircle squircle--48 squircle--accent" aria-hidden="true">
+            <svg class="login__logo" viewBox="0 0 33 50"><use href="#logo-alfa"></use></svg>
+        </span>
+        <h1 class="login__title" id="login-title">Новостная аналитика для бизнеса</h1>
+        <p class="login__text">Введите ID компании — подберём новости, важные именно для вашего бизнеса, и объясним, как они на него повлияют.</p>
+
+        <form class="login__form" method="post" action="{% url 'login' %}">
+            {% csrf_token %}
+            <label class="login__label" for="company-id">ID компании</label>
+            <input class="login__input{% if error %} login__input--error{% endif %}" id="company-id" name="company_id"
+                   value="{{ value }}" placeholder="U_44564" autocomplete="off" autofocus required
+                   pattern="[Uu]_[0-9]+" aria-describedby="company-id-hint">
+            <p class="login__hint{% if error %} login__hint--error{% endif %}" id="company-id-hint">
+                {% if error %}{{ error }}{% else %}Формат: U_ и цифры. Пароль не нужен — это демо-доступ.{% endif %}
+            </p>
+            <button class="button login__submit" type="submit">Войти</button>
+        </form>
+    </section>
+</div>
+{% endblock %}

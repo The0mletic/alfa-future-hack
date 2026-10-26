@@ -18,6 +18,7 @@
 Коммерсантъ и др.). Файл лежит рядом с агентом; другой путь можно задать через NEWS_FILE.
 
 """
+import contextvars
 import json
 import os
 import re
@@ -42,7 +43,18 @@ HERE = Path(__file__).parent
 ROOT = HERE.parents[1]
 sys.path.insert(0, str(ROOT))
 
-from base.mock_data import COMPANY, NEWS  # noqa: E402  пока берём демо-данные проекта
+from base.mock_data import COMPANY, NEWS  # noqa: E402  демо-данные для запуска из терминала
+
+# Источник данных. По умолчанию — демо-данные; веб-приложение подключает базу через set_data_source().
+# Объект источника: find_news(news_id) -> dict в формате base/mock_data.NEWS, company_profile(news_id) -> str,
+# search_analytics(query) -> str, search_news(query) -> str.
+DATA_SOURCE = None
+CURRENT_NEWS = contextvars.ContextVar('chat_news_id', default=None)   # новость текущего вопроса
+
+
+def set_data_source(source):
+    global DATA_SOURCE
+    DATA_SOURCE = source
 
 
 def _load_env(path: Path):
@@ -91,6 +103,8 @@ def log(step: str, **data):
 #данные:
 
 def _find_news(news_id: int) -> dict:
+    if DATA_SOURCE is not None:
+        return DATA_SOURCE.find_news(news_id)
     for n in NEWS:
         if n['id'] == news_id:
             return n
@@ -129,6 +143,9 @@ def get_analysis(news_id: int) -> str:
 @tool
 def get_company_profile() -> str:
     """Профиль компании пользователя: отрасль, регион, масштаб, продукты банка, ВЭД, контрагенты."""
+    if DATA_SOURCE is not None:
+        log('tool', name='get_company_profile')
+        return DATA_SOURCE.company_profile(CURRENT_NEWS.get())
     c = COMPANY
     result = (f"{c['name']}. Отрасль: {c['industry']} (ОКВЭД {c['okved']}). Регион: {c['region']} "
               f"Выручка {c['revenue']}, {c['employees']} сотрудников. ВЭД: {c['foreign_trade']}. "
@@ -140,6 +157,10 @@ def get_company_profile() -> str:
 @tool
 def search_analytics(query: str) -> str:
     """Поиск по аналитике Альфа-Банка. query - короткий запрос по теме, например «ключевая ставка»."""
+    if DATA_SOURCE is not None:
+        result = DATA_SOURCE.search_analytics(query)
+        log('tool', name='search_analytics', query=query, source='knowledge_base')
+        return result
     words = _stems(query)
     hits = []
     for n in NEWS:
@@ -180,6 +201,10 @@ def _load_news_db() -> list:
 def search_news(query: str) -> str:
     """Поиск по базе новостей (ЦБ, Ведомости, Коммерсантъ и др.). query - короткий запрос:
     тема, отрасль или название компании, например «ключевая ставка» или «грузоперевозки»."""
+    if DATA_SOURCE is not None:
+        result = DATA_SOURCE.search_news(query)
+        log('tool', name='search_news', query=query, base='db')
+        return result
     global _NEWS_DB
     if _NEWS_DB is None:
         _NEWS_DB = _load_news_db()
@@ -505,8 +530,12 @@ def ask(news_id: int, question: str, user_id: str = 'demo') -> str:
     log('question', news_id=news_id, question=question)
     USAGE.update(calls=0, input_tokens=0, output_tokens=0)
     started = time.monotonic()
-    result = graph.invoke({'news_id': news_id, 'question': question, 'fixes': 0, 'tool_rounds': 0,
-                           'final': False, 'deadline': started + TIME_BUDGET}, config)
+    token = CURRENT_NEWS.set(news_id)
+    try:
+        result = graph.invoke({'news_id': news_id, 'question': question, 'fixes': 0, 'tool_rounds': 0,
+                               'final': False, 'deadline': started + TIME_BUDGET}, config)
+    finally:
+        CURRENT_NEWS.reset(token)
     log('usage', news_id=news_id, question=question, **USAGE, seconds=round(time.monotonic() - started, 1),
         cost_rub=_cost(USAGE['input_tokens'], USAGE['output_tokens']))   # итог по вопросу
     return result['answer']

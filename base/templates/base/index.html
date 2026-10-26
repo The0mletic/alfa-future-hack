@@ -24,7 +24,7 @@
                     <span class="avatar avatar--40 avatar--accent" aria-hidden="true">{{ company.initials }}</span>
                     <div class="account__company-text">
                         <p class="account__company-name">{{ company.name }}</p>
-                        <p class="account__company-meta">ИНН {{ company.inn }} · Клиент с {{ company.client_since }} года</p>
+                        <p class="account__company-meta">{{ company.meta }}</p>
                     </div>
                 </div>
 
@@ -78,7 +78,10 @@
         </div>
 
         {# Лента новостей #}
-        <section class="feed" aria-labelledby="feed-title" data-feed>
+        <section class="feed" aria-labelledby="feed-title" data-feed
+                 data-status-url="{% url 'feed_status' %}" data-job-status="{{ job.status }}"
+                 data-news-scored="{{ job.news_scored }}" data-analyses-total="{{ job.analyses_total }}"
+                 data-analyses-done="{{ job.analyses_done }}" data-loading="{{ loading_count }}">
             <div class="feed__head">
                 <h2 class="feed__title" id="feed-title">Лента</h2>
                 <p class="feed__updated">По значимости для компании · обновлено в {{ feed_updated }}</p>
@@ -95,6 +98,24 @@
                 {% endfor %}
             </div>
 
+            {% if job.status == 'running' %}
+            <div class="feed-progress" role="status" aria-live="polite">
+                <span class="spinner" aria-hidden="true"></span>
+                <div>
+                    <p class="feed-progress__title" data-progress-stage>{{ job.stage }}</p>
+                    <p class="feed-progress__text" data-progress-text>
+                        {% if job.analyses_total %}Аналитика готова для {{ job.analyses_done }} из {{ job.analyses_total }} главных новостей{% elif job.news_total %}Оценено {{ job.news_scored }} из {{ job.news_total }} новостей{% else %}Это займёт пару минут{% endif %}
+                    </p>
+                </div>
+            </div>
+            {% elif job.status == 'error' and not news %}
+            <div class="feed-progress feed-progress--error" role="status">
+                <div>
+                    <p class="feed-progress__title">Не удалось собрать ленту</p>
+                    <p class="feed-progress__text">Обновите страницу, чтобы попробовать ещё раз</p>
+                </div>
+            </div>
+            {% endif %}
             <div class="news-list">
                 {% for n in news %}
                     {% include 'base/partials/_news_card.html' %}
@@ -105,10 +126,54 @@
                 <span class="squircle squircle--48 squircle--neutral" aria-hidden="true">
                     <svg class="icon"><use href="#i-search"></use></svg>
                 </span>
-                <p class="empty-state__title">В этой теме пока нет новостей</p>
+                <p class="empty-state__title">{% if job.status == 'running' and not news %}Подбираем новости для компании{% else %}В этой теме пока нет новостей{% endif %}</p>
                 <p class="empty-state__text">Мы покажем их, как только появятся события, важные для компании</p>
             </div>
         </section>
     </div>
 </div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+/* Пока лента собирается или готовится аналитика топ-новостей — опрашиваем статус и обновляем страницу,
+   когда появилось новое: выбраны главные новости, готов анализ или оценена очередная порция новостей. */
+(function () {
+    var feed = document.querySelector('[data-feed]');
+    if (!feed) return;
+    var start = {
+        status: feed.dataset.jobStatus,
+        scored: parseInt(feed.dataset.newsScored, 10) || 0,
+        total: parseInt(feed.dataset.analysesTotal, 10) || 0,
+        done: parseInt(feed.dataset.analysesDone, 10) || 0,
+        loading: parseInt(feed.dataset.loading, 10) || 0
+    };
+    if (start.status !== 'running' && !start.loading) return;
+    var stage = document.querySelector('[data-progress-stage]');
+    var text = document.querySelector('[data-progress-text]');
+    function describe(s) {
+        if (s.analyses_total) return 'Аналитика готова для ' + s.analyses_done + ' из ' + s.analyses_total + ' главных новостей';
+        if (s.news_total) return 'Оценено ' + s.news_scored + ' из ' + s.news_total + ' новостей';
+        return 'Это займёт пару минут';
+    }
+    function poll() {
+        fetch(feed.dataset.statusUrl, {credentials: 'same-origin'})
+            .then(function (r) { return r.json(); })
+            .then(function (s) {
+                var loading = (s.loading_ids || []).length;
+                var changed = (start.status === 'running' && s.status !== 'running')
+                    || s.analyses_total > start.total
+                    || s.analyses_done > start.done
+                    || loading < start.loading
+                    || s.news_scored - start.scored >= 10;
+                if (changed) { window.location.reload(); return; }
+                if (stage) stage.textContent = s.stage;
+                if (text) text.textContent = describe(s);
+                if (s.status === 'running' || loading) setTimeout(poll, 4000);
+            })
+            .catch(function () { setTimeout(poll, 8000); });
+    }
+    setTimeout(poll, 3000);
+})();
+</script>
 {% endblock %}

@@ -22,6 +22,7 @@
 
                 <p class="article__lead">{{ item.summary }}</p>
 
+                {% if item.facts %}
                 <section class="facts" aria-labelledby="facts-title">
                     <div class="facts__head">
                         <h2 class="facts__title" id="facts-title">Что произошло</h2>
@@ -36,6 +37,7 @@
                         {% endfor %}
                     </ul>
                 </section>
+                {% endif %}
 
                 <div class="article__body">
                     {% for paragraph in item.body %}<p>{{ paragraph }}</p>{% endfor %}
@@ -104,10 +106,11 @@
                     <h2 class="insight__title" id="insight-title">Что это значит для компании</h2>
                     <p class="insight__sub">
                         <span class="ai-badge"><svg class="icon icon--16" aria-hidden="true"><use href="#i-sparkle"></use></svg>AI</span>
-                        Анализ по профилю {{ company.name }}
+                        Анализ по профилю компании {{ company.id }}
                     </p>
                 </header>
 
+                {% if item.analysis_state == 'ready' %}
                 <div class="segmented" role="tablist" aria-label="Влияние на бизнес" data-tabs>
                     <button class="segmented__tab" type="button" role="tab" id="tab-risks" aria-controls="panel-risks" aria-selected="true">
                         Риски<span class="segmented__count segmented__count--red">{{ item.risks|length }}</span>
@@ -140,6 +143,28 @@
                         </ul>
                     </div>
                 </div>
+                {% elif item.analysis_state == 'loading' %}
+                <div class="analysis-pending" role="status" aria-live="polite" data-analysis-pending
+                     data-status-url="{% url 'news_status' item.id %}">
+                    <span class="spinner" aria-hidden="true"></span>
+                    <p class="analysis-pending__title">Готовим аналитику для компании</p>
+                    <p class="analysis-pending__text">Агенты разбирают новость, сопоставляют её с профилем компании и аналитикой Альфа-Банка. Обычно это 2–4 минуты — страница обновится сама.</p>
+                </div>
+                {% else %}
+                <div class="analysis-pending">
+                    {% if item.why %}<p class="analysis-pending__lead">{{ item.why }}</p>{% endif %}
+                    {% if item.basis %}
+                    <ul class="tag-list">{% for b in item.basis %}<li class="status status--outline">{{ b }}</li>{% endfor %}</ul>
+                    {% endif %}
+                    <p class="analysis-pending__text">
+                        {% if item.analysis_state == 'error' %}Не удалось подготовить полный разбор — попробуйте ещё раз.{% else %}Это краткая оценка значимости. Полный разбор покажет риски, возможности, действия и позицию Альфа-Банка.{% endif %}
+                    </p>
+                    <form method="post" action="{% url 'news_analyze' item.id %}">
+                        {% csrf_token %}
+                        <button class="button login__submit" type="submit">Подготовить полный анализ</button>
+                    </form>
+                </div>
+                {% endif %}
             </section>
 
             {# Мини-чат с LLM. data-endpoint — URL бэкенда; пока пустой, работает демо-режим #}
@@ -181,4 +206,25 @@
         </aside>
     </div>
 </div>
+{{ analysis_details|safe }}
+{% endblock %}
+
+{% block scripts %}
+<script>
+/* Пока готовится полный анализ — опрашиваем статус и обновляем страницу, когда он готов. */
+(function () {
+    var box = document.querySelector('[data-analysis-pending][data-status-url]');
+    if (!box) return;
+    function poll() {
+        fetch(box.dataset.statusUrl, {credentials: 'same-origin'})
+            .then(function (r) { return r.json(); })
+            .then(function (s) {
+                if (s.analysis_state !== 'loading') { window.location.reload(); return; }
+                setTimeout(poll, 5000);
+            })
+            .catch(function () { setTimeout(poll, 10000); });
+    }
+    setTimeout(poll, 5000);
+})();
+</script>
 {% endblock %}

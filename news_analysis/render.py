@@ -210,8 +210,11 @@ def render_run(run: dict, company_id: str) -> str:
         item["bank_view"] = {**item["bank_view"], "text": clean_refs(item["bank_view"]["text"])}
     for key in ("risks", "opportunities"):
         item[key] = [{**x, "title": clean_refs(x["title"]), "text": clean_refs(x["text"])} for x in item[key]]
-    context = {"user": USER, "company": company_context(company_id), "item": item, "related": []}
+    # Шаблон строит ссылку на API чата по числовому id новости (base.News); у новостей парсера id строковый.
+    # В статичной странице подключаться не к чему, поэтому id-заглушка, а чат остаётся в демо-режиме.
+    context = {"user": USER, "company": company_context(company_id), "item": {**item, "id": 0}, "related": []}
     html = render_to_string("base/news_detail.html", context)
+    html = re.sub(r'data-endpoint="[^"]*"', 'data-endpoint=""', html)
     html = html.replace("</main>", trace_section(run) + "</main>", 1)
     return inline_assets(html)
 
