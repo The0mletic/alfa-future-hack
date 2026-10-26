@@ -471,10 +471,49 @@ def tools(state: State) -> dict:
     return {**result, 'tool_rounds': state.get('tool_rounds', 0) + 1}
 
 
+LABELS = ('Вывод ИИ:', 'Профиль компании:', 'Альфа-Банк', 'Другая новость', 'Новость:', 'Что сделать:',
+          'Первоисточник:')
+MAX_LINES = 5
+MAX_WORDS = 35   # в промпте просим до 25, с запасом
+
+
+def _format_problems(draft: str) -> list:
+    """Проверка формата кодом, без нейросети: число строк, длина, метки."""
+    lines = [line.strip() for line in draft.splitlines() if line.strip()]
+    problems = []
+    if len(lines) > MAX_LINES:
+        problems.append(f'строк {len(lines)}, нужно не больше {MAX_LINES - 1}')
+    if lines and not lines[0].startswith('Вывод ИИ:'):
+        problems.append('первая строка должна начинаться с «Вывод ИИ:» и сразу отвечать на вопрос')
+    used = [next((lab for lab in LABELS if line.startswith(lab)), None) for line in lines]
+    for lab in set(filter(None, used)):
+        if used.count(lab) > 1:
+            problems.append(f'метка «{lab.rstrip(":")}» повторяется - объедини эти строки в одну')
+    for line in lines:
+        if not line.startswith(LABELS):
+            problems.append(f'строка без метки: «{line[:40]}…»')
+        if len(line.split()) > MAX_WORDS:
+            problems.append(f'слишком длинная строка ({len(line.split())} слов, нужно до 25): «{line[:40]}…»')
+        if line.startswith('Что сделать (') or line.startswith('Вывод ИИ ('):
+            problems.append('метку пиши ровно «Что сделать:» / «Вывод ИИ:», без скобок')
+    return problems
+
+
 def review(state: State) -> dict:
     """Шаг 5. Самопроверка ответа. Если есть проблемы - возвращает агенту с замечаниями."""
     draft = state['messages'][-1].content
     left = _left(state)
+    fixes = state.get('fixes', 0)
+
+    # Сначала формат - кодом: быстро и бесплатно. Нарушен - сразу на доработку, без второй нейросети.
+    problems = _format_problems(draft)
+    if problems and not state.get('final') and fixes < MAX_FIXES and left >= MIN_FOR_FIX:
+        log('review', news_id=state['news_id'], ok=False, problems=problems, attempt=fixes + 1, by='code')
+        feedback = ('Ответ не в нужном формате: ' + '; '.join(problems) +
+                    '\nПерепиши короче строго по формату из инструкции: 3-4 строки, первая - «Вывод ИИ:», '
+                    'новость не пересказывай. Пользователю проверку не упоминай.')
+        return {'messages': [HumanMessage(content=feedback)], 'verdict': 'fix', 'fixes': fixes + 1}
+
     if state.get('final') or left < MIN_FOR_REVIEW:
         log('review_skipped', news_id=state['news_id'], left=round(left, 1))
         return {'answer': draft, 'verdict': 'ok'}
