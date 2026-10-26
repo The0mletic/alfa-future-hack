@@ -4,7 +4,6 @@ http://www.cbr.ru/rss/RssCurrency
 https://rosstat.gov.ru/opendata
 https://www.rbc.ru/rss
 http://www.vedomosti.ru/rss/news
-https://www.vedomosti.ru/rss/rubric/economics/macro.xml
 https://www.kommersant.ru/rss/news.xml
 https://www.kommersant.ru/rss/section-economics.xml
 https://www.kommersant.ru/rss/section-business.xml

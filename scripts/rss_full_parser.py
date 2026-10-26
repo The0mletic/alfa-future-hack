@@ -8,8 +8,9 @@ rss_full_parser.py — парсит RSS-ленты и загружает пол�
 
 Результат — JSON, сгруппированный по источникам.
 
-Быстрый запуск python rss_full_parser.py результат в rss_full_report.json
+Быстрый запуск python rss_full_parser.py читает из feeds.txt результат в rss_full_report.json
 """
+import argparse
 import asyncio
 import json
 import re
@@ -44,29 +45,34 @@ HEADERS = {
     "Accept-Language": "ru-RU,ru;q=0.9,en;q=0.8",
 }
 
-# Список RSS-лент (дубликаты удалены)
-FEEDS = [
-    "http://www.cbr.ru/rss/RssNews",
-    "http://www.cbr.ru/rss/eventrss",
-    "http://www.cbr.ru/rss/RssCurrency",
-    "https://rosstat.gov.ru/opendata",
-    "https://www.rbc.ru/rss",
-    "http://www.vedomosti.ru/rss/news",
-    "https://www.vedomosti.ru/rss/rubric/economics/macro.xml",
-    "https://www.kommersant.ru/rss/news.xml",
-    "https://www.kommersant.ru/rss/section-economics.xml",
-    "https://www.kommersant.ru/rss/section-business.xml",
-    "http://rss.metalinfo.ru/",
-    "https://vc.ru/rss/all",
-    "https://www.cnews.ru/inc/rss/news.xml",
-    "https://www.reutersagency.com/feed/",
-    "https://feeds.bloomberg.com/markets/news.rss",
-    "https://www.federalreserve.gov/feeds/press_all.xml",
-    "https://www.ecb.europa.eu/rss/press.html",
-    "http://feeds.bbci.co.uk/news/business/rss.xml",
-    "https://www.theguardian.com/business/economics/rss",
-    "https://www.vedomosti.ru/rss/rubric/economics",
-]
+# ---------- Загрузка лент из внешнего файла ----------
+
+def load_feeds(path: str) -> list[str]:
+    """
+    Читает список RSS-лент из текстового файла.
+    Одна ссылка на строку; строки с # — комментарии.
+    """
+    try:
+        with open(path, encoding="utf-8") as fh:
+            lines = fh.readlines()
+    except FileNotFoundError:
+        print(f"[error] Файл лент не найден: {path}", file=sys.stderr)
+        return []
+    except OSError as exc:
+        print(f"[error] Не удалось прочитать {path}: {exc}", file=sys.stderr)
+        return []
+
+    feeds = []
+    for raw in lines:
+        line = raw.strip()
+        if not line or line.startswith("#"):
+            continue
+        # Отрезаем inline-комментарии вида "url  # заметка"
+        if " #" in line:
+            line = line.split(" #", 1)[0].strip()
+        if line:
+            feeds.append(line)
+    return feeds
 
 # ---------- Утилиты ----------
 
@@ -315,30 +321,44 @@ async def build_report(feeds: list[str], max_items_per_feed: int = 15) -> dict:
 
 
 def main() -> None:
-    import argparse
-
     p = argparse.ArgumentParser(
-        description="RSS parser with full-text article extraction for LLM pipelines"
+        description="RSS parser with full-text extraction (feeds из внешнего файла)"
     )
     p.add_argument(
-        "--max-items",
-        type=int,
-        default=10,
+        "--feeds-file", default="feeds.txt",
+        help="Файл со списком RSS-лент (по умолчанию feeds.txt)",
+    )
+    p.add_argument(
+        "feeds", nargs="*",
+        help="Дополнительные URL лент прямо в командной строке",
+    )
+    p.add_argument(
+        "--max-items", type=int, default=10,
         help="Максимум статей с одной ленты (по умолчанию 10)",
     )
     p.add_argument(
-        "--output",
-        default="rss_full_report.json",
+        "--output", default="rss_full_report.json",
         help="Файл для сохранения JSON (по умолчанию rss_full_report.json)",
     )
-    p.add_argument(
-        "--pretty",
-        action="store_true",
-        help="Форматировать JSON с отступами",
-    )
+    p.add_argument("--pretty", action="store_true", help="Форматировать JSON с отступами")
     args = p.parse_args()
 
-    report = asyncio.run(build_report(FEEDS, max_items_per_feed=args.max_items))
+    feeds = load_feeds(args.feeds_file)
+    feeds.extend(args.feeds)  # ленты из CLI добавляются к файловым
+    # Удаляем дубликаты, сохраняя порядок
+    seen = set()
+    feeds = [f for f in feeds if not (f in seen or seen.add(f))]
+
+    if not feeds:
+        print(
+            "[error] Список лент пуст. Создайте feeds.txt или передайте URL в командной строке.",
+            file=sys.stderr,
+        )
+        sys.exit(1)
+
+    print(f"[info] Загружено {len(feeds)} лент из {args.feeds_file}", file=sys.stderr)
+
+    report = asyncio.run(build_report(feeds, max_items_per_feed=args.max_items))
 
     with open(args.output, "w", encoding="utf-8") as fh:
         json.dump(report, fh, ensure_ascii=False, indent=2 if args.pretty else None)
