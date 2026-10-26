@@ -1,0 +1,46 @@
+   Сравнительные мультипликаторы глобальных производителей стали
+                                                          MarCap,               EV/Sales                       EVIEBITDA                             PE
+   Steel companies                             Price,$
+                                                                $mn         FY20 FY21e FY22e              FY20 FY21e FY22e                  FY20 FY21e FY22e
+   Russia
+   Severstal                                      21,2       17 760          1,9x      2,3x       2,2x      5,5x       5,2x      5,7x        9,9x       6,9x      9,4x
+   NLMK                                           33,1       19 838          1,6x      1,9X       1,8x      5,6x       5,5x      6,1x       10,1x       7,5X    10,3x
+   MMK                                            11,1         9 524         1,0x       1,1x      1,2x      4,3x       4,2x      4,6x        9,6x       7,0x      8,5x
+   EVRAZ                                            8,6      12 553          1,0x      1,3X       1,1x      4,5x       4,6x      4,5x        6,0x       6,8x      8,7x
+   Russia weighted average                                                   1,5x      1,8x       1,7x      5,0x      4,9x       5,2x        9,3x      7,1x       9,4x
+   Turkey
+   Erdemir                                         2,2         7 581         0,8x      1,3x       1,4x      4,0x       4,4x      5,6x       17,1x       7,2x      9,1x
+   Kardemir Karabuk                                0,8           992         0,3x      0,8x       0,8x      1,9x       2,8x      3,9x                   4,6x      5,8x
+   Turkey weighted average                                                   0,8x      1,2x       1,3x      3,9x       4,2x      5,4x       15,1x      6,9x       8,7x
+   LATAM
+   Gerdau                                          5,7         9 215         0,7x      1,1x       0,9x      3,9x       6,1x      5,5x        8,7x     11,5X     12,3x
+   Usiminas                                        3,7         4 701         0,5x      1,2x       1,3x      2,6x                 6,2x       64,2x     10,2x     13,7x
+   Ternium S.A.                                   40,0         8 023         0,5x                                                                       5,0x      7,4x
+   Grupo Simec SAB                                14,1        2 336          0,6x                                                                     13,3x     12,5x
+   CSN                                             8,2       11 364          1 ,6x                                                                      8,8x    11,8x
+   LATAM weighted average                                                    1,0x                                      4,8x      5,1x        9,9x      9,1x     11,2x
+   Asia
+   POSCO                                         303,1       26 429          0 ,5x     0,6x       0, ,5x    4,5x       4,3x      3,4x       11,1x       9,8x      9,3x
+   Bluescope                                      15,9         8 007           ,6x     0,8x       0,8x      6,2x                 6,0x       19,2x     11,3x     13,3X
+   Nippon Steel                                   17,6       16 756            ,4x     0,8x       0 ,3x     5,5x                 2,9x                             8,6x
+   JFE                                            13,1         8 051          ,6x      0,8x       0,2x      8,4x                 2,2x                             7,9x
+   China Steel                                      1,2      18  224         1 1,7x    1,7x       1,3x     15,3x                 6,8x                 18,1x     17,1x
+   Baoshan Steel                                   1,3       28  169          ),5х     0,6x       0,6x      4,1x                 4,0x       11,3x     11,2x     10,3x
+   Angang Steel                                     0,7        6 742           ,5x     0,4x       0,4x      6,7x                 3,9x       16,7x       9,4x      8,5x
+   Steel Authority of India                         1,2        4 990         0,2x      1,2x       0,5x      1,0x                 2,3x       11,1x       8,5x      4,9x
+   JSW Steel                                        8,4      20 296          1 1,5x    2,0x       1 5x      8,2x                 6,1x       12,1x     20,5x     13,3x
+   Hyundai Steel                                  44,3         5 915           ,8x     0,9x       0,3x      9 ,1x                2,8x                 19,4x     15,0x
+   Maanshan Steel                                  0,4         4 134         0,4x      0,4X       0,3x      5,7x                 3,0x       10,9X       9,3X      7,9x
+   Asia weighted average                                                     0,8x      1,1x      0,7x       7,4x                 4,3x        8,1x     11,3x     11,1x
+   EU/US
+   Nucor                                          80,0       23 856          0,8x      0,9x       1,0x      6,3x                 8,1x       10,5x       7,9x    17,0x
+   Thyssen Krupp                                  13,7         8 528         0,0x      0,         0,2x                           4,2x                           32,0x
+   Arcelor Mittal                                 29,9       32 974          0,4x      0, 6X      0,6x      7,2x                 3,9x                   5,9X      8,6x
+   Voestalpine AG                                 43,7         7 800         0,6x      0, 9x       ).5X     6, ,1x               4,0x                           13,7x
+   Acerinox                                       14,1         3 820         0,6x      0,7x       0,6x      7,7x                 5,5x       29,7x     13,2x     12,1x
+   SSAB Svenskt Stal                                5,7        5 562         0,3x      0,7x       0,6x      7,0x                 5,3x                 10,1x     11,9X
+   Commercial Metals Company                      29,5         3 551         0,5x        7x       0,6x      4,3x                 5,6x        7,4x     12,0x     12,2x
+   Steel Dynamics                                 51,9       10 962          0,8x      0,9X       0,9x      6,5x                 7,0x       10,7x       7,4x    14,1x
+   US Steel                                       23,2         6 234         0,6x      0,6x       0,4x                           4,2x                   4,5x    20,2x
+   EU/US weighted average                                                    0,6x      0,7x      0,6x       6,1x                 5,4x        5,7x      6,2x     14,6x
+   Источники: Bloomberg, Альфа-Банк
