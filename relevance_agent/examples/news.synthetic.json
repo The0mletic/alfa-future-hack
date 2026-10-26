@@ -1,0 +1,17 @@
+{
+  "generated_at": "2026-10-26T12:00:00+03:00",
+  "count": 1,
+  "items": [
+    {
+      "id": "demo_news_01",
+      "title": "Учебная новость об условиях финансирования",
+      "summary": "Синтетический текст, не реальное событие.",
+      "link": "https://example.com/news/01",
+      "published": "",
+      "source": "Учебный источник",
+      "author": "",
+      "categories": [],
+      "language": "ru"
+    }
+  ]
+}
