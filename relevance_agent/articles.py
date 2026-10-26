@@ -178,6 +178,12 @@ class ArticleTools:
         if news_id not in self.news:
             raise InputDataError('news_id отсутствует во входном списке')
         news = self.news[news_id]
+        if news.full_text.strip():
+            # Upstream parser does not report final redirect URL or extraction method.
+            limit = self.options.max_article_chars
+            return ArticleResult(news_id=news_id, status='ok', requested_url=news.link,
+                text_source='upstream_parser', text=news.full_text[:limit],
+                truncated=len(news.full_text) > limit)
         if news.link in self._cache:
             result = self._cache[news.link].model_copy(deep=True)
             result.news_id = news_id

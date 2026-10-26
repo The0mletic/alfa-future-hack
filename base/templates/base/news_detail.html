@@ -143,7 +143,7 @@
             </section>
 
             {# Мини-чат с LLM. data-endpoint — URL бэкенда; пока пустой, работает демо-режим #}
-            <section class="card chat" aria-labelledby="chat-title" data-chat data-endpoint="" data-news-id="{{ item.id }}">
+            <section class="card chat" aria-labelledby="chat-title" data-chat data-endpoint="{% url 'chat_api' item.id %}" data-news-id="{{ item.id }}">
                 <header class="chat__head">
                     <span class="squircle squircle--36 squircle--ai" aria-hidden="true">
                         <svg class="icon icon--20"><use href="#i-sparkle"></use></svg>

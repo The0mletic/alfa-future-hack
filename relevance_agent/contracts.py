@@ -38,6 +38,7 @@ class NewsItem(Contract):
     id: Text
     title: Text
     summary: str
+    full_text: str = ""  # Optional text already extracted by the upstream parser.
     link: str
     published: str
     source: Text
@@ -109,6 +110,7 @@ class ArticleResult(Contract):
     news_id: Text
     status: Literal["ok", "unavailable", "not_requested"]
     requested_url: str
+    text_source: Literal["agent_fetch", "upstream_parser"] = "agent_fetch"
     final_url: str | None = None
     text: str | None = None
     truncated: bool = False
@@ -117,8 +119,8 @@ class ArticleResult(Contract):
     @model_validator(mode="after")
     def status_fields(self):
         if self.status == "ok":
-            if not self.text or not self.text.strip() or not self.final_url or self.error:
-                raise ValueError("ok требует text, final_url и отсутствия error")
+            if not self.text or not self.text.strip() or self.error or (self.text_source == "agent_fetch" and not self.final_url):
+                raise ValueError("ok требует text, отсутствия error и final_url при загрузке агентом")
         else:
             if self.text is not None or self.truncated:
                 raise ValueError("Без успешной загрузки text=null, truncated=false")
