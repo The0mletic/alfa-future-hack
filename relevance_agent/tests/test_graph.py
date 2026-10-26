@@ -54,22 +54,35 @@ def request(company='C1', news_id='N1'):
 def graph(model, **kwargs):
     cp = SimpleNamespace(collect_context=lambda cid: (CounterpartiesResult(
         company_id=cid, links=[], complete=True, limitations=[]), []))
-    return build_graph(model, counterparties=cp, knowledge=BankKnowledge(),
+    return build_graph(model, counterparties=cp,
         profile_loader=lambda cid: CompanyProfile(company_id=cid, industry={'name': 'Строительство'}),
         article_factory=FakeArticles, **kwargs)
 
 
 class GraphTests(unittest.TestCase):
-    def test_single_output_and_real_bank(self):
+    def test_single_output_without_bank_context(self):
         model = FakeModel([answer()])
         out = graph(model).invoke({'request': request()})['output']
         self.assertEqual(out.status, 'scored')
         self.assertEqual(out.assessment.relevance_score, 55)
         self.assertEqual(out.model_calls, 1)
-        self.assertTrue(out.bank_materials)
+        self.assertEqual(out.bank_materials, [])
+        self.assertEqual(out.bank_metadata, [])
+        payload = json.loads(model.messages[0][1].content)
+        self.assertNotIn('bank_materials', payload)
+        self.assertNotIn('bank_metadata', payload)
+        self.assertFalse(any('аналитик' in warning for warning in out.warnings))
         self.assertEqual(out.article.status, 'unavailable')
         self.assertNotIn('rank', out.model_dump())
         self.assertNotIn('rank', out.assessment.model_dump())
+
+    def test_legacy_knowledge_argument_is_never_used(self):
+        from unittest.mock import Mock
+        knowledge = Mock()
+        knowledge.search.side_effect = AssertionError('Ranking must not retrieve bank analytics')
+        out = graph(FakeModel([answer()]), knowledge=knowledge).invoke({'request': request()})['output']
+        self.assertEqual(out.status, 'scored')
+        knowledge.search.assert_not_called()
 
     def test_invalid_json_repaired_once(self):
         out = graph(FakeModel(['invalid', answer()])).invoke({'request': request()})['output']
