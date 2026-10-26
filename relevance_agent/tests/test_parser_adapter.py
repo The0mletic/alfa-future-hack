@@ -94,7 +94,8 @@ class ParserAdapterTests(unittest.TestCase):
         self.assertEqual(result.status, 'scored')
         payload = json.loads(model.messages[0][1].content)
         self.assertNotIn('full_text', payload['news'])
-        self.assertEqual(payload['article']['text'], req.news.full_text)
+        self.assertEqual(payload['news']['text'], req.news.full_text)
+        self.assertEqual(payload['news']['text_status'], 'full')
         self.assertTrue(any('RSS-парсера' in w for w in result.warnings))
 
 

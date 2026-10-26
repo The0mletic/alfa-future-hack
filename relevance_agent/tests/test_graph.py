@@ -89,17 +89,87 @@ class GraphTests(unittest.TestCase):
         self.assertEqual(out.model_calls, 2)
         self.assertEqual(out.status, 'scored')
 
-    def test_unknown_bank_reference_rejected(self):
+    def test_unknown_bank_reference_dropped_without_retry(self):
         bad = answer(bank_evidence=[{'material_id': 'fake', 'fragment_id': 'fake'}])
-        out = graph(FakeModel([bad, bad])).invoke({'request': request()})['output']
-        self.assertEqual(out.status, 'not_scored')
-        self.assertIsNone(out.assessment)
-        self.assertEqual(out.model_calls, 2)
+        out = graph(FakeModel([bad])).invoke({'request': request()})['output']
+        self.assertEqual(out.status, 'scored')
+        self.assertEqual(out.assessment.bank_evidence, [])
+        self.assertEqual(out.model_calls, 1)
+        self.assertTrue(any('банковскую аналитику отброшены' in w for w in out.warnings))
 
     def test_unknown_company_field_rejected(self):
         bad = answer(company_evidence=[dict(field_path='/missing', kind='source_fact', explanation='wrong')])
         out = graph(FakeModel([bad, bad])).invoke({'request': request()})['output']
         self.assertEqual(out.status, 'not_scored')
+
+    def test_partially_invalid_evidence_repaired_without_retry(self):
+        good = dict(field_path='/industry/name', kind='source_fact', explanation='Отрасль')
+        bad = dict(field_path='/missing', kind='source_fact', explanation='wrong')
+        reply = answer(company_evidence=[bad, good, good, good, good], limitations=['a', 'b', 'c'])
+        out = graph(FakeModel([reply])).invoke({'request': request()})['output']
+        self.assertEqual(out.status, 'scored')
+        self.assertEqual(out.model_calls, 1)
+        self.assertEqual(len(out.assessment.company_evidence), 3)
+        self.assertEqual(len(out.assessment.limitations), 2)
+        self.assertTrue(any('несуществующим полем: 1' in w for w in out.warnings))
+
+    def test_markdown_wrapped_json_accepted(self):
+        out = graph(FakeModel(['```json\n' + answer() + '\n```'])).invoke({'request': request()})['output']
+        self.assertEqual(out.status, 'scored')
+        self.assertEqual(out.model_calls, 1)
+
+    def test_counterparty_evidence_checked_and_share_taken_from_tool(self):
+        from relevance_agent.contracts import CounterpartyLink, ProfileResult
+        links = CounterpartiesResult(company_id='C1', complete=True, limitations=[], links=[
+            CounterpartyLink(company_id='P1', direction='outgoing', amount_rub=10, payments_count=1, share=0.123456),
+            CounterpartyLink(company_id='P2', direction='incoming', amount_rub=5, payments_count=1, share=0.5)])
+        profiles = [ProfileResult(company_id='P1', status='partial', sources=['test'], limitations=['x'],
+                                  profile=CompanyProfile(company_id='P1', industry={'okved_code': '46.71'},
+                                                         raw={'SECRET_RAW': 1})),
+                    ProfileResult(company_id='P2', status='unavailable', profile=None, sources=['test'],
+                                  limitations=['нет записи'])]
+        feature = [dict(field_path='/industry/okved_code', kind='source_fact', explanation='ОКВЭД')]
+        reply = answer(counterparty_evidence=[
+            dict(company_id='P1', direction='outgoing', share=0.12, features=feature, connection='отрасль', limitations=[]),
+            dict(company_id='P2', direction='incoming', share=0.5, features=feature, connection='нет профиля', limitations=[])])
+        model = FakeModel([reply])
+        cp = SimpleNamespace(collect_context=lambda cid: (links, profiles))
+        out = build_graph(model, counterparties=cp,
+            profile_loader=lambda cid: CompanyProfile(company_id=cid, industry={'name': 'Строительство'}),
+            article_factory=FakeArticles).invoke({'request': request()})['output']
+        self.assertEqual(out.status, 'scored')
+        self.assertEqual(out.model_calls, 1)
+        self.assertEqual([e.company_id for e in out.assessment.counterparty_evidence], ['P1'])
+        self.assertEqual(out.assessment.counterparty_evidence[0].share, 0.123456)
+        payload = json.loads(model.messages[0][1].content)
+        cards = {c['company_id']: c for c in payload['counterparties']}
+        self.assertNotIn('raw', cards['P1']['profile'])
+        self.assertIsNone(cards['P2']['profile'])
+        self.assertNotIn('counterparty_profiles', payload)
+
+    def test_company_card_is_pointer_compatible_subset(self):
+        from relevance_agent.graph import company_card
+        from relevance_agent.loaders import load_company_profile
+        from relevance_agent.contracts import resolve_pointer
+        profile = load_company_profile('U_57706')
+        card = company_card(profile)
+        for key in ('raw', 'data_quality', 'summary', 'counterparties', 'news_keywords'):
+            self.assertNotIn(key, card)
+        self.assertNotIn('client_status', card['bank_relationship'])
+        full = profile.model_dump()
+
+        def leaves(node, path=''):
+            if isinstance(node, dict):
+                for k, v in node.items():
+                    yield from leaves(v, f'{path}/{k}')
+            elif isinstance(node, list):
+                for i, v in enumerate(node):
+                    yield from leaves(v, f'{path}/{i}')
+            else:
+                yield path, node
+        for path, value in leaves(card):
+            self.assertEqual(resolve_pointer(full, path), value)
+        self.assertLess(len(json.dumps(card, ensure_ascii=False)), len(json.dumps(full, ensure_ascii=False)) / 2)
 
     def test_out_of_range_rejected(self):
         out = graph(FakeModel([answer(relevance_score=120)] * 2)).invoke({'request': request()})['output']
