@@ -6,6 +6,7 @@ from pydantic import Field, field_validator, model_validator
 from .contracts import (Contract, Text, Score, NewsItem, RunOptions, check_time,
     FeatureEvidence, CounterpartyEvidence, BankReference, ArticleResult,
     CompanyProfile, CounterpartiesResult, ProfileResult, BankMaterial)
+from .scoring import ChannelImpact, Confidence
 
 
 class SingleNewsInput(Contract):
@@ -29,6 +30,10 @@ class ModelAssessment(Contract):
     counterparty_evidence: list[CounterpartyEvidence]
     bank_evidence: list[BankReference]
     limitations: list[Text]
+    # Channel scoring (scoring.py): how the score was computed. Optional for old producers.
+    channels: list[ChannelImpact] = Field(default_factory=list)
+    event_confidence: Confidence | None = None  # certainty of the event; not part of the score
+    scoring_version: str | None = None
 
     @model_validator(mode='after')
     def grounded(self):
