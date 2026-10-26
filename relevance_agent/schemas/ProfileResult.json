@@ -1,0 +1,72 @@
+{
+  "$defs": {
+    "CompanyProfile": {
+      "additionalProperties": true,
+      "properties": {
+        "company_id": {
+          "minLength": 1,
+          "title": "Company Id",
+          "type": "string"
+        }
+      },
+      "required": [
+        "company_id"
+      ],
+      "title": "CompanyProfile",
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "company_id": {
+      "minLength": 1,
+      "title": "Company Id",
+      "type": "string"
+    },
+    "status": {
+      "enum": [
+        "full",
+        "partial",
+        "unavailable"
+      ],
+      "title": "Status",
+      "type": "string"
+    },
+    "profile": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/CompanyProfile"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "sources": {
+      "items": {
+        "minLength": 1,
+        "type": "string"
+      },
+      "title": "Sources",
+      "type": "array"
+    },
+    "limitations": {
+      "items": {
+        "minLength": 1,
+        "type": "string"
+      },
+      "title": "Limitations",
+      "type": "array"
+    }
+  },
+  "required": [
+    "company_id",
+    "status",
+    "profile",
+    "sources",
+    "limitations"
+  ],
+  "title": "ProfileResult",
+  "type": "object",
+  "$schema": "https://json-schema.org/draft/2020-12/schema"
+}
