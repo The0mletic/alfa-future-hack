@@ -1,7 +1,11 @@
 """Загрузка данных кейса в базу.
 
-    python manage.py import_data                 # всё: компании, профили, платежи, связи
-    python manage.py import_data --skip-payments # без 1,4 млн платежей (быстрее)
+    python manage.py import_data                 # облегчённая база (~40 МБ) — её храним в git
+    python manage.py import_data --full          # все 85 тыс. компаний и 1,4 млн платежей (~170 МБ)
+    python manage.py import_data --skip-payments # без платежей
+
+Облегчённая база содержит то, что нужно агентам анализа: компании рабочего набора (выручка от 10 млрд ₽),
+их платежи, контрагентов и компании их групп. Полная не влезает в лимит GitHub на файл (100 МБ).
 
 Перед запуском профили должны быть собраны:
     python scripts/clean_data.py && python scripts/build_profiles.py
@@ -16,7 +20,7 @@ from pathlib import Path
 
 from django.conf import settings
 from django.core.management.base import BaseCommand
-from django.db import transaction
+from django.db import connection, transaction
 
 from companies.models import Company, CompanySensitivity, Payment, PersonLink
 
@@ -55,6 +59,8 @@ class Command(BaseCommand):
 
     def add_arguments(self, parser):
         parser.add_argument("--skip-payments", action="store_true", help="не загружать платежи")
+        parser.add_argument("--full", action="store_true",
+                            help="загрузить все компании и платежи, а не только нужные рабочему набору")
 
     def handle(self, *args, **options):
         started = time.monotonic()
@@ -63,7 +69,31 @@ class Command(BaseCommand):
             self.import_links()
             if not options["skip_payments"]:
                 self.import_payments()
+            if not options["full"]:
+                self.trim_to_working_set()
+        with connection.cursor() as cursor:
+            cursor.execute("VACUUM")  # возвращает место на диске после очистки таблиц
         self.stdout.write(self.style.SUCCESS(f"Готово за {time.monotonic() - started:.0f} с"))
+
+    def trim_to_working_set(self) -> None:
+        """Оставляет платежи компаний рабочего набора, их контрагентов и компании их групп.
+
+        Удаление сырым SQL: через ORM Django собирал бы каскады по десяткам тысяч компаний.
+        """
+        working = f"SELECT company_id FROM {Company._meta.db_table} WHERE in_working_set = 1"
+        keep = f"""{working}
+            UNION SELECT payer_id FROM {Payment._meta.db_table}
+            UNION SELECT beneficiary_id FROM {Payment._meta.db_table}
+            UNION SELECT company_id FROM {Company._meta.db_table}
+                  WHERE group_id IN (SELECT group_id FROM {Company._meta.db_table} WHERE in_working_set = 1)"""
+        with connection.cursor() as cursor:
+            cursor.execute(f"DELETE FROM {Payment._meta.db_table} "
+                           f"WHERE payer_id NOT IN ({working}) AND beneficiary_id NOT IN ({working})")
+            cursor.execute(f"DELETE FROM {Company._meta.db_table} WHERE company_id NOT IN ({keep})")
+            cursor.execute(f"DELETE FROM {PersonLink._meta.db_table} WHERE company_id NOT IN "
+                           f"(SELECT company_id FROM {Company._meta.db_table})")
+        self.stdout.write(f"Облегчённая база: компаний {Company.objects.count()}, платежей {Payment.objects.count()}, "
+                          f"связей с физлицами {PersonLink.objects.count()}")
 
     def import_companies(self) -> None:
         working_ids = {row["SYNTHETIC_U"] for row in read_csv(FILTERED_DIR / "df_Uid_data_hack.csv")}
