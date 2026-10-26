@@ -276,8 +276,11 @@ def make_llm(model: str, timeout: float = 60):
     if not api_key or not model:
         return DemoModel()
     from langchain_openai import ChatOpenAI
+    # Без лимита рассуждающая модель (DeepSeek) иногда пишет 10+ тыс. токенов и не укладывается
+    # в TIME_BUDGET: ответ превращается в FALLBACK, а проверка разбора тратит лимит команды.
     return ChatOpenAI(api_key=api_key, base_url=os.getenv('LLM_BASE_URL') or None,
-                      model=model, temperature=0.2, timeout=max(timeout, 1), max_retries=0)
+                      model=model, temperature=0.2, timeout=max(timeout, 1), max_retries=0,
+                      max_tokens=int(os.getenv('CHAT_MAX_TOKENS') or 3000))
 
 
 # Разные модели для разных шагов, чтобы экономить общий лимит команды:
@@ -378,6 +381,9 @@ def _run_check(news_id: int, original: str, analysis: str, profile: str):
                    f"Аналитика Альфа-Банка:\n{analytics}")
         result = call_llm(MODEL_CHECK, [SystemMessage(content=PROMPT_CHECK), HumanMessage(content=context)],
                           'check', news_id, timeout=90).content
+        if not _parse_json(result):   # пустой ответ (например, лимит ушёл на рассуждения) не кэшируем
+            log('check_failed', news_id=news_id, error='пустой или не-JSON ответ модели', model=MODEL_CHECK)
+            return
         CHECK_CACHE[news_id] = result
         log('check', news_id=news_id, result=result)
     except Exception as e:   # проверка не удалась - чат всё равно работает
@@ -485,7 +491,10 @@ def review(state: State) -> dict:
     except Exception as e:   # не успела - отдаём ответ без самопроверки
         log('review_skipped', news_id=state['news_id'], error=str(e)[:200])
         return {'answer': draft, 'verdict': 'ok'}
-    ok = verdict.get('ok', True)
+    if not isinstance(verdict.get('ok'), bool):   # пустой/битый ответ — это сбой проверки, а не «всё хорошо»
+        log('review_failed', news_id=state['news_id'], error='пустой или не-JSON ответ модели', model=MODEL_CHECK)
+        return {'answer': draft, 'verdict': 'ok'}
+    ok = verdict['ok']
     fixes = state.get('fixes', 0)
     log('review', news_id=state['news_id'], ok=ok, problems=verdict.get('problems', []), attempt=fixes + 1)
 
