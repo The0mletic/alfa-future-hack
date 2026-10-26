@@ -17,3 +17,5 @@ https://www.federalreserve.gov/feeds/press_all.xml
 https://www.ecb.europa.eu/rss/press.html
 http://feeds.bbci.co.uk/news/business/rss.xml
 https://www.theguardian.com/business/economics/rss
+https://www.cbr.ru/rss/eventrss
+https://www.vedomosti.ru/rss/rubric/economics
