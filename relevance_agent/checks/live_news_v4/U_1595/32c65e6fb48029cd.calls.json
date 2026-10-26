@@ -1,0 +1,18 @@
+[
+  {
+    "seconds": 13.32,
+    "finish_reason": "stop",
+    "usage": {
+      "input_tokens": 4141,
+      "output_tokens": 1403,
+      "total_tokens": 5544,
+      "input_token_details": {
+        "cache_read": 0
+      },
+      "output_token_details": {
+        "reasoning": 1079
+      }
+    },
+    "response": "{\"reason\":\"Wildberries подтвердила, что сезон распродаж (11.11, «Чёрная пятница», новогодняя) состоится, ассортимент вырос. Для офлайн-ритейлера одежды это значит усиление конкуренции маркетплейса за тот же праздничный спрос покупателей.\",\"channels\":[{\"channel\":\"market_structure\",\"shock\":\"notable\",\"direction\":\"negative\",\"horizon\":\"now\",\"mechanism\":\"Акции Wildberries охватят основные товарные категории → растёт ценовая конкуренция за покупателя одежды → давление на выручку и маржу розничной сети\",\"counterparty_id\":null,\"counterparty_direction\":null},{\"channel\":\"customer_demand\",\"shock\":\"notable\",\"direction\":\"negative\",\"horizon\":\"now\",\"mechanism\":\"Маркетплейс расширяет скидочные предложения в сезон → праздничный спрос на одежду перетекает в онлайн → слабее трафик и спрос в специализированных магазинах\",\"counterparty_id\":null,\"counterparty_direction\":null}],\"event_confidence\":\"high\",\"limitations\":[\"Нет данных о доле Wildberries на рынке компании и о её собственных продажах через маркетплейсы\",\"Сведения Forbes об атаках на склады и остановке закупок селлеров опираются на неназванных участников рынка\"]}"
+  }
+]

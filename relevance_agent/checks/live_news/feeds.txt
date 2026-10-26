@@ -1,0 +1,4 @@
+https://www.kommersant.ru/rss/section-economics.xml
+https://www.kommersant.ru/rss/section-business.xml
+https://www.cnews.ru/inc/rss/news.xml
+https://www.vedomosti.ru/rss/rubric/economics

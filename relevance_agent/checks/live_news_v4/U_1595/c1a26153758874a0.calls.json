@@ -1,0 +1,18 @@
+[
+  {
+    "seconds": 6.17,
+    "finish_reason": "stop",
+    "usage": {
+      "input_tokens": 3932,
+      "output_tokens": 619,
+      "total_tokens": 4551,
+      "input_token_details": {
+        "cache_read": 0
+      },
+      "output_token_details": {
+        "reasoning": 335
+      }
+    },
+    "response": "{\"reason\":\"Проект федерального бюджета на 2027–2029 гг. задаёт рост расходов при дефиците, что косвенно влияет на потребительский спрос и стоимость заёмных денег для розничного продавца одежды. Прямых мер по отрасли или её контрагентам в новости нет.\",\"channels\":[{\"channel\":\"customer_demand\",\"shock\":\"weak\",\"direction\":\"positive\",\"horizon\":\"months\",\"mechanism\":\"Рост бюджетных расходов → поддержка доходов и потребительского спроса → выручка розничной торговли одеждой\",\"counterparty_id\":null,\"counterparty_direction\":null},{\"channel\":\"cost_of_money\",\"shock\":\"weak\",\"direction\":\"negative\",\"horizon\":\"months\",\"mechanism\":\"Расходы 48,8 трлн против доходов 43,3 трлн → рост госзаимствований → давление на ставки → дороже кредиты и лизинг компании\",\"counterparty_id\":null,\"counterparty_direction\":null}],\"event_confidence\":\"high\",\"limitations\":[\"Разбивка расходов по статьям и её эффект на доходы населения не раскрыты\",\"Связь бюджета с оборотом конкретной розничной сети опосредованная\"]}"
+  }
+]

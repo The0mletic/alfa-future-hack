@@ -1,0 +1,18 @@
+[
+  {
+    "seconds": 7.3,
+    "finish_reason": "stop",
+    "usage": {
+      "input_tokens": 2966,
+      "output_tokens": 677,
+      "total_tokens": 3643,
+      "input_token_details": {
+        "cache_read": 0
+      },
+      "output_token_details": {
+        "reasoning": 321
+      }
+    },
+    "response": "{\"reason\":\"ЦБ сохранил ключевую ставку 14% и повысил траекторию на следующий год — стоимость заёмного финансирования (лизинг) для оптовика топлива остаётся повышенной, а спрос промышленности и строительства на топливо сдерживается.\",\"channels\":[{\"channel\":\"cost_of_money\",\"shock\":\"notable\",\"direction\":\"negative\",\"horizon\":\"months\",\"mechanism\":\"Ставка 14% и более высокая траектория → лизинг и кредиты дороже → расходы на финансирование закупок топлива растут\",\"counterparty_id\":null,\"counterparty_direction\":null},{\"channel\":\"customer_demand\",\"shock\":\"weak\",\"direction\":\"negative\",\"horizon\":\"months\",\"mechanism\":\"Жёсткая ДКП дольше → сдержанные инвестиции и строительная активность → спрос B2B на топливо слабее\",\"counterparty_id\":null,\"counterparty_direction\":null},{\"channel\":\"deposit_yield\",\"shock\":\"weak\",\"direction\":\"positive\",\"horizon\":\"months\",\"mechanism\":\"Высокая ставка → доходность свободных денег на депозитах выше → поддержка процентного дохода\",\"counterparty_id\":null,\"counterparty_direction\":null}],\"event_confidence\":\"high\",\"limitations\":[\"Решение совпало с ожиданиями рынка (25 из 26 экономистов), немедленного изменения условий не произошло\",\"Конкретные сроки возобновления снижения ставки не названы — эффект на горизонте оценки неопределён\"]}"
+  }
+]

@@ -196,6 +196,7 @@
         "shock": {
           "enum": [
             "weak",
+            "moderate",
             "notable",
             "strong"
           ],
@@ -258,6 +259,41 @@
         "counted": {
           "title": "Counted",
           "type": "boolean"
+        },
+        "shock_basis": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Shock Basis"
+        },
+        "basis_verified": {
+          "default": false,
+          "title": "Basis Verified",
+          "type": "boolean"
+        },
+        "model_shock": {
+          "anyOf": [
+            {
+              "enum": [
+                "weak",
+                "moderate",
+                "notable",
+                "strong"
+              ],
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Model Shock"
         },
         "counterparty_id": {
           "anyOf": [

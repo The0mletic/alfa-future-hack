@@ -1,0 +1,21 @@
+[
+  {
+    "seconds": 28.38,
+    "finish_reason": "stop",
+    "usage": {
+      "input_tokens": 3195,
+      "output_tokens": 2108,
+      "total_tokens": 5303,
+      "input_token_details": {
+        "audio": 0,
+        "cache_read": 0,
+        "cache_creation": 0
+      },
+      "output_token_details": {
+        "audio": 0,
+        "reasoning": 2073
+      }
+    },
+    "response": "\n\n{\n  \"reason\": \"Прогнозируемое укрепление рубля снижает стоимость импорта топлива и курсовые риски по ВЭД со странами СНГ, что положительно влияет на маржу оптовой торговли.\",\n  \"channels\": [\n    {\n      \"channel\": \"fx_trade\",\n      \"shock\": \"notable\",\n      \"direction\": \"positive\",\n      \"horizon\": \"months\",\n      \"mechanism\": \"Укрепление рубля снижает курсовые риски по ВЭД со странами СНГ и облегчает обслуживание лизинговых обязательств.\",\n      \"counterparty_id\": null,\n      \"counterparty_direction\": null\n    },\n    {\n      \"channel\": \"input_costs\",\n      \"shock\": \"notable\",\n      \"direction\": \"positive\",\n      \"horizon\": \"months\",\n      \"mechanism\": \"Рост предложения валюты и укрепление рубля снижают закупочные цены на топливо для оптовой торговли.\",\n      \"counterparty_id\": null,\n      \"counterparty_direction\": null\n    }\n  ],\n  \"event_confidence\": \"medium\",\n  \"limitations\": [\n    \"Прогноз курса основан на оценке аналитиков банка, а не на свершившемся изменении.\",\n    \"Влияние на импортные закупки зависит от доли ВЭД в общем объеме компании.\"\n  ]\n}"
+  }
+]

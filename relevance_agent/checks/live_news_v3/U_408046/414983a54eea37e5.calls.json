@@ -1,0 +1,18 @@
+[
+  {
+    "seconds": 8.96,
+    "finish_reason": "stop",
+    "usage": {
+      "input_tokens": 9086,
+      "output_tokens": 831,
+      "total_tokens": 9917,
+      "input_token_details": {
+        "cache_read": 0
+      },
+      "output_token_details": {
+        "reasoning": 603
+      }
+    },
+    "response": "{\"reason\":\"Партнёрство двух IT-вендоров («Ай-Джи-Эй» и «СиСофт») по ИИ-решениям для проектирования и управления капстроительством — для строительной компании это лишь потенциальное улучшение доступных инструментов проектирования, прямого влияния на её деньги сейчас нет.\",\"channels\":[{\"channel\":\"input_costs\",\"shock\":\"weak\",\"direction\":\"positive\",\"horizon\":\"months\",\"mechanism\":\"ИИ-интеграция Power Platform с Model Studio CS и CADLib → доступнее инструменты проектирования и управления стройкой → затраты на проектирование и эффективность строительных процессов\",\"counterparty_id\":null,\"counterparty_direction\":null}],\"event_confidence\":\"high\",\"limitations\":[\"Соглашение о намерениях: конкретных продуктов, цен и сроков внедрения нет\",\"Среди контрагентов компании нет связи с «Ай-Джи-Эй» или «СиСофт»\"]}"
+  }
+]

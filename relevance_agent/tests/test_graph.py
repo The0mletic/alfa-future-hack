@@ -39,7 +39,8 @@ class FakeArticles:
 
 def channel(**changes):
     value = dict(channel='customer_demand', shock='notable', direction='negative', horizon='now',
-                 mechanism='Ставка → спрос на стройку → отрасль клиента')
+                 mechanism='Ставка → спрос на стройку → отрасль клиента',
+                 shock_basis='Ключевая ставка и кредитование')
     value.update(changes)
     return value
 
@@ -72,7 +73,7 @@ class GraphTests(unittest.TestCase):
         self.assertEqual(out.status, 'scored')
         # No sensitivities in the fake profile: baseline 0.4 x notable 0.5 x now 1.0.
         self.assertEqual(out.assessment.relevance_score, 20)
-        self.assertEqual(out.assessment.scoring_version, 'channels-v3')
+        self.assertEqual(out.assessment.scoring_version, 'channels-v4')
         self.assertEqual(out.assessment.channels[0].exposure_kind, 'calculated')
         self.assertEqual(out.model_calls, 1)
         self.assertEqual(out.bank_materials, [])
@@ -176,6 +177,38 @@ class GraphTests(unittest.TestCase):
         self.assertEqual(out.assessment.channels[0].channel, 'cost_of_money')
         self.assertEqual(out.model_calls, 1)
 
+    def test_shock_without_quote_capped_to_weak(self):
+        reply = answer(channels=[channel(shock_basis=None), channel(channel='regulation', shock_basis='ставка выросла до 30%')])
+        out = graph(FakeModel([reply])).invoke({'request': request()})['output']
+        self.assertEqual(out.model_calls, 1)
+        channels = {c.channel: c for c in out.assessment.channels}
+        for c in channels.values():
+            self.assertEqual((c.shock, c.model_shock, c.basis_verified), ('weak', 'notable', False))
+        self.assertTrue(any('цитата-основание не найдена в тексте новости (2)' in w for w in out.warnings))
+
+    def test_verified_quote_keeps_shock_and_moderate_level(self):
+        reply = answer(channels=[channel(shock='moderate', shock_basis='«ключевая ставка» и  кредитование.')])
+        out = graph(FakeModel([reply])).invoke({'request': request()})['output']
+        [c] = out.assessment.channels
+        self.assertEqual((c.shock, c.model_shock, c.basis_verified), ('moderate', None, True))
+        # baseline 0.4 x moderate 0.3 x now 1.0 x high 1.0
+        self.assertEqual(out.assessment.relevance_score, 12)
+
+    def test_weak_shock_needs_no_quote(self):
+        out = graph(FakeModel([answer(channels=[channel(shock='weak', shock_basis=None)])])).invoke({'request': request()})['output']
+        [c] = out.assessment.channels
+        self.assertEqual((c.shock, c.model_shock), ('weak', None))
+        self.assertFalse(any('цитата-основание' in w for w in out.warnings))
+
+    def test_basis_in_text_tolerates_small_quote_changes(self):
+        from relevance_agent.scoring import basis_in_text
+        text = 'Межрайонная ИФНС потребовала признать банкротом ООО «Трасса ГСМ». Выручка упала на 28,5%, до 76,6 млрд руб.'
+        self.assertTrue(basis_in_text('потребовала признать банкротом ООО "Трасса ГСМ"', text))
+        self.assertTrue(basis_in_text('Выручка упала на 28,5% до 76,6 млрд руб', text))
+        self.assertFalse(basis_in_text('Минэнерго ввело внешнее управление на АЗС', text))
+        self.assertFalse(basis_in_text('ИФНС', text))
+        self.assertFalse(basis_in_text(None, text))
+
     def test_markdown_wrapped_json_accepted(self):
         out = graph(FakeModel(['```json\n' + answer() + '\n```'])).invoke({'request': request()})['output']
         self.assertEqual(out.status, 'scored')
@@ -209,10 +242,34 @@ class GraphTests(unittest.TestCase):
         self.assertEqual(out.assessment.relevance_score, 33)
         self.assertTrue(any('без подтверждённой связи или профиля: 2' in w for w in out.warnings))
         payload = json.loads(model.messages[0][1].content)
-        cards = {c['company_id']: c for c in payload['counterparties']}
-        self.assertNotIn('raw', cards['P1']['profile'])
-        self.assertIsNone(cards['P2']['profile'])
+        summary = payload['counterparties']
+        self.assertEqual(summary['total'], 2)
+        self.assertEqual(summary['without_profile'], dict(count=1, outgoing_share=0.0, incoming_share=0.5))
+        [group] = summary['by_industry']
+        self.assertEqual(group['okved'], '46.71')
+        self.assertEqual(group['top'], [dict(id='P1', direction='outgoing', share=0.5)])
+        self.assertNotIn('SECRET_RAW', model.messages[0][1].content)
         self.assertNotIn('counterparty_profiles', payload)
+
+    def test_counterparties_grouped_by_industry_with_top_members(self):
+        from relevance_agent.contracts import CounterpartyLink, ProfileResult
+        from relevance_agent.graph import counterparty_cards
+        links, profiles = [], []
+        for i in range(5):
+            links.append(CounterpartyLink(company_id=f'A{i}', direction='outgoing', amount_rub=1,
+                                          payments_count=1, share=0.1 * (i + 1) / 1.5))
+            profiles.append(ProfileResult(company_id=f'A{i}', status='partial', sources=['t'], limitations=['x'],
+                profile=CompanyProfile(company_id=f'A{i}', industry={'okved_code': '41.20', 'okved_name': 'Стройка'},
+                                       group={'group_id': 'G1' if i == 4 else 'G2'})))
+        links.append(CounterpartyLink(company_id='N1', direction='incoming', amount_rub=1, payments_count=1, share=1.0))
+        result = CounterpartiesResult(company_id='C1', links=links, complete=True, limitations=[])
+        summary = counterparty_cards(result, profiles, client_group='G1')
+        [group] = summary['by_industry']
+        self.assertEqual(group['count'], 5)
+        self.assertEqual(group['outgoing_share'], 1.0)
+        self.assertEqual([m['id'] for m in group['top']], ['A4', 'A3', 'A2'])
+        self.assertTrue(group['top'][0]['same_group'])
+        self.assertEqual(summary['without_profile']['count'], 1)
 
     def test_real_profile_exposure_from_sensitivities(self):
         from relevance_agent.loaders import load_company_profile

@@ -1,0 +1,888 @@
+{
+  "schema_version": "1.0-single",
+  "request_id": "59cbb643-6fbc-4181-a1a9-9f05ed80fc2b",
+  "company_id": "U_57706",
+  "news": {
+    "id": "c1a26153758874a0",
+    "title": "ЕР поддержит проект бюджета на 2027–2029 годы",
+    "summary": "",
+    "full_text": "",
+    "link": "https://www.vedomosti.ru/economics/news/2026/10/26/1240113-er-podderzhit",
+    "published": "2026-10-26T09:27:19+00:00",
+    "source": "Ведомости",
+    "author": "Ксения Наумчик",
+    "categories": [
+      "Экономика / Макроэкономика и бюджет"
+    ],
+    "language": ""
+  },
+  "as_of": "2026-10-26T12:44:43.474785+00:00",
+  "status": "scored",
+  "assessment": {
+    "relevance_score": 31,
+    "reason": "Рост расходов федерального бюджета до 48,8–53,9 трлн ₽ и дефицит усиливают бюджетное финансирование строительства/инфраструктуры — драйвер спроса на топливо — и госзаимствования, влияющие на стоимость лизинга. Прямых норм или статей по топливному рынку в тексте нет, эффект косвенный.",
+    "company_evidence": [
+      {
+        "field_path": "/sensitivities/2",
+        "kind": "heuristic",
+        "explanation": "Спрос клиентов (отрасли-покупатели): Промышленный спрос и инвестиции (высокая)"
+      },
+      {
+        "field_path": "/sensitivities/3",
+        "kind": "heuristic",
+        "explanation": "Стоимость денег (ставка, кредит, лизинг, депозиты): Ключевая ставка и стоимость денег (высокая)"
+      }
+    ],
+    "counterparty_evidence": [],
+    "bank_evidence": [],
+    "limitations": [
+      "В тексте нет разбивки расходов и налоговых норм — эффект оценён по общим суммам.",
+      "Связь бюджетных расходов с контрактами и отраслью компании напрямую не подтверждена."
+    ],
+    "channels": [
+      {
+        "channel": "customer_demand",
+        "shock": "weak",
+        "direction": "positive",
+        "horizon": "months",
+        "mechanism": "Рост расходов бюджета → строительство и инфраструктура → спрос на топливо у оптовика (industrial_demand)",
+        "exposure": 1.0,
+        "exposure_basis": [
+          "/sensitivities/2"
+        ],
+        "exposure_kind": "heuristic",
+        "impact": 0.212,
+        "counted": true,
+        "counterparty_id": null,
+        "counterparty_direction": null
+      },
+      {
+        "channel": "cost_of_money",
+        "shock": "weak",
+        "direction": "negative",
+        "horizon": "months",
+        "mechanism": "Расходы выше доходов → рост госзаимствований → ставка → удорожание лизинга компании",
+        "exposure": 1.0,
+        "exposure_basis": [
+          "/sensitivities/3"
+        ],
+        "exposure_kind": "heuristic",
+        "impact": 0.212,
+        "counted": true,
+        "counterparty_id": null,
+        "counterparty_direction": null
+      }
+    ],
+    "event_confidence": "high",
+    "scoring_version": "channels-v2"
+  },
+  "article": {
+    "news_id": "c1a26153758874a0",
+    "status": "ok",
+    "requested_url": "https://www.vedomosti.ru/economics/news/2026/10/26/1240113-er-podderzhit",
+    "text_source": "agent_fetch",
+    "final_url": "https://www.vedomosti.ru/economics/news/2026/10/26/1240113-er-podderzhit",
+    "text": "30 сентября правительство внесло на рассмотрение в Госдуму проект закона о федеральном бюджете на 2027 г. и плановые 2028–2029 гг. В будущем году доходы прогнозируются на уровне 43,3 трлн руб. В 2028 г. они составят 45,8 трлн, в 2029 г. – 48,6 трлн руб. Расходы, согласно проекту, в 2027 г. достигнут 48,8 трлн руб. На 2028 и 2029 гг. они определены на уровне 50,9 трлн и 53,9 трлн руб. соответственно.",
+    "truncated": false,
+    "error": null
+  },
+  "company_profile": {
+    "company_id": "U_57706",
+    "summary": "Оптовая торговля: торговля оптовая твердым, жидким и газообразным топливом и подобными продуктами. Выручка 105,6 млрд ₽, 16–100 сотрудников. Москва (Центральный федеральный округ). Действующий клиент Альфа-Банка. Продукты банка: расчётно-кассовое обслуживание (РКО), банковские гарантии, лизинг, депозиты. ВЭД: Киргизия, Казахстан. Поставщиков 3, покупателей 4; на топ-5 поставщиков приходится 100% закупок. Входит в группу из 369 компаний (крупный холдинг). Главные чувствительности: цены на сырьё и товары, курсы валют, промышленный спрос и инвестиции, ключевая ставка и стоимость денег.",
+    "scale": {
+      "revenue_rub": 105596467908.0,
+      "revenue_label": "105,6 млрд ₽",
+      "revenue_band": "более 100 млрд ₽",
+      "revenue_rank_in_dataset": "1 из 250 по выручке",
+      "is_target_audience": true,
+      "target_audience_note": "крупный бизнес по определению кейса (выручка свыше 15 млрд ₽)",
+      "employees_label": "16–100 сотрудников",
+      "employees_raw": "16-100",
+      "is_large_employer": false,
+      "revenue_per_employee_min_label": "1,1 млрд ₽",
+      "staff_anomaly": "Высокая выручка при небольшом штате (до 100 человек): вероятно, торговая модель с низкой долей собственного производства."
+    },
+    "industry": {
+      "okved_code": "46.71",
+      "okved_name": "Торговля оптовая твердым, жидким и газообразным топливом и подобными продуктами",
+      "okved_section": "46",
+      "sector": "Оптовая торговля",
+      "business_model": "оптовая торговля (B2B)",
+      "is_capital_intensive": false,
+      "commodity_exposure": [
+        "нефтепродукты (топливо)"
+      ],
+      "demand_drivers": [
+        "промышленный спрос (B2B)",
+        "строительная активность",
+        "потребление топлива транспортом и промышленностью"
+      ],
+      "regulation": [
+        "демпфер, биржевые цены и экспортные ограничения на топливо"
+      ],
+      "note": "ОКВЭД отражает только основной вид деятельности; реальный бизнес может быть шире."
+    },
+    "legal": {
+      "ownership": "частная российская",
+      "ownership_raw": "ЧАСТНАЯ СОБСТВЕННОСТЬ",
+      "has_foreign_capital": false,
+      "has_state_capital": false,
+      "age_label": "8–15 лет",
+      "age_meaning": "зрелая компания",
+      "development_stage": "Оптимизация",
+      "development_stage_meaning": "зрелый бизнес, фокус на эффективности и издержках",
+      "development_stage_note": "внутренняя метка банка, трактовка предположительная",
+      "key_owner_flag_raw": 1.0,
+      "key_owner_flag_note": "NEGATIVEMARK: смысл не подтверждён организаторами, не использовать в выводах"
+    },
+    "geography": {
+      "city": "г. Москва",
+      "region": "Москва",
+      "federal_district": "Центральный федеральный округ",
+      "is_capital": true,
+      "note": "регион регистрации может не совпадать с регионом реальной деятельности"
+    },
+    "foreign_trade": {
+      "is_international": true,
+      "countries": [
+        "Киргизия",
+        "Казахстан"
+      ],
+      "countries_raw": "КИРГИЗИЯ, КАЗАХСТАН",
+      "countries_count": 2,
+      "country_groups": [
+        "СНГ и ближнее зарубежье"
+      ],
+      "likely_currencies": [
+        {
+          "code": "KGS",
+          "name": "KGS"
+        },
+        {
+          "code": "KZT",
+          "name": "казахстанский тенге"
+        }
+      ],
+      "trades_with_china": false,
+      "unfriendly_countries": [],
+      "transit_hub_countries": [
+        "Киргизия",
+        "Казахстан"
+      ],
+      "unknown_countries": [],
+      "note": "Страны из таможенной базы ФТС; направление (импорт или экспорт) и валюта расчётов в данных не указаны — валюты выведены по странам предположительно."
+    },
+    "bank_relationship": {
+      "client_status_raw": "CLIENT",
+      "client_status": "действующий клиент Альфа-Банка",
+      "is_active_client": true,
+      "products": {
+        "rko": {
+          "has": true,
+          "name": "Расчётно-кассовое обслуживание (РКО)",
+          "meaning": "у компании открыт расчётный счёт в Альфа-Банке"
+        },
+        "guarantees": {
+          "has": true,
+          "name": "Банковские гарантии",
+          "meaning": "банк ручается за компанию перед контрагентами; обычно нужно для тендеров и госконтрактов"
+        },
+        "loans": {
+          "has": false,
+          "name": "Кредиты",
+          "meaning": "у компании есть заёмные деньги, расходы на обслуживание долга зависят от ставок"
+        },
+        "leasing": {
+          "has": true,
+          "name": "Лизинг",
+          "meaning": "техника или оборудование в лизинге; платежи зависят от ставок"
+        },
+        "deposits": {
+          "has": true,
+          "name": "Депозиты",
+          "meaning": "у компании есть свободные деньги на вкладах; доходность зависит от ставок"
+        },
+        "payroll": {
+          "has": false,
+          "name": "Зарплатный проект",
+          "meaning": "банк выплачивает зарплаты сотрудникам компании"
+        },
+        "factoring": {
+          "has": false,
+          "name": "Факторинг",
+          "meaning": "банк выкупает долги покупателей, чтобы компания быстрее получала деньги"
+        }
+      },
+      "active_products": [
+        "Расчётно-кассовое обслуживание (РКО)",
+        "Банковские гарантии",
+        "Лизинг",
+        "Депозиты"
+      ],
+      "missing_products": [
+        "Кредиты",
+        "Зарплатный проект",
+        "Факторинг"
+      ],
+      "products_count": 4,
+      "uses_debt_financing": true,
+      "debt_instruments": [
+        "Лизинг"
+      ],
+      "has_free_cash": true,
+      "likely_participates_in_tenders": true,
+      "cross_sell_opportunities": [
+        {
+          "product": "ВЭД-сервисы: валютный контроль, конверсия, хеджирование",
+          "reason": "страны ВЭД: Киргизия, Казахстан; использование этих услуг в данных не видно"
+        }
+      ],
+      "note": "Видны только продукты Альфа-Банка; продукты других банков в данных отсутствуют."
+    },
+    "group": {
+      "group_id": "group_134402_sb",
+      "group_size": 369,
+      "is_holding_member": true,
+      "group_size_label": "входит в группу из 369 компаний (крупный холдинг)",
+      "group_total_revenue_label": "302,7 млрд ₽",
+      "group_top_sectors": [
+        "Недвижимость (79)",
+        "Профессиональные и консалтинговые услуги (70)",
+        "Строительство (52)"
+      ],
+      "group_members_in_working_set": [
+        "U_4909",
+        "U_122823",
+        "U_178740",
+        "U_191099",
+        "U_201985"
+      ]
+    },
+    "counterparties": {
+      "has_payment_data": true,
+      "suppliers_count": 3,
+      "suppliers_volume_rub": 644687000.0,
+      "suppliers_volume_label": "644,7 млн ₽",
+      "suppliers_payments_count": 7,
+      "top1_suppliers_share": 0.671,
+      "top5_suppliers_share": 1.0,
+      "suppliers_concentration": "очень высокая",
+      "intra_group_suppliers_share": 0.0,
+      "top_suppliers": [
+        {
+          "company_id": "U_242507",
+          "amount_label": "432,3 млн ₽",
+          "payments_count": 2,
+          "share": 0.671,
+          "share_label": "67%",
+          "in_dataset": false,
+          "in_working_set": false,
+          "sector": "нет данных (компании нет в датасете)"
+        },
+        {
+          "company_id": "U_57323",
+          "amount_label": "141,6 млн ₽",
+          "payments_count": 4,
+          "share": 0.22,
+          "share_label": "22%",
+          "in_dataset": false,
+          "in_working_set": false,
+          "sector": "нет данных (компании нет в датасете)"
+        },
+        {
+          "company_id": "U_237002",
+          "amount_label": "70,8 млн ₽",
+          "payments_count": 1,
+          "share": 0.11,
+          "share_label": "11%",
+          "in_dataset": true,
+          "in_working_set": false,
+          "sector": "Оптовая торговля",
+          "okved_name": "Торговля оптовая твердым, жидким и газообразным топливом и подобными продуктами",
+          "region": "Москва",
+          "revenue_label": "18,6 млн ₽",
+          "same_group": false
+        }
+      ],
+      "suppliers_sectors": [
+        {
+          "sector": "нет данных",
+          "share": 0.89,
+          "share_label": "89%"
+        },
+        {
+          "sector": "Оптовая торговля",
+          "share": 0.11,
+          "share_label": "11%"
+        }
+      ],
+      "customers_count": 4,
+      "customers_volume_rub": 94967000.0,
+      "customers_volume_label": "95,0 млн ₽",
+      "customers_payments_count": 10,
+      "top1_customers_share": 0.746,
+      "top5_customers_share": 1.0,
+      "customers_concentration": "очень высокая",
+      "intra_group_customers_share": 0.006,
+      "top_customers": [
+        {
+          "company_id": "U_184433",
+          "amount_label": "70,8 млн ₽",
+          "payments_count": 2,
+          "share": 0.746,
+          "share_label": "75%",
+          "in_dataset": false,
+          "in_working_set": false,
+          "sector": "нет данных (компании нет в датасете)"
+        },
+        {
+          "company_id": "U_242507",
+          "amount_label": "14,8 млн ₽",
+          "payments_count": 3,
+          "share": 0.156,
+          "share_label": "16%",
+          "in_dataset": false,
+          "in_working_set": false,
+          "sector": "нет данных (компании нет в датасете)"
+        },
+        {
+          "company_id": "U_57323",
+          "amount_label": "8,7 млн ₽",
+          "payments_count": 4,
+          "share": 0.092,
+          "share_label": "9%",
+          "in_dataset": false,
+          "in_working_set": false,
+          "sector": "нет данных (компании нет в датасете)"
+        },
+        {
+          "company_id": "U_387887",
+          "amount_label": "590 тыс. ₽",
+          "payments_count": 1,
+          "share": 0.006,
+          "share_label": "1%",
+          "in_dataset": true,
+          "in_working_set": false,
+          "sector": "Профессиональные и консалтинговые услуги",
+          "okved_name": "Консультирование по вопросам коммерческой деятельности и управления",
+          "region": "Москва",
+          "revenue_label": "224 тыс. ₽",
+          "same_group": true
+        }
+      ],
+      "customers_sectors": [
+        {
+          "sector": "нет данных",
+          "share": 0.994,
+          "share_label": "99%"
+        }
+      ],
+      "incoming_rub": 94967000.0,
+      "net_flow_label": "исходящих платежей больше на 549,7 млн ₽",
+      "note": "Платежи агрегированы за период датасета (период не указан). Поставщики — кому компания платит, покупатели — кто платит компании. Видны только платежи, прошедшие через банк."
+    },
+    "related_individuals": {
+      "linked_individuals_count": 0,
+      "companies_linked_via_individuals": [],
+      "note": "Связи с физлицами есть лишь у малой части компаний; отсутствие данных не означает отсутствия связей."
+    },
+    "sensitivities": [
+      {
+        "code": "commodity",
+        "label": "Цены на сырьё и товары",
+        "strength": "высокая",
+        "reasons": [
+          "отрасль зависит от цен на: нефтепродукты (топливо)"
+        ],
+        "source_fields": [
+          "MAINOKVED_CODE"
+        ],
+        "news_keywords": [
+          "цены: нефтепродукты (топливо)"
+        ]
+      },
+      {
+        "code": "fx",
+        "label": "Курсы валют",
+        "strength": "высокая",
+        "reasons": [
+          "ведёт ВЭД со странами: Киргизия, Казахстан"
+        ],
+        "source_fields": [
+          "FTS_FLAG",
+          "FTS_COUNTRY_NAME"
+        ],
+        "news_keywords": [
+          "курс рубля",
+          "валютный рынок",
+          "курс: KGS",
+          "курс: казахстанский тенге"
+        ]
+      },
+      {
+        "code": "industrial_demand",
+        "label": "Промышленный спрос и инвестиции",
+        "strength": "высокая",
+        "reasons": [
+          "основной вид деятельности: Торговля оптовая твердым, жидким и газообразным топливом и подобными продуктами"
+        ],
+        "source_fields": [
+          "MAINOKVED_CODE"
+        ],
+        "news_keywords": [
+          "промышленное производство",
+          "инвестиции в основной капитал",
+          "деловая активность",
+          "промышленный спрос (B2B)",
+          "строительная активность",
+          "потребление топлива транспортом и промышленностью"
+        ]
+      },
+      {
+        "code": "key_rate",
+        "label": "Ключевая ставка и стоимость денег",
+        "strength": "высокая",
+        "reasons": [
+          "есть заёмное финансирование: лизинг"
+        ],
+        "source_fields": [
+          "CL_PRODUCT_LOA_MARK",
+          "CL_PRODUCT_LEA_MARK"
+        ],
+        "news_keywords": [
+          "ключевая ставка",
+          "Банк России",
+          "ставки по кредитам",
+          "денежно-кредитная политика"
+        ]
+      },
+      {
+        "code": "deposit_yield",
+        "label": "Доходность свободных денег",
+        "strength": "средняя",
+        "reasons": [
+          "есть депозиты в банке"
+        ],
+        "source_fields": [
+          "CL_PRODUCT_DEP_MARK"
+        ],
+        "news_keywords": [
+          "ключевая ставка",
+          "ставки по депозитам",
+          "доходность облигаций"
+        ]
+      },
+      {
+        "code": "gov_contracts",
+        "label": "Госзаказ и бюджетные расходы",
+        "strength": "средняя",
+        "reasons": [
+          "есть банковские гарантии: вероятно участие в тендерах"
+        ],
+        "source_fields": [
+          "CL_PRODUCT_GAR_MARK"
+        ],
+        "news_keywords": [
+          "госзакупки",
+          "бюджет",
+          "инфраструктурные проекты",
+          "нацпроекты"
+        ]
+      },
+      {
+        "code": "holding",
+        "label": "Решения на уровне холдинга",
+        "strength": "средняя",
+        "reasons": [
+          "входит в группу из 369 компаний (крупный холдинг)"
+        ],
+        "source_fields": [
+          "GROUP_ID"
+        ],
+        "news_keywords": [
+          "холдинг",
+          "сделки M&A",
+          "реструктуризация группы"
+        ]
+      },
+      {
+        "code": "regulation",
+        "label": "Отраслевое регулирование",
+        "strength": "средняя",
+        "reasons": [
+          "демпфер, биржевые цены и экспортные ограничения на топливо"
+        ],
+        "source_fields": [
+          "MAINOKVED_CODE"
+        ],
+        "news_keywords": [
+          "демпфер, биржевые цены и экспортные ограничения на топливо"
+        ]
+      },
+      {
+        "code": "sanctions",
+        "label": "Санкции и трансграничные платежи",
+        "strength": "средняя",
+        "reasons": [
+          "торговля через страны-хабы для импорта и платежей: Киргизия, Казахстан"
+        ],
+        "source_fields": [
+          "FTS_COUNTRY_NAME"
+        ],
+        "news_keywords": [
+          "санкции",
+          "вторичные санкции",
+          "платежи за рубеж",
+          "параллельный импорт"
+        ]
+      }
+    ],
+    "news_keywords": [
+      "цены: нефтепродукты (топливо)",
+      "курс рубля",
+      "валютный рынок",
+      "курс: KGS",
+      "курс: казахстанский тенге",
+      "промышленное производство",
+      "инвестиции в основной капитал",
+      "деловая активность",
+      "промышленный спрос (B2B)",
+      "строительная активность",
+      "потребление топлива транспортом и промышленностью",
+      "ключевая ставка",
+      "Банк России",
+      "ставки по кредитам",
+      "денежно-кредитная политика",
+      "ставки по депозитам",
+      "доходность облигаций",
+      "госзакупки",
+      "бюджет",
+      "инфраструктурные проекты",
+      "нацпроекты",
+      "холдинг",
+      "сделки M&A",
+      "реструктуризация группы",
+      "демпфер, биржевые цены и экспортные ограничения на топливо",
+      "санкции",
+      "вторичные санкции",
+      "платежи за рубеж",
+      "параллельный импорт"
+    ],
+    "data_quality": {
+      "missing_fields": [],
+      "ignored_fields": {
+        "AMOUNT_WORKERS_SPARK_GRADATION": "пусто почти у всех компаний",
+        "ORG_TYPE": "у всех компаний одно значение (коммерческая организация)",
+        "NEGATIVEMARK": "смысл не подтверждён"
+      },
+      "notes": [
+        "нет данных о связанных физлицах"
+      ]
+    },
+    "raw": {
+      "SYNTHETIC_U": "U_57706",
+      "ORG_TYPE": "КОММ_ОРГ",
+      "OKFS_NAME": "ЧАСТНАЯ СОБСТВЕННОСТЬ",
+      "COMPANY_AGE_YEARS_GRADATION": "8-15",
+      "ECO_MARK_LABEL": "Оптимизация",
+      "MAINOKVED_CODE": "46.71",
+      "MAINOKVED_NAME": "Торговля оптовая твердым, жидким и газообразным топливом и подобными продуктами",
+      "NEGATIVEMARK": 1.0,
+      "AMOUNT_WORKERS_FNS_GRADATION": "16-100",
+      "AMOUNT_WORKERS_SPARK_GRADATION": null,
+      "CL_TYPE": "CLIENT",
+      "CL_PRODUCT_RKO_MARK": 1.0,
+      "CL_PRODUCT_GAR_MARK": 1.0,
+      "CL_PRODUCT_LOA_MARK": 0.0,
+      "CL_PRODUCT_LEA_MARK": 1.0,
+      "CL_PRODUCT_DEP_MARK": 1.0,
+      "CL_PRODUCT_ZPP_MARK": 0.0,
+      "FTS_FLAG": 1.0,
+      "FTS_COUNTRY_NAME": "КИРГИЗИЯ, КАЗАХСТАН",
+      "FACTORING_MARK": 0.0,
+      "REVENUE_COMPANY": 105596467908.0,
+      "GROUP_ID": "group_134402_sb",
+      "CITY": "г. Москва",
+      "REGION": "Москва"
+    }
+  },
+  "counterparties": {
+    "company_id": "U_57706",
+    "links": [
+      {
+        "company_id": "U_184433",
+        "direction": "incoming",
+        "amount_rub": 70822000.0,
+        "payments_count": 2,
+        "share": 0.7457537881579918,
+        "source": "/Users/working_account/PycharmProjects/alfa-future-hack/applications/csv/df_Uid_payment_hack.csv"
+      },
+      {
+        "company_id": "U_242507",
+        "direction": "incoming",
+        "amount_rub": 14823000.0,
+        "payments_count": 3,
+        "share": 0.15608579822464647,
+        "source": "/Users/working_account/PycharmProjects/alfa-future-hack/applications/csv/df_Uid_payment_hack.csv"
+      },
+      {
+        "company_id": "U_57323",
+        "direction": "incoming",
+        "amount_rub": 8732000.0,
+        "payments_count": 4,
+        "share": 0.09194772921119967,
+        "source": "/Users/working_account/PycharmProjects/alfa-future-hack/applications/csv/df_Uid_payment_hack.csv"
+      },
+      {
+        "company_id": "U_387887",
+        "direction": "incoming",
+        "amount_rub": 590000.0,
+        "payments_count": 1,
+        "share": 0.006212684406162141,
+        "source": "/Users/working_account/PycharmProjects/alfa-future-hack/applications/csv/df_Uid_payment_hack.csv"
+      },
+      {
+        "company_id": "U_242507",
+        "direction": "outgoing",
+        "amount_rub": 432282000.0,
+        "payments_count": 2,
+        "share": 0.670530040159023,
+        "source": "/Users/working_account/PycharmProjects/alfa-future-hack/applications/csv/df_Uid_payment_hack.csv"
+      },
+      {
+        "company_id": "U_57323",
+        "direction": "outgoing",
+        "amount_rub": 141562000.0,
+        "payments_count": 4,
+        "share": 0.21958252609405804,
+        "source": "/Users/working_account/PycharmProjects/alfa-future-hack/applications/csv/df_Uid_payment_hack.csv"
+      },
+      {
+        "company_id": "U_237002",
+        "direction": "outgoing",
+        "amount_rub": 70843000.0,
+        "payments_count": 1,
+        "share": 0.10988743374691905,
+        "source": "/Users/working_account/PycharmProjects/alfa-future-hack/applications/csv/df_Uid_payment_hack.csv"
+      }
+    ],
+    "complete": true,
+    "limitations": [
+      "Видны только платежи предоставленного набора; период не указан.",
+      "Направление платежа не доказывает роль поставщика или покупателя.",
+      "Доли рассчитаны отдельно по входящим и исходящим суммам доступных корректных записей."
+    ]
+  },
+  "counterparty_profiles": [
+    {
+      "company_id": "U_184433",
+      "status": "unavailable",
+      "profile": null,
+      "sources": [
+        "/Users/working_account/PycharmProjects/alfa-future-hack/applications/filtered_data/company_profiles.jsonl",
+        "/Users/working_account/PycharmProjects/alfa-future-hack/applications/csv/df_Uid_data_hack.csv"
+      ],
+      "limitations": [
+        "В таблицах профилей и компаний нет записи; платёжная связь при этом сохраняется."
+      ]
+    },
+    {
+      "company_id": "U_237002",
+      "status": "partial",
+      "profile": {
+        "company_id": "U_237002",
+        "industry": {
+          "okved_code": "46.71",
+          "okved_name": "Торговля оптовая твердым, жидким и газообразным топливом и подобными продуктами"
+        },
+        "scale": {
+          "revenue_rub": 18646766.0,
+          "employees_raw": "Менее 15"
+        },
+        "geography": {
+          "city": "г. Москва",
+          "region": "Москва"
+        },
+        "foreign_trade": {
+          "countries_raw": null,
+          "fts_flag_raw": "0.0"
+        },
+        "group": {
+          "group_id": "group_97197_sb"
+        },
+        "raw": {
+          "SYNTHETIC_U": "U_237002",
+          "ORG_TYPE": "КОММ_ОРГ",
+          "OKFS_NAME": "ЧАСТНАЯ СОБСТВЕННОСТЬ",
+          "COMPANY_AGE_YEARS_GRADATION": "0-3",
+          "ECO_MARK_LABEL": null,
+          "MAINOKVED_CODE": "46.71",
+          "MAINOKVED_NAME": "Торговля оптовая твердым, жидким и газообразным топливом и подобными продуктами",
+          "NEGATIVEMARK": "0.0",
+          "AMOUNT_WORKERS_FNS_GRADATION": "Менее 15",
+          "AMOUNT_WORKERS_SPARK_GRADATION": null,
+          "CL_TYPE": "CLOSE_CLIENT",
+          "CL_PRODUCT_RKO_MARK": "0.0",
+          "CL_PRODUCT_GAR_MARK": "0.0",
+          "CL_PRODUCT_LOA_MARK": "0.0",
+          "CL_PRODUCT_LEA_MARK": "0.0",
+          "CL_PRODUCT_DEP_MARK": "0.0",
+          "CL_PRODUCT_ZPP_MARK": "0.0",
+          "FTS_FLAG": "0.0",
+          "FTS_COUNTRY_NAME": null,
+          "FACTORING_MARK": "0.0",
+          "REVENUE_COMPANY": "18646766.0",
+          "GROUP_ID": "group_97197_sb",
+          "CITY": "г. Москва",
+          "REGION": "Москва"
+        },
+        "data_quality": {
+          "notes": [
+            "Сокращённая карточка из CSV: связи и чувствительности контрагента не рассчитывались.",
+            "Регион регистрации не обязательно совпадает с регионом деятельности.",
+            "ОКВЭД отражает основной вид деятельности; страны ФТС не определяют валюты и направление торговли."
+          ],
+          "missing_fields": [
+            "ECO_MARK_LABEL",
+            "AMOUNT_WORKERS_SPARK_GRADATION",
+            "FTS_COUNTRY_NAME"
+          ]
+        }
+      },
+      "sources": [
+        "/Users/working_account/PycharmProjects/alfa-future-hack/applications/csv/df_Uid_data_hack.csv"
+      ],
+      "limitations": [
+        "Сокращённая карточка из CSV: связи и чувствительности контрагента не рассчитывались.",
+        "Регион регистрации не обязательно совпадает с регионом деятельности.",
+        "ОКВЭД отражает основной вид деятельности; страны ФТС не определяют валюты и направление торговли."
+      ]
+    },
+    {
+      "company_id": "U_242507",
+      "status": "unavailable",
+      "profile": null,
+      "sources": [
+        "/Users/working_account/PycharmProjects/alfa-future-hack/applications/filtered_data/company_profiles.jsonl",
+        "/Users/working_account/PycharmProjects/alfa-future-hack/applications/csv/df_Uid_data_hack.csv"
+      ],
+      "limitations": [
+        "В таблицах профилей и компаний нет записи; платёжная связь при этом сохраняется."
+      ]
+    },
+    {
+      "company_id": "U_387887",
+      "status": "partial",
+      "profile": {
+        "company_id": "U_387887",
+        "industry": {
+          "okved_code": "70.22",
+          "okved_name": "Консультирование по вопросам коммерческой деятельности и управления"
+        },
+        "scale": {
+          "revenue_rub": 223579.0,
+          "employees_raw": "Менее 15"
+        },
+        "geography": {
+          "city": "г. Москва",
+          "region": "Москва"
+        },
+        "foreign_trade": {
+          "countries_raw": null,
+          "fts_flag_raw": "0.0"
+        },
+        "group": {
+          "group_id": "group_134402_sb"
+        },
+        "raw": {
+          "SYNTHETIC_U": "U_387887",
+          "ORG_TYPE": "КОММ_ОРГ",
+          "OKFS_NAME": "ЧАСТНАЯ СОБСТВЕННОСТЬ",
+          "COMPANY_AGE_YEARS_GRADATION": "0-3",
+          "ECO_MARK_LABEL": "Бизнес в новой реальности",
+          "MAINOKVED_CODE": "70.22",
+          "MAINOKVED_NAME": "Консультирование по вопросам коммерческой деятельности и управления",
+          "NEGATIVEMARK": "0.0",
+          "AMOUNT_WORKERS_FNS_GRADATION": "Менее 15",
+          "AMOUNT_WORKERS_SPARK_GRADATION": null,
+          "CL_TYPE": "PROSPECT",
+          "CL_PRODUCT_RKO_MARK": "0.0",
+          "CL_PRODUCT_GAR_MARK": "0.0",
+          "CL_PRODUCT_LOA_MARK": "0.0",
+          "CL_PRODUCT_LEA_MARK": "0.0",
+          "CL_PRODUCT_DEP_MARK": "0.0",
+          "CL_PRODUCT_ZPP_MARK": "0.0",
+          "FTS_FLAG": "0.0",
+          "FTS_COUNTRY_NAME": null,
+          "FACTORING_MARK": "0.0",
+          "REVENUE_COMPANY": "223579.0",
+          "GROUP_ID": "group_134402_sb",
+          "CITY": "г. Москва",
+          "REGION": "Москва"
+        },
+        "data_quality": {
+          "notes": [
+            "Сокращённая карточка из CSV: связи и чувствительности контрагента не рассчитывались.",
+            "Регион регистрации не обязательно совпадает с регионом деятельности.",
+            "ОКВЭД отражает основной вид деятельности; страны ФТС не определяют валюты и направление торговли."
+          ],
+          "missing_fields": [
+            "AMOUNT_WORKERS_SPARK_GRADATION",
+            "FTS_COUNTRY_NAME"
+          ]
+        }
+      },
+      "sources": [
+        "/Users/working_account/PycharmProjects/alfa-future-hack/applications/csv/df_Uid_data_hack.csv"
+      ],
+      "limitations": [
+        "Сокращённая карточка из CSV: связи и чувствительности контрагента не рассчитывались.",
+        "Регион регистрации не обязательно совпадает с регионом деятельности.",
+        "ОКВЭД отражает основной вид деятельности; страны ФТС не определяют валюты и направление торговли."
+      ]
+    },
+    {
+      "company_id": "U_57323",
+      "status": "unavailable",
+      "profile": null,
+      "sources": [
+        "/Users/working_account/PycharmProjects/alfa-future-hack/applications/filtered_data/company_profiles.jsonl",
+        "/Users/working_account/PycharmProjects/alfa-future-hack/applications/csv/df_Uid_data_hack.csv"
+      ],
+      "limitations": [
+        "В таблицах профилей и компаний нет записи; платёжная связь при этом сохраняется."
+      ]
+    }
+  ],
+  "bank_materials": [],
+  "bank_metadata": [],
+  "warnings": [
+    "Видны только платежи предоставленного набора; период не указан.",
+    "Направление платежа не доказывает роль поставщика или покупателя.",
+    "Доли рассчитаны отдельно по входящим и исходящим суммам доступных корректных записей.",
+    "U_184433: В таблицах профилей и компаний нет записи; платёжная связь при этом сохраняется.",
+    "U_237002: Сокращённая карточка из CSV: связи и чувствительности контрагента не рассчитывались.",
+    "U_237002: Регион регистрации не обязательно совпадает с регионом деятельности.",
+    "U_237002: ОКВЭД отражает основной вид деятельности; страны ФТС не определяют валюты и направление торговли.",
+    "U_242507: В таблицах профилей и компаний нет записи; платёжная связь при этом сохраняется.",
+    "U_387887: Сокращённая карточка из CSV: связи и чувствительности контрагента не рассчитывались.",
+    "U_387887: Регион регистрации не обязательно совпадает с регионом деятельности.",
+    "U_387887: ОКВЭД отражает основной вид деятельности; страны ФТС не определяют валюты и направление торговли.",
+    "U_57323: В таблицах профилей и компаний нет записи; платёжная связь при этом сохраняется."
+  ],
+  "model": "deepseek/deepseek-v4.1-flash",
+  "model_calls": 1,
+  "usage": [
+    {
+      "input_tokens": 2854,
+      "output_tokens": 1347,
+      "total_tokens": 4201,
+      "input_token_details": {
+        "cache_read": 0
+      },
+      "output_token_details": {
+        "reasoning": 1050
+      }
+    }
+  ]
+}

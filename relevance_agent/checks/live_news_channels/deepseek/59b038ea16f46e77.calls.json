@@ -1,0 +1,18 @@
+[
+  {
+    "seconds": 20.45,
+    "finish_reason": "stop",
+    "usage": {
+      "input_tokens": 3077,
+      "output_tokens": 2326,
+      "total_tokens": 5403,
+      "input_token_details": {
+        "cache_read": 0
+      },
+      "output_token_details": {
+        "reasoning": 1888
+      }
+    },
+    "response": "{\"reason\":\"ФНС требует банкротства юрлица сети АЗС «Трасса» («Евротранс») — второго независимого оператора АЗС Москвы и Подмосковья, с убытком 5,7 млрд ₽ и обсуждением внешнего управления. Компания — оптовый торговец топливом в Москве, поэтому меняется расстановка сил и спрос на её домашнем рынке.\",\"channels\":[{\"channel\":\"market_structure\",\"shock\":\"notable\",\"direction\":\"negative\",\"horizon\":\"now\",\"mechanism\":\"Банкротство оператора с 57 АЗС, нефтебазой и парком бензовозов в Москве и Подмосковье сжимает спрос на оптовые поставки топлива и меняет структуру рынка компании\",\"counterparty_id\":null,\"counterparty_direction\":null},{\"channel\":\"customer_demand\",\"shock\":\"weak\",\"direction\":\"negative\",\"horizon\":\"months\",\"mechanism\":\"Падение выручки «Евротранса» на 28,5% и возможное сокращение его сети уменьшают закупки топлива у оптовиков московского региона\",\"counterparty_id\":null,\"counterparty_direction\":null},{\"channel\":\"regulation\",\"shock\":\"weak\",\"direction\":\"negative\",\"horizon\":\"months\",\"mechanism\":\"Предложение ввести внешнее управление на топливной инфраструктуре расширяет риск госвмешательства в активы операторов рынка нефтепродуктов\",\"counterparty_id\":null,\"counterparty_direction\":null}],\"event_confidence\":\"high\",\"limitations\":[\"Прямой связи «Трассы»/«Евротранса» с компанией или её контрагентами в данных нет; влияние на её долю рынка неоднозначно\",\"Масштаб сокращения закупок топлива оператором в новости не раскрыт\"]}"
+  }
+]

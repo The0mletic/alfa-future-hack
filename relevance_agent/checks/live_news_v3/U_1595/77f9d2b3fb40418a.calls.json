@@ -1,0 +1,18 @@
+[
+  {
+    "seconds": 9.74,
+    "finish_reason": "stop",
+    "usage": {
+      "input_tokens": 18007,
+      "output_tokens": 974,
+      "total_tokens": 18981,
+      "input_token_details": {
+        "cache_read": 0
+      },
+      "output_token_details": {
+        "reasoning": 662
+      }
+    },
+    "response": "{\"reason\":\"ЦБ сохранил ключевую ставку на 14% и повысил её траекторию на следующий год, то есть цикл смягчения приостановлен. Для компании с кредитами и лизингом это означает более долгий период дорогих денег и давление на потребительский спрос.\",\"channels\":[{\"channel\":\"cost_of_money\",\"shock\":\"notable\",\"direction\":\"negative\",\"horizon\":\"months\",\"mechanism\":\"Ставка остаётся 14%, траектория повышена → кредиты и лизинг дороже дольше → процентные расходы компании растут\",\"counterparty_id\":null,\"counterparty_direction\":null},{\"channel\":\"customer_demand\",\"shock\":\"weak\",\"direction\":\"negative\",\"horizon\":\"months\",\"mechanism\":\"Продление жёсткой ДКП сдерживает рост реальных доходов → спрос на одежду слабеет → выручка розницы под давлением\",\"counterparty_id\":null,\"counterparty_direction\":null}],\"event_confidence\":\"high\",\"limitations\":[\"Повышенная траектория ставки — прогноз ЦБ, а не факт; конкретные ставки по кредитам и лизингу компании не раскрыты.\",\"Связь жёсткой ДКП со спросом на одежду опосредована и не подтверждена отраслевой статистикой.\"]}"
+  }
+]

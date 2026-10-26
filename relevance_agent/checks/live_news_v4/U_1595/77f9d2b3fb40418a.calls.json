@@ -1,0 +1,18 @@
+[
+  {
+    "seconds": 6.31,
+    "finish_reason": "stop",
+    "usage": {
+      "input_tokens": 4044,
+      "output_tokens": 672,
+      "total_tokens": 4716,
+      "input_token_details": {
+        "cache_read": 0
+      },
+      "output_token_details": {
+        "reasoning": 306
+      }
+    },
+    "response": "{\"reason\":\"ЦБ сохранил ключевую ставку 14% и повысил траекторию на следующий год — для розничного продавца одежды с кредитами и лизингом это означает, что удешевления денег и оживления спроса ждать не стоит.\",\"channels\":[{\"channel\":\"cost_of_money\",\"shock\":\"notable\",\"direction\":\"negative\",\"horizon\":\"months\",\"mechanism\":\"Ставка остаётся 14%, траектория повышена → кредиты и лизинг не дешевеют → у компании заёмное финансирование и нет свободного кэша\",\"counterparty_id\":null,\"counterparty_direction\":null},{\"channel\":\"customer_demand\",\"shock\":\"notable\",\"direction\":\"negative\",\"horizon\":\"months\",\"mechanism\":\"Жёсткая ДКП дольше → давление на реальные доходы → спрос в рознице одежды (B2C), основной драйвер выручки\",\"counterparty_id\":null,\"counterparty_direction\":null},{\"channel\":\"input_costs\",\"shock\":\"weak\",\"direction\":\"negative\",\"horizon\":\"months\",\"mechanism\":\"Высокая ставка и инфляционные ожидания 13,2% → удорожание закупки одежды и торговой недвижимости в расходах\",\"counterparty_id\":null,\"counterparty_direction\":null}],\"event_confidence\":\"high\",\"limitations\":[\"Нет числовых ориентиров ЦБ по срокам и глубине будущего снижения ставки\",\"Оценка влияния на спрос и расходы компании — качественная, без отраслевой разбивки\"]}"
+  }
+]

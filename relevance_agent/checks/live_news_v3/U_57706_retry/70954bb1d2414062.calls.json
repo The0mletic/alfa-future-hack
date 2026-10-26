@@ -1,0 +1,18 @@
+[
+  {
+    "seconds": 11.16,
+    "finish_reason": "stop",
+    "usage": {
+      "input_tokens": 3026,
+      "output_tokens": 1060,
+      "total_tokens": 4086,
+      "input_token_details": {
+        "cache_read": 0
+      },
+      "output_token_details": {
+        "reasoning": 836
+      }
+    },
+    "response": "{\"reason\":\"Новость о социальной выплате: маткапитал в основном направляется на жильё и ипотеку, что косвенно поддерживает строительную активность — один из драйверов спроса на топливо. Прямого влияния на топливные цены, демпфер или ВЭД компании нет.\",\"channels\":[{\"channel\":\"customer_demand\",\"shock\":\"weak\",\"direction\":\"positive\",\"horizon\":\"months\",\"mechanism\":\"маткапитал 1,6 млн семей → спрос на жильё и стройку → строительная активность в demand_drivers → спрос на топливо\",\"counterparty_id\":null,\"counterparty_direction\":null}],\"event_confidence\":\"high\",\"limitations\":[\"Средства маткапитала в основном идут на ипотеку и образование, а не на закупки топлива напрямую\",\"Эффект распределён по всему году и по стране, для одного оптовика почти неразличим\"]}"
+  }
+]

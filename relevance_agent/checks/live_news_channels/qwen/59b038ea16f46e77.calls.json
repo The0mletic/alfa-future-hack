@@ -1,0 +1,21 @@
+[
+  {
+    "seconds": 24.01,
+    "finish_reason": "stop",
+    "usage": {
+      "input_tokens": 2815,
+      "output_tokens": 2019,
+      "total_tokens": 4834,
+      "input_token_details": {
+        "audio": 0,
+        "cache_read": 0,
+        "cache_creation": 0
+      },
+      "output_token_details": {
+        "audio": 0,
+        "reasoning": 2067
+      }
+    },
+    "response": "\n\n{\"reason\":\"Иск ФНС о банкроте крупного оператора «Евротранс» и предложение Минэнерго о внешнем управлении меняют конкурентную среду и отраслевые требования к топливному рынку.\",\"channels\":[{\"channel\":\"market_structure\",\"shock\":\"notable\",\"direction\":\"negative\",\"horizon\":\"months\",\"mechanism\":\"ФНС подала иск о банкроте «Евротранса» → перераспределение долей на рынке топлива → изменение цен и условий оптовых поставок для компании.\",\"counterparty_id\":null,\"counterparty_direction\":null},{\"channel\":\"regulation\",\"shock\":\"notable\",\"direction\":\"negative\",\"horizon\":\"months\",\"mechanism\":\"Минэнерго предложило внешнее управление для АЗС → ужесточение требований к инфраструктуре → рост затрат на соответствие нормам.\",\"counterparty_id\":null,\"counterparty_direction\":null}],\"event_confidence\":\"high\",\"limitations\":[\"Новость касается смежного оператора, а не компании напрямую.\",\"Предложение Минэнерго носит рекомендательный характер.\"]}"
+  }
+]

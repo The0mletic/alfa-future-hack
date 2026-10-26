@@ -5,3 +5,9 @@ AGENTS.md
 
 checks/*.html
 checks/live_articles.json
+.DS_Store
+# Full graph outputs of large-client runs (~36 MB: every counterparty profile per news).
+# Kept locally; results.json, *.calls.json and REPORT.md are committed and enough for rescore.py.
+checks/live_news_v3/**/*.result.json
+checks/live_news_v4/**/*.result.json
+checks/live_news_v5/**/*.result.json

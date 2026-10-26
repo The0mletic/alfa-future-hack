@@ -1,0 +1,18 @@
+[
+  {
+    "seconds": 8.54,
+    "finish_reason": "stop",
+    "usage": {
+      "input_tokens": 17895,
+      "output_tokens": 840,
+      "total_tokens": 18735,
+      "input_token_details": {
+        "cache_read": 0
+      },
+      "output_token_details": {
+        "reasoning": 545
+      }
+    },
+    "response": "{\"reason\":\"Внесён проект федерального бюджета 2027–2029 гг. с ростом доходов и расходов; для розничного продавца одежды это макрофон, влияющий косвенно — через доходы населения и стоимость заёмных денег. Прямых мер по отрасли или компании в новости нет.\",\"channels\":[{\"channel\":\"customer_demand\",\"shock\":\"weak\",\"direction\":\"positive\",\"horizon\":\"months\",\"mechanism\":\"рост расходов бюджета → поддержка реальных доходов и потребительского спроса → выручка розницы одежды\",\"counterparty_id\":null,\"counterparty_direction\":null},{\"channel\":\"cost_of_money\",\"shock\":\"weak\",\"direction\":\"negative\",\"horizon\":\"months\",\"mechanism\":\"дефицит бюджета (расходы 48,8 трлн против доходов 43,3 трлн в 2027) → давление на ставку и заимствования → дороже кредиты и лизинг компании\",\"counterparty_id\":null,\"counterparty_direction\":null}],\"event_confidence\":\"medium\",\"limitations\":[\"Бюджет внесён как проект, параметры могут измениться до принятия.\",\"В тексте только агрегированные цифры без отраслевых и налоговых деталей, значимых для торговли одеждой.\"]}"
+  }
+]
