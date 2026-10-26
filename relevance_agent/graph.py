@@ -79,6 +79,8 @@ def build_graph(model, *, counterparties=None, knowledge=None,
             warnings.append('Полный текст не получен; оценка опирается на заголовок и summary.')
         elif article.truncated:
             warnings.append('Полный текст обрезан по лимиту длины.')
+        if article.text_source == 'upstream_parser':
+            warnings.append('Текст получен от RSS-парсера; метод извлечения и конечный URL им не переданы, полнота текста не подтверждена.')
         if not materials:
             warnings.append('Подходящие датированные фрагменты аналитики не найдены.')
         warnings.append('Поиск лексический; исторические и недатированные материалы исключены.')
@@ -90,7 +92,7 @@ def build_graph(model, *, counterparties=None, knowledge=None,
 
     def assess(state):
         req = state['request']
-        payload = dict(as_of=req.as_of, news=req.news.model_dump(),
+        payload = dict(as_of=req.as_of, news=req.news.model_dump(exclude={"full_text"}),
             company_profile=state['profile'].model_dump(),
             counterparties=state['links'].model_dump(),
             counterparty_profiles=[p.model_dump() for p in state['profiles']],

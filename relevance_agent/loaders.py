@@ -97,8 +97,14 @@ def load_company_profile(company_id: str, path: str | Path = DEFAULT_PROFILES) -
 
 
 def load_news(path: str | Path) -> list[NewsItem]:
-    """Принимает JSON RSS-парсера {generated_at,count,items} либо список NewsItem."""
+    """Принимает оба отчёта RSS-парсеров либо список NewsItem."""
     data = read_json(path)
+    if isinstance(data, dict) and 'sources' in data:
+        from .parser_adapter import normalize_report
+        try:
+            data = normalize_report(data)
+        except ValueError as exc:
+            raise InputDataError(f'{path}: некорректный отчёт rss_full_parser ({type(exc).__name__})') from exc
     if isinstance(data, dict):
         if set(data) != {'generated_at', 'count', 'items'}:
             raise InputDataError(f'{path}: ожидается обёртка RSS generated_at/count/items либо список новостей')

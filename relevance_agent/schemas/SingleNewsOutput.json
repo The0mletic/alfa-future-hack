@@ -21,6 +21,15 @@
           "title": "Requested Url",
           "type": "string"
         },
+        "text_source": {
+          "default": "agent_fetch",
+          "enum": [
+            "agent_fetch",
+            "upstream_parser"
+          ],
+          "title": "Text Source",
+          "type": "string"
+        },
         "final_url": {
           "anyOf": [
             {
@@ -438,6 +447,11 @@
         },
         "summary": {
           "title": "Summary",
+          "type": "string"
+        },
+        "full_text": {
+          "default": "",
+          "title": "Full Text",
           "type": "string"
         },
         "link": {

@@ -1,0 +1,50 @@
+{
+  "model": "google/gemma-4-26b-a4b-it",
+  "status": "not_scored",
+  "score": null,
+  "elapsed_seconds": 29.93,
+  "calls": [
+    {
+      "elapsed_seconds": 20.9,
+      "prompt_sha256": "9e5b6de6fc73b8dded856a90f0ebf49d7d7862f64bcbe9161720c7cf67783bc7",
+      "finish_reason": "stop",
+      "response_chars": 1005,
+      "usage": {
+        "input_tokens": 13131,
+        "output_tokens": 300,
+        "total_tokens": 13431,
+        "input_token_details": {
+          "audio": 0,
+          "cache_read": 0,
+          "cache_creation": 0
+        },
+        "output_token_details": {
+          "audio": 0,
+          "reasoning": 0
+        }
+      }
+    },
+    {
+      "elapsed_seconds": 9.02,
+      "prompt_sha256": "3a6dc88ae0a243631577bdc627e430187b9d5341e08e2542a3150270812119a5",
+      "finish_reason": "stop",
+      "response_chars": 1151,
+      "usage": {
+        "input_tokens": 13188,
+        "output_tokens": 313,
+        "total_tokens": 13501,
+        "input_token_details": {
+          "audio": 0,
+          "cache_read": 0,
+          "cache_creation": 0
+        },
+        "output_token_details": {
+          "audio": 0,
+          "reasoning": 0
+        }
+      }
+    }
+  ],
+  "assessment": null,
+  "last_warning": "Неверный JSON, диапазон оценки или неподтвержденная ссылка на источник. [{\"type\": \"json_invalid\", \"loc\": [], \"msg\": \"Invalid JSON: expected value at line 1 column 1\"}]"
+}

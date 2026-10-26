@@ -107,6 +107,11 @@
           "title": "Summary",
           "type": "string"
         },
+        "full_text": {
+          "default": "",
+          "title": "Full Text",
+          "type": "string"
+        },
         "link": {
           "title": "Link",
           "type": "string"
