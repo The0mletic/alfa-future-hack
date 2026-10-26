@@ -276,8 +276,11 @@ def make_llm(model: str, timeout: float = 60):
     if not api_key or not model:
         return DemoModel()
     from langchain_openai import ChatOpenAI
+    # Без лимита рассуждающая модель (DeepSeek) иногда пишет 10+ тыс. токенов и не укладывается
+    # в TIME_BUDGET: ответ превращается в FALLBACK, а проверка разбора тратит лимит команды.
     return ChatOpenAI(api_key=api_key, base_url=os.getenv('LLM_BASE_URL') or None,
-                      model=model, temperature=0.2, timeout=max(timeout, 1), max_retries=0)
+                      model=model, temperature=0.2, timeout=max(timeout, 1), max_retries=0,
+                      max_tokens=int(os.getenv('CHAT_MAX_TOKENS') or 3000))
 
 
 # Разные модели для разных шагов, чтобы экономить общий лимит команды:
@@ -378,6 +381,9 @@ def _run_check(news_id: int, original: str, analysis: str, profile: str):
                    f"Аналитика Альфа-Банка:\n{analytics}")
         result = call_llm(MODEL_CHECK, [SystemMessage(content=PROMPT_CHECK), HumanMessage(content=context)],
                           'check', news_id, timeout=90).content
+        if not _parse_json(result):   # пустой ответ (например, лимит ушёл на рассуждения) не кэшируем
+            log('check_failed', news_id=news_id, error='пустой или не-JSON ответ модели', model=MODEL_CHECK)
+            return
         CHECK_CACHE[news_id] = result
         log('check', news_id=news_id, result=result)
     except Exception as e:   # проверка не удалась - чат всё равно работает
@@ -465,10 +471,49 @@ def tools(state: State) -> dict:
     return {**result, 'tool_rounds': state.get('tool_rounds', 0) + 1}
 
 
+LABELS = ('Вывод ИИ:', 'Профиль компании:', 'Альфа-Банк', 'Другая новость', 'Новость:', 'Что сделать:',
+          'Первоисточник:')
+MAX_LINES = 5
+MAX_WORDS = 35   # в промпте просим до 25, с запасом
+
+
+def _format_problems(draft: str) -> list:
+    """Проверка формата кодом, без нейросети: число строк, длина, метки."""
+    lines = [line.strip() for line in draft.splitlines() if line.strip()]
+    problems = []
+    if len(lines) > MAX_LINES:
+        problems.append(f'строк {len(lines)}, нужно не больше {MAX_LINES - 1}')
+    if lines and not lines[0].startswith('Вывод ИИ:'):
+        problems.append('первая строка должна начинаться с «Вывод ИИ:» и сразу отвечать на вопрос')
+    used = [next((lab for lab in LABELS if line.startswith(lab)), None) for line in lines]
+    for lab in set(filter(None, used)):
+        if used.count(lab) > 1:
+            problems.append(f'метка «{lab.rstrip(":")}» повторяется - объедини эти строки в одну')
+    for line in lines:
+        if not line.startswith(LABELS):
+            problems.append(f'строка без метки: «{line[:40]}…»')
+        if len(line.split()) > MAX_WORDS:
+            problems.append(f'слишком длинная строка ({len(line.split())} слов, нужно до 25): «{line[:40]}…»')
+        if line.startswith('Что сделать (') or line.startswith('Вывод ИИ ('):
+            problems.append('метку пиши ровно «Что сделать:» / «Вывод ИИ:», без скобок')
+    return problems
+
+
 def review(state: State) -> dict:
     """Шаг 5. Самопроверка ответа. Если есть проблемы - возвращает агенту с замечаниями."""
     draft = state['messages'][-1].content
     left = _left(state)
+    fixes = state.get('fixes', 0)
+
+    # Сначала формат - кодом: быстро и бесплатно. Нарушен - сразу на доработку, без второй нейросети.
+    problems = _format_problems(draft)
+    if problems and not state.get('final') and fixes < MAX_FIXES and left >= MIN_FOR_FIX:
+        log('review', news_id=state['news_id'], ok=False, problems=problems, attempt=fixes + 1, by='code')
+        feedback = ('Ответ не в нужном формате: ' + '; '.join(problems) +
+                    '\nПерепиши короче строго по формату из инструкции: 3-4 строки, первая - «Вывод ИИ:», '
+                    'новость не пересказывай. Пользователю проверку не упоминай.')
+        return {'messages': [HumanMessage(content=feedback)], 'verdict': 'fix', 'fixes': fixes + 1}
+
     if state.get('final') or left < MIN_FOR_REVIEW:
         log('review_skipped', news_id=state['news_id'], left=round(left, 1))
         return {'answer': draft, 'verdict': 'ok'}
@@ -485,7 +530,10 @@ def review(state: State) -> dict:
     except Exception as e:   # не успела - отдаём ответ без самопроверки
         log('review_skipped', news_id=state['news_id'], error=str(e)[:200])
         return {'answer': draft, 'verdict': 'ok'}
-    ok = verdict.get('ok', True)
+    if not isinstance(verdict.get('ok'), bool):   # пустой/битый ответ — это сбой проверки, а не «всё хорошо»
+        log('review_failed', news_id=state['news_id'], error='пустой или не-JSON ответ модели', model=MODEL_CHECK)
+        return {'answer': draft, 'verdict': 'ok'}
+    ok = verdict['ok']
     fixes = state.get('fixes', 0)
     log('review', news_id=state['news_id'], ok=ok, problems=verdict.get('problems', []), attempt=fixes + 1)
 

@@ -1997,7 +1997,14 @@ a.source:hover .source__ext {
     display: grid;
     gap: 12px;
     justify-items: start;
-    padding-top: 4px;
+    /* .insight без своих отступов: как у .insight__body, плюс низ карточки */
+    padding: 4px 24px 24px;
+    /* как .insight__body: в липкой колонке низкого экрана прокручивается, а не обрезает кнопку */
+    flex: 1 1 auto;
+    min-height: 0;
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    scrollbar-width: thin;
 }
 
 .analysis-pending__title {
@@ -2016,6 +2023,13 @@ a.source:hover .source__ext {
 
 .analysis-pending__text {
     color: var(--text-secondary);
+}
+
+@media (max-width: 639px) {
+    /* после базового правила: на телефоне карточка .insight сужает отступы до 20px */
+    .analysis-pending {
+        padding: 4px 20px 20px;
+    }
 }
 
 .header__logout {

@@ -16,6 +16,9 @@ from .models import CompanyNews, News
 
 # Модель и адрес по умолчанию; ключ агент читает из LLM_API_KEY корневого .env.
 os.environ.setdefault("LLM_MODEL", "deepseek/deepseek-v4.1-flash")
+# Проверка разбора и самопроверка ответа — короткий JSON: нерассуждающая Gemma укладывается в лимит
+# токенов и время, а DeepSeek тратит весь лимит на рассуждения и возвращает пустой ответ.
+os.environ.setdefault("LLM_MODEL_CHECK", "google/gemma-4-26b-a4b-it")
 os.environ.setdefault("LLM_BASE_URL", "https://changellenge.up.railway.app/v1")
 
 _agent = None
