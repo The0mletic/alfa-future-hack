@@ -1,0 +1,111 @@
+{
+  "schema_version": "1.0-single",
+  "request_id": "f56b038b-743a-4ef9-8868-fefcbed5593f",
+  "company_id": "SYNTHETIC_BUILDER",
+  "news": {
+    "id": "SYNTHETIC_RATE_EVENT",
+    "title": "Учебный сценарий: ключевая ставка повышена на 2 процентных пункта",
+    "summary": "Вымышленное событие: регулятор повысил ключевую ставку с 10% до 12%. Это тест, а не реальная новость.",
+    "link": "",
+    "published": "",
+    "source": "synthetic-test",
+    "author": "",
+    "categories": [],
+    "language": ""
+  },
+  "as_of": "2026-10-26T10:32:11.975401+00:00",
+  "status": "scored",
+  "assessment": {
+    "relevance_score": 68,
+    "reason": "Прямой договорный механизм: у компании есть кредиты с плавающей ставкой, привязанной к ключевой ставке (/bank_relationship/loans/benchmark), поэтому ее повышение на 2 п.п. напрямую увеличивает стоимость обслуживания долга. Отрасль (жилищное строительство) дополнительно чувствительна к ставкам через спрос на ипотеку, но это косвенный фактор. Оценка в диапазоне 60–79, а не выше, так как масштаб влияния неизвестен (нет данных о сумме и доле кредитов), событие синтетическое и не датировано.",
+    "company_evidence": [
+      {
+        "field_path": "/bank_relationship/loans/has",
+        "kind": "source_fact",
+        "explanation": "Профиль подтверждает наличие кредитов у компании."
+      },
+      {
+        "field_path": "/bank_relationship/loans/rate_type",
+        "kind": "source_fact",
+        "explanation": "Ставка кредитов плавающая — изменение ключевой ставки транслируется в процентные расходы."
+      },
+      {
+        "field_path": "/bank_relationship/loans/benchmark",
+        "kind": "source_fact",
+        "explanation": "Бенчмарк — ключевая ставка, то есть объект новости напрямую влияет на стоимость долга."
+      },
+      {
+        "field_path": "/industry/name",
+        "kind": "heuristic",
+        "explanation": "Жилищное строительство традиционно чувствительно к ставкам (ипотечный спрос, стоимость финансирования); это усиливающий контекст, а не доказанный факт по компании."
+      }
+    ],
+    "counterparty_evidence": [],
+    "bank_evidence": [],
+    "limitations": [
+      "Синтетический тест: новость явно помечена как вымышленная, данные профиля тестовые.",
+      "Полный текст статьи недоступен; оценка опирается на заголовок и summary.",
+      "Нет данных о сумме кредитов, доле процентных расходов и сроках рефинансирования — масштаб влияния неопределен.",
+      "Дата события не указана (published пуст).",
+      "Контрагенты не заданы, анализ второго уровня невозможен.",
+      "Подходящие датированные материалы аналитики банка отсутствуют."
+    ]
+  },
+  "article": {
+    "news_id": "SYNTHETIC_RATE_EVENT",
+    "status": "unavailable",
+    "requested_url": "",
+    "final_url": null,
+    "text": null,
+    "truncated": false,
+    "error": "Синтетический тест: внешней статьи нет."
+  },
+  "company_profile": {
+    "company_id": "SYNTHETIC_BUILDER",
+    "industry": {
+      "name": "Строительство жилья"
+    },
+    "bank_relationship": {
+      "loans": {
+        "has": true,
+        "rate_type": "floating",
+        "benchmark": "ключевая ставка"
+      }
+    },
+    "data_quality": {
+      "note": "Полностью вымышленные данные для технического теста."
+    }
+  },
+  "counterparties": {
+    "company_id": "SYNTHETIC_BUILDER",
+    "links": [],
+    "complete": true,
+    "limitations": [
+      "Синтетический тест: контрагенты не заданы."
+    ]
+  },
+  "counterparty_profiles": [],
+  "bank_materials": [],
+  "bank_metadata": [],
+  "warnings": [
+    "Синтетический тест: контрагенты не заданы.",
+    "Полный текст не получен; оценка опирается на заголовок и summary.",
+    "Подходящие датированные фрагменты аналитики не найдены.",
+    "Поиск лексический; исторические и недатированные материалы исключены."
+  ],
+  "model": "z-ai/glm-5.3-flash",
+  "model_calls": 1,
+  "usage": [
+    {
+      "input_tokens": 1619,
+      "output_tokens": 1372,
+      "total_tokens": 2991,
+      "input_token_details": {
+        "cache_read": 0
+      },
+      "output_token_details": {
+        "reasoning": 896
+      }
+    }
+  ]
+}
