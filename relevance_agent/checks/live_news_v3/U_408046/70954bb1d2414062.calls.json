@@ -1,0 +1,23 @@
+[
+  {
+    "seconds": 60.21,
+    "error_type": "OpenAITimeoutError",
+    "http_status": null
+  },
+  {
+    "seconds": 11.28,
+    "finish_reason": "stop",
+    "usage": {
+      "input_tokens": 8602,
+      "output_tokens": 1073,
+      "total_tokens": 9675,
+      "input_token_details": {
+        "cache_read": 0
+      },
+      "output_token_details": {
+        "reasoning": 746
+      }
+    },
+    "response": "{\"reason\":\"Материнский капитал поддерживает платёжеспособный спрос семей на жильё и погашение ипотеки — ключевой драйвер спроса застройщика жилой недвижимости. Но новость — отчёт об исполнении программы (92% плана) и уже принятой индексации, новых мер нет, эффект фоновый.\",\"channels\":[{\"channel\":\"customer_demand\",\"shock\":\"weak\",\"direction\":\"positive\",\"horizon\":\"months\",\"mechanism\":\"Сертификаты маткапитала направляются на покупку жилья и ипотеку → поддерживается спрос на квартиры → выручка девелопера жилой недвижимости\",\"counterparty_id\":null,\"counterparty_direction\":null},{\"channel\":\"regulation\",\"shock\":\"weak\",\"direction\":\"positive\",\"horizon\":\"months\",\"mechanism\":\"Продление и индексация маткапитала до 2030 г. → устойчивость программ поддержки жилищного спроса → предсказуемость продаж в жилищном строительстве\",\"counterparty_id\":null,\"counterparty_direction\":null}],\"event_confidence\":\"high\",\"limitations\":[\"Новость — отчёт о ходе программы, новых мер не вводится: влияние на спрос только фоновое\",\"Не раскрыта доля сертификатов, идущая на новостройки и ипотеку, и география проектов компании\"]}"
+  }
+]

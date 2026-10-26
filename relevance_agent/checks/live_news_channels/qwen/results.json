@@ -1,0 +1,86 @@
+[
+  {
+    "id": "59b038ea16f46e77",
+    "title": "Налоговая потребовала признать сеть АЗС «Трасса» банкротом",
+    "url": "https://www.kommersant.ru/doc/9060724",
+    "published": "2026-10-26T10:43:00+00:00",
+    "model": "qwen/qwen3.6-35b-a3b",
+    "status": "scored",
+    "seconds": 24.93,
+    "model_calls": 1,
+    "score": 54,
+    "reason": "Иск ФНС о банкроте крупного оператора «Евротранс» и предложение Минэнерго о внешнем управлении меняют конкурентную среду и отраслевые требования к топливному рынку.",
+    "channels": [
+      {
+        "channel": "market_structure",
+        "shock": "notable",
+        "horizon": "months",
+        "exposure": 0.8,
+        "impact": 0.34
+      },
+      {
+        "channel": "regulation",
+        "shock": "notable",
+        "horizon": "months",
+        "exposure": 0.7,
+        "impact": 0.297
+      }
+    ],
+    "event_confidence": "high",
+    "total_tokens": 4834,
+    "article_source": "upstream_parser",
+    "article_status": "ok",
+    "last_warning": "Текст получен от RSS-парсера; метод извлечения и конечный URL им не переданы, полнота текста не подтверждена."
+  },
+  {
+    "id": "1023cac27cd11e26",
+    "title": "Рост предложения валюты поддерживает рубль // Мониторинг внешних условий",
+    "url": "https://www.kommersant.ru/doc/9060172",
+    "published": "2026-10-25T23:47:05+00:00",
+    "model": "qwen/qwen3.6-35b-a3b",
+    "status": "scored",
+    "seconds": 28.42,
+    "model_calls": 1,
+    "score": 67,
+    "reason": "Прогнозируемое укрепление рубля снижает стоимость импорта топлива и курсовые риски по ВЭД со странами СНГ, что положительно влияет на маржу оптовой торговли.",
+    "channels": [
+      {
+        "channel": "fx_trade",
+        "shock": "notable",
+        "horizon": "months",
+        "exposure": 1.0,
+        "impact": 0.425
+      },
+      {
+        "channel": "input_costs",
+        "shock": "notable",
+        "horizon": "months",
+        "exposure": 1.0,
+        "impact": 0.425
+      }
+    ],
+    "event_confidence": "medium",
+    "total_tokens": 5303,
+    "article_source": "upstream_parser",
+    "article_status": "ok",
+    "last_warning": "Текст получен от RSS-парсера; метод извлечения и конечный URL им не переданы, полнота текста не подтверждена."
+  },
+  {
+    "id": "e5afc156e2a5ce21",
+    "title": "«ICL Техно» представила новый сервер для задач искусственного интеллекта",
+    "url": "https://www.cnews.ru/news/line/2026-10-26_icl_tehno_predstavila_novyj",
+    "published": "2026-10-26T11:03:00+00:00",
+    "model": "qwen/qwen3.6-35b-a3b",
+    "status": "scored",
+    "seconds": 22.49,
+    "model_calls": 1,
+    "score": 0,
+    "reason": "Новость о выпуске сервера для ИИ относится к ИТ-отрасли и не затрагивает оптовую торговлю топливом, его цены, спрос или логистику компании.",
+    "channels": [],
+    "event_confidence": "high",
+    "total_tokens": 4700,
+    "article_source": "upstream_parser",
+    "article_status": "ok",
+    "last_warning": "Текст получен от RSS-парсера; метод извлечения и конечный URL им не переданы, полнота текста не подтверждена."
+  }
+]

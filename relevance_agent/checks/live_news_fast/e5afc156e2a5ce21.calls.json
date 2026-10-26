@@ -1,0 +1,18 @@
+[
+  {
+    "seconds": 7.6,
+    "finish_reason": "stop",
+    "usage": {
+      "input_tokens": 3256,
+      "output_tokens": 737,
+      "total_tokens": 3993,
+      "input_token_details": {
+        "cache_read": 0
+      },
+      "output_token_details": {
+        "reasoning": 474
+      }
+    },
+    "response": "{\"relevance_score\":5,\"reason\":\"Новость о выпуске сервера «ICL Техно» не упоминает оцениваемую компанию и не касается её отрасли: профиль — оптовая торговля топливом. Ни один контрагент из платежного профиля не сопоставляется с «ICL Техно».\",\"company_evidence\":[{\"field_path\":\"/industry/okved_name\",\"kind\":\"source_fact\",\"explanation\":\"Отрасль компании — оптовая торговля топливом, не связана с серверным оборудованием и ИИ.\"},{\"field_path\":\"/industry/business_model\",\"kind\":\"source_fact\",\"explanation\":\"Модель B2B-оптовой торговли не пересекается с выпуском ИТ-продукта из новости.\"}],\"counterparty_evidence\":[],\"bank_evidence\":[],\"limitations\":[\"В платежном профиле и профилях контрагентов нет признаков связи с «ICL Техно» или ИТ-рынком.\",\"Нет данных о закупках, поставках или финансировании, связывающих компанию с серверным оборудованием.\"]}"
+  }
+]

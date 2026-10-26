@@ -1,0 +1,18 @@
+[
+  {
+    "seconds": 12.13,
+    "finish_reason": "stop",
+    "usage": {
+      "input_tokens": 2854,
+      "output_tokens": 1347,
+      "total_tokens": 4201,
+      "input_token_details": {
+        "cache_read": 0
+      },
+      "output_token_details": {
+        "reasoning": 1050
+      }
+    },
+    "response": "{\"reason\":\"Рост расходов федерального бюджета до 48,8–53,9 трлн ₽ и дефицит усиливают бюджетное финансирование строительства/инфраструктуры — драйвер спроса на топливо — и госзаимствования, влияющие на стоимость лизинга. Прямых норм или статей по топливному рынку в тексте нет, эффект косвенный.\",\"channels\":[{\"channel\":\"customer_demand\",\"shock\":\"weak\",\"direction\":\"positive\",\"horizon\":\"months\",\"mechanism\":\"Рост расходов бюджета → строительство и инфраструктура → спрос на топливо у оптовика (industrial_demand)\",\"counterparty_id\":null,\"counterparty_direction\":null},{\"channel\":\"cost_of_money\",\"shock\":\"weak\",\"direction\":\"negative\",\"horizon\":\"months\",\"mechanism\":\"Расходы выше доходов → рост госзаимствований → ставка → удорожание лизинга компании\",\"counterparty_id\":null,\"counterparty_direction\":null}],\"event_confidence\":\"high\",\"limitations\":[\"В тексте нет разбивки расходов и налоговых норм — эффект оценён по общим суммам.\",\"Связь бюджетных расходов с контрактами и отраслью компании напрямую не подтверждена.\"]}"
+  }
+]

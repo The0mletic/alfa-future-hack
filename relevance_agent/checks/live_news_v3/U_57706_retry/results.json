@@ -1,0 +1,29 @@
+[
+  {
+    "id": "70954bb1d2414062",
+    "title": "Голикова: с начала года материнским капиталом воспользовались 1,6 млн семей",
+    "url": "https://www.kommersant.ru/doc/9060720",
+    "published": "2026-10-26T10:39:47+00:00",
+    "model": "deepseek/deepseek-v4.1-flash",
+    "company_id": "U_57706",
+    "status": "scored",
+    "seconds": 12.14,
+    "model_calls": 1,
+    "score": 13,
+    "reason": "Новость о социальной выплате: маткапитал в основном направляется на жильё и ипотеку, что косвенно поддерживает строительную активность — один из драйверов спроса на топливо. Прямого влияния на топливные цены, демпфер или ВЭД компании нет.",
+    "channels": [
+      {
+        "channel": "customer_demand",
+        "shock": "weak",
+        "horizon": "months",
+        "exposure": 1.0,
+        "impact": 0.128
+      }
+    ],
+    "event_confidence": "high",
+    "total_tokens": 4086,
+    "article_source": "upstream_parser",
+    "article_status": "ok",
+    "last_warning": "Текст получен от RSS-парсера; метод извлечения и конечный URL им не переданы, полнота текста не подтверждена."
+  }
+]

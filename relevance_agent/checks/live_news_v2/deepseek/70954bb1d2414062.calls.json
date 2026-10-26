@@ -1,0 +1,7 @@
+[
+  {
+    "seconds": 60.2,
+    "error_type": "OpenAITimeoutError",
+    "http_status": null
+  }
+]

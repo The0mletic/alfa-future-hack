@@ -1,0 +1,34 @@
+[
+  {
+    "seconds": 41.32,
+    "finish_reason": "length",
+    "usage": {
+      "input_tokens": 3126,
+      "output_tokens": 3000,
+      "total_tokens": 6126,
+      "input_token_details": {
+        "cache_read": 0
+      },
+      "output_token_details": {
+        "reasoning": 3000
+      }
+    },
+    "response": ""
+  },
+  {
+    "seconds": 42.29,
+    "finish_reason": "length",
+    "usage": {
+      "input_tokens": 3158,
+      "output_tokens": 3000,
+      "total_tokens": 6158,
+      "input_token_details": {
+        "cache_read": 0
+      },
+      "output_token_details": {
+        "reasoning": 3000
+      }
+    },
+    "response": ""
+  }
+]

@@ -1,0 +1,18 @@
+[
+  {
+    "seconds": 7.04,
+    "finish_reason": "stop",
+    "usage": {
+      "input_tokens": 8542,
+      "output_tokens": 776,
+      "total_tokens": 9318,
+      "input_token_details": {
+        "cache_read": 0
+      },
+      "output_token_details": {
+        "reasoning": 466
+      }
+    },
+    "response": "{\"reason\":\"ЦБ сохранил ключевую ставку на 14% и повысил траекторию на следующий год, то есть жёсткие условия сохранятся дольше. Для капиталоёмкого девелопера это дольше дорогое проектное и ипотечное финансирование и слабее спрос на жильё.\",\"channels\":[{\"channel\":\"cost_of_money\",\"shock\":\"notable\",\"direction\":\"negative\",\"horizon\":\"months\",\"mechanism\":\"ставка 14% и повышенная траектория → дороже кредиты и проектное финансирование → выше процентные расходы застройщика\",\"counterparty_id\":null,\"counterparty_direction\":null},{\"channel\":\"customer_demand\",\"shock\":\"notable\",\"direction\":\"negative\",\"horizon\":\"months\",\"mechanism\":\"жёсткая ДКП → дороже ипотека → слабее спрос на жилищное строительство → выручка девелопера\",\"counterparty_id\":null,\"counterparty_direction\":null}],\"event_confidence\":\"high\",\"limitations\":[\"В профиле не видно активного долгового финансирования, хотя отрасль капиталоёмкая и зависит от проектного финансирования и ипотеки.\",\"Связь ставки с фактическими ставками по кредитам и ипотеке конкретно этой компании в новости не раскрыта.\"]}"
+  }
+]

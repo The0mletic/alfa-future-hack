@@ -1,0 +1,18 @@
+[
+  {
+    "seconds": 10.63,
+    "finish_reason": "stop",
+    "usage": {
+      "input_tokens": 18541,
+      "output_tokens": 947,
+      "total_tokens": 19488,
+      "input_token_details": {
+        "cache_read": 0
+      },
+      "output_token_details": {
+        "reasoning": 617
+      }
+    },
+    "response": "{\"reason\":\"Обзор ГПБ: рост предложения валюты экспортёрами и налоговые платежи укрепляют рубль, допускается временное укрепление до 81–83 ₽/$ к концу октября. Для розничного продавца одежды с импортом из Турции и Нидерландов это удешевляет закупку в рублях, но оценки прогнозные.\",\"channels\":[{\"channel\":\"fx_trade\",\"shock\":\"notable\",\"direction\":\"positive\",\"horizon\":\"now\",\"mechanism\":\"Укрепление рубля → валютная выручка/закупки по ВЭД дешевеют в рублях → ниже рублёвая себестоимость импортной одежды (TRY, EUR) и выше маржа\",\"counterparty_id\":null,\"counterparty_direction\":null},{\"channel\":\"input_costs\",\"shock\":\"notable\",\"direction\":\"positive\",\"horizon\":\"now\",\"mechanism\":\"Укрепление рубля снижает рублёвые цены закупаемой одежды у поставщиков из Турции и Нидерландов, уменьшая закупочные затраты\",\"counterparty_id\":null,\"counterparty_direction\":null}],\"event_confidence\":\"medium\",\"limitations\":[\"Ключевая часть новости — прогноз ГПБ по курсу, а не свершившееся изменение\",\"Валюта и направление расчётов компании по ВЭД в профиле не указаны (выведены по странам)\"]}"
+  }
+]

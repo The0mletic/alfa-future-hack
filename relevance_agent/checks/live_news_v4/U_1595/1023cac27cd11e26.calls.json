@@ -1,0 +1,18 @@
+[
+  {
+    "seconds": 10.15,
+    "finish_reason": "stop",
+    "usage": {
+      "input_tokens": 4578,
+      "output_tokens": 1040,
+      "total_tokens": 5618,
+      "input_token_details": {
+        "cache_read": 256
+      },
+      "output_token_details": {
+        "reasoning": 680
+      }
+    },
+    "response": "{\"reason\":\"Обзор ГПБ фиксирует рост предложения валюты от экспортёров и допускает укрепление рубля до 81–83 ₽/$ к концу октября (86–89 ₽/$ на конец года). Для розничного продавца одежды с ВЭД в Турции и Нидерландах это снижает рублёвую стоимость импортных закупок.\",\"channels\":[{\"channel\":\"fx_trade\",\"shock\":\"notable\",\"direction\":\"positive\",\"horizon\":\"now\",\"mechanism\":\"Укрепление рубля снижает рублёвую стоимость платежей по ВЭД в Турции и Нидерландах → удешевляет импорт одежды → поддерживает маржу розницы.\",\"counterparty_id\":null,\"counterparty_direction\":null},{\"channel\":\"input_costs\",\"shock\":\"notable\",\"direction\":\"positive\",\"horizon\":\"months\",\"mechanism\":\"Более крепкий рубль при закупке одежды за TRY/EUR → ниже рублёвые закупочные цены → снижение себестоимости товара при высокой чувствительности к ценам на одежду.\",\"counterparty_id\":null,\"counterparty_direction\":null}],\"event_confidence\":\"medium\",\"limitations\":[\"Валюты и направление сделок (импорт/экспорт) в данных ФТС не указаны — привязка к TRY/EUR и импорту предположительна.\",\"Оценки курса 81–83 и 86–89 ₽/$ — прогноз ГПБ, а не свершившийся факт.\"]}"
+  }
+]
