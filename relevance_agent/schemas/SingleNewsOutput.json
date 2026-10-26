@@ -176,6 +176,133 @@
       "title": "BankReference",
       "type": "object"
     },
+    "ChannelImpact": {
+      "additionalProperties": false,
+      "properties": {
+        "channel": {
+          "enum": [
+            "input_costs",
+            "customer_demand",
+            "market_structure",
+            "cost_of_money",
+            "fx_trade",
+            "regulation",
+            "logistics",
+            "counterparties"
+          ],
+          "title": "Channel",
+          "type": "string"
+        },
+        "shock": {
+          "enum": [
+            "weak",
+            "notable",
+            "strong"
+          ],
+          "title": "Shock",
+          "type": "string"
+        },
+        "direction": {
+          "enum": [
+            "negative",
+            "positive",
+            "mixed",
+            "unclear"
+          ],
+          "title": "Direction",
+          "type": "string"
+        },
+        "horizon": {
+          "enum": [
+            "now",
+            "months",
+            "years"
+          ],
+          "title": "Horizon",
+          "type": "string"
+        },
+        "mechanism": {
+          "minLength": 1,
+          "title": "Mechanism",
+          "type": "string"
+        },
+        "exposure": {
+          "maximum": 1,
+          "minimum": 0,
+          "title": "Exposure",
+          "type": "number"
+        },
+        "exposure_basis": {
+          "items": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "title": "Exposure Basis",
+          "type": "array"
+        },
+        "exposure_kind": {
+          "enum": [
+            "source_fact",
+            "calculated",
+            "heuristic"
+          ],
+          "title": "Exposure Kind",
+          "type": "string"
+        },
+        "impact": {
+          "maximum": 1,
+          "minimum": 0,
+          "title": "Impact",
+          "type": "number"
+        },
+        "counted": {
+          "title": "Counted",
+          "type": "boolean"
+        },
+        "counterparty_id": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Counterparty Id"
+        },
+        "counterparty_direction": {
+          "anyOf": [
+            {
+              "enum": [
+                "outgoing",
+                "incoming"
+              ],
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Counterparty Direction"
+        }
+      },
+      "required": [
+        "channel",
+        "shock",
+        "direction",
+        "horizon",
+        "mechanism",
+        "exposure",
+        "exposure_basis",
+        "exposure_kind",
+        "impact",
+        "counted"
+      ],
+      "title": "ChannelImpact",
+      "type": "object"
+    },
     "CompanyProfile": {
       "additionalProperties": true,
       "properties": {
@@ -419,6 +546,42 @@
           },
           "title": "Limitations",
           "type": "array"
+        },
+        "channels": {
+          "items": {
+            "$ref": "#/$defs/ChannelImpact"
+          },
+          "title": "Channels",
+          "type": "array"
+        },
+        "event_confidence": {
+          "anyOf": [
+            {
+              "enum": [
+                "high",
+                "medium",
+                "low"
+              ],
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Event Confidence"
+        },
+        "scoring_version": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Scoring Version"
         }
       },
       "required": [
