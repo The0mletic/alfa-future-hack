@@ -1,0 +1,18 @@
+{
+  "model": "z-ai/glm-5.3-flash",
+  "test": "neutral_prompt_no_company_data",
+  "elapsed_seconds": 4.77,
+  "content": "{\"status\":\"ok\",\"message\":\"Модель отвечает\"}",
+  "usage": {
+    "input_tokens": 37,
+    "output_tokens": 140,
+    "total_tokens": 177,
+    "input_token_details": {
+      "cache_read": 0
+    },
+    "output_token_details": {
+      "reasoning": 128
+    }
+  },
+  "finish_reason": "stop"
+}

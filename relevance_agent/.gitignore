@@ -2,3 +2,6 @@
 __pycache__/
 .env
 AGENTS.md
+
+checks/*.html
+checks/live_articles.json

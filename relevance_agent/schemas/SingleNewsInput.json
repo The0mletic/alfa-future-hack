@@ -1,0 +1,136 @@
+{
+  "$defs": {
+    "NewsItem": {
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "minLength": 1,
+          "title": "Id",
+          "type": "string"
+        },
+        "title": {
+          "minLength": 1,
+          "title": "Title",
+          "type": "string"
+        },
+        "summary": {
+          "title": "Summary",
+          "type": "string"
+        },
+        "link": {
+          "title": "Link",
+          "type": "string"
+        },
+        "published": {
+          "title": "Published",
+          "type": "string"
+        },
+        "source": {
+          "minLength": 1,
+          "title": "Source",
+          "type": "string"
+        },
+        "author": {
+          "default": "",
+          "title": "Author",
+          "type": "string"
+        },
+        "categories": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Categories",
+          "type": "array"
+        },
+        "language": {
+          "default": "",
+          "title": "Language",
+          "type": "string"
+        }
+      },
+      "required": [
+        "id",
+        "title",
+        "summary",
+        "link",
+        "published",
+        "source"
+      ],
+      "title": "NewsItem",
+      "type": "object"
+    },
+    "RunOptions": {
+      "additionalProperties": false,
+      "properties": {
+        "top_k": {
+          "default": 5,
+          "minimum": 1,
+          "title": "Top K",
+          "type": "integer"
+        },
+        "max_refinement_rounds": {
+          "default": 1,
+          "minimum": 0,
+          "title": "Max Refinement Rounds",
+          "type": "integer"
+        },
+        "max_article_fetches": {
+          "default": 15,
+          "minimum": 0,
+          "title": "Max Article Fetches",
+          "type": "integer"
+        },
+        "max_article_chars": {
+          "default": 20000,
+          "minimum": 1,
+          "title": "Max Article Chars",
+          "type": "integer"
+        },
+        "counterparty_depth": {
+          "const": 1,
+          "default": 1,
+          "title": "Counterparty Depth",
+          "type": "integer"
+        }
+      },
+      "title": "RunOptions",
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "const": "1.0-single",
+      "default": "1.0-single",
+      "title": "Schema Version",
+      "type": "string"
+    },
+    "request_id": {
+      "minLength": 1,
+      "title": "Request Id",
+      "type": "string"
+    },
+    "company_id": {
+      "minLength": 1,
+      "title": "Company Id",
+      "type": "string"
+    },
+    "news": {
+      "$ref": "#/$defs/NewsItem"
+    },
+    "as_of": {
+      "title": "As Of",
+      "type": "string"
+    },
+    "options": {
+      "$ref": "#/$defs/RunOptions"
+    }
+  },
+  "required": [
+    "company_id",
+    "news"
+  ],
+  "title": "SingleNewsInput",
+  "type": "object",
+  "$schema": "https://json-schema.org/draft/2020-12/schema"
+}
