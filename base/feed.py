@@ -5,6 +5,7 @@ MVP без очередей (Celery, Redis): работа идёт в фонов
 посреди работы, «зависшая» задача распознаётся по давности обновления и запускается заново.
 """
 import logging
+import os
 import threading
 import time
 from concurrent.futures import ThreadPoolExecutor, as_completed
@@ -27,10 +28,13 @@ NEWS_MAX_AGE_HOURS = 72       # оцениваем только свежие н�
 NEWS_REFRESH_MINUTES = 60     # если парсер не запускался дольше — сначала обновляем новости
 FEED_REFRESH_MINUTES = 60     # готовую ленту пересобираем не чаще (оцениваются только новые новости)
 TOP_ANALYSES = 3              # по скольким главным новостям сразу готовить полный анализ
-MIN_SCORE_FOR_ANALYSIS = 20   # слабые новости не тратят бюджет на полный анализ
+MIN_SCORE_FOR_ANALYSIS = 10   # совсем нерелевантные новости не тратят бюджет на полный анализ
 RELEVANCE_WORKERS = 5
 ANALYSIS_WORKERS = 3
 STALE_MINUTES = 15            # столько без обновлений — задача или анализ считаются прерванными
+# FEED_AUTO_REFRESH=0 — готовая лента при входе не пересобирается (для демо: всё подготовлено заранее
+# командой prepare_demo, и на показе ничего не грузится).
+AUTO_REFRESH = os.environ.get("FEED_AUTO_REFRESH", "1") != "0"
 
 _start_lock = threading.Lock()
 
@@ -63,8 +67,8 @@ def ensure_feed(company: Company) -> FeedJob:
                 return job
             job.status, job.error, job.finished_at = "error", "Сборка прервана (перезапуск сервера)", timezone.now()
             job.save()
-        elif job and job.status == "ready" and job.finished_at and \
-                job.finished_at > timezone.now() - timedelta(minutes=FEED_REFRESH_MINUTES):
+        elif job and job.status == "ready" and (not AUTO_REFRESH or (job.finished_at and
+                job.finished_at > timezone.now() - timedelta(minutes=FEED_REFRESH_MINUTES))):
             return job
         job = FeedJob.objects.create(company=company, stage="Готовим ленту")
         threading.Thread(target=_run_job, args=(job.pk,), daemon=True, name=f"feed-{company.pk}").start()

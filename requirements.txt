@@ -1,16 +1,23 @@
-aiohttp==3.14.5
-asgiref==3.12.1
-beautifulsoup4==4.15.0
+# Прямые зависимости проекта (Python 3.14). Точные версии всех пакетов — в requirements.lock.
 Django==5.2.18
-feedparser==6.0.14
+asgiref==3.12.1
+sqlparse==0.6.0
+pydantic==2.14.1
+httpx==0.28.1
+certifi==2026.10.23
+python-dotenv==1.2.4
+python-dateutil==3.0.0
+requests==2.34.2
+# Агенты
 langchain==1.4.7
+langchain-openai==1.7.2
 langgraph==1.2.17
+# Парсер новостей
+aiohttp==3.14.5
+feedparser==6.0.14
+beautifulsoup4==4.15.0
 lxml==6.1.3
 lxml_html_clean==0.4.5
 newspaper3k==0.2.8
-python-dateutil==3.0.0
-requests==2.34.2
-sqlparse==0.6.0
 tldextract==5.4.0
 trafilatura==2.3.1
-langchain-openai==1.7.2

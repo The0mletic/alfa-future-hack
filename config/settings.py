@@ -10,6 +10,7 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.2/ref/settings/
 """
 
+import os
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -25,7 +26,7 @@ SECRET_KEY = 'django-insecure-=+04kac8i)v&s7)7nc@_ki9f#c-4f5fi8*(bm7_m5j*0+3o7yj
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [h for h in os.environ.get('ALLOWED_HOSTS', 'localhost,127.0.0.1').split(',') if h]
 
 
 # Application definition
@@ -78,7 +79,8 @@ WSGI_APPLICATION = 'config.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        # В Docker база лежит в томе (DB_PATH), локально — в корне проекта.
+        'NAME': os.environ.get('DB_PATH') or BASE_DIR / 'db.sqlite3',
         # Лента собирается в фоновых потоках, которые пишут в базу одновременно: ждём блокировку, а не падаем.
         'OPTIONS': {'timeout': 30},
     }

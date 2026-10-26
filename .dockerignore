@@ -1,0 +1,14 @@
+.git
+.venv
+.idea
+.claude
+.env
+**/__pycache__
+**/*.pyc
+relevance_agent/.venv
+relevance_agent/runs
+relevance_agent/checks
+applications/analytics
+applications/analysis_runs
+applications/chat_agent/agent_log.jsonl
+db.sqlite3-journal
