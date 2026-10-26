@@ -4,3 +4,5 @@ __pycache__/
 .env
 /.idea
 /.claude
+applications/chat_agent/agent_log.jsonl
+applications/chat_agent/news.md
