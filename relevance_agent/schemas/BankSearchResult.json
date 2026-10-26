@@ -1,0 +1,56 @@
+{
+  "$defs": {
+    "BankReference": {
+      "additionalProperties": false,
+      "properties": {
+        "material_id": {
+          "minLength": 1,
+          "title": "Material Id",
+          "type": "string"
+        },
+        "fragment_id": {
+          "minLength": 1,
+          "title": "Fragment Id",
+          "type": "string"
+        }
+      },
+      "required": [
+        "material_id",
+        "fragment_id"
+      ],
+      "title": "BankReference",
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "query": {
+      "minLength": 1,
+      "title": "Query",
+      "type": "string"
+    },
+    "hits": {
+      "items": {
+        "$ref": "#/$defs/BankReference"
+      },
+      "title": "Hits",
+      "type": "array"
+    },
+    "limitations": {
+      "items": {
+        "minLength": 1,
+        "type": "string"
+      },
+      "title": "Limitations",
+      "type": "array"
+    }
+  },
+  "required": [
+    "query",
+    "hits",
+    "limitations"
+  ],
+  "title": "BankSearchResult",
+  "type": "object",
+  "$schema": "https://json-schema.org/draft/2020-12/schema"
+}

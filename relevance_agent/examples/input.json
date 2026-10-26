@@ -1,0 +1,37 @@
+{
+  "schema_version": "1.0",
+  "request_id": "synthetic-example-001",
+  "as_of": "2026-10-26T12:00:00+03:00",
+  "company_profile": {
+    "company_id": "DEMO_COMPANY",
+    "summary": "Синтетическая компания для проверки контракта.",
+    "bank_relationship": {
+      "products": {
+        "leasing": {
+          "has": true
+        }
+      }
+    }
+  },
+  "news": [
+    {
+      "id": "demo_news_01",
+      "title": "Учебная новость об условиях финансирования",
+      "summary": "Синтетический текст, не реальное событие.",
+      "link": "https://example.com/news/01",
+      "published": "",
+      "source": "Учебный источник",
+      "author": "",
+      "categories": [],
+      "language": "ru"
+    }
+  ],
+  "bank_materials": [],
+  "options": {
+    "top_k": 5,
+    "max_refinement_rounds": 1,
+    "max_article_fetches": 15,
+    "max_article_chars": 20000,
+    "counterparty_depth": 1
+  }
+}

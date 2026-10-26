@@ -1,0 +1,46 @@
+{
+  "schema_version": "1.0",
+  "request_id": "synthetic-example-001",
+  "company_id": "DEMO_COMPANY",
+  "as_of": "2026-10-26T12:00:00+03:00",
+  "results": [
+    {
+      "news_id": "demo_news_01",
+      "status": "scored",
+      "relevance_score": 65,
+      "rank": 1,
+      "selected": true,
+      "reason": "Демонстрационная оценка: тема финансирования связана с наличием лизинга; реальные последствия не оценивались.",
+      "company_evidence": [
+        {
+          "field_path": "/bank_relationship/products/leasing/has",
+          "kind": "source_fact",
+          "explanation": "В синтетическом профиле отмечен лизинг."
+        }
+      ],
+      "counterparty_evidence": [],
+      "bank_evidence": [],
+      "article": {
+        "news_id": "demo_news_01",
+        "status": "not_requested",
+        "requested_url": "https://example.com/news/01",
+        "final_url": null,
+        "text": null,
+        "truncated": false,
+        "error": null
+      },
+      "limitations": [
+        "Пример написан вручную, модель не вызывалась.",
+        "Дата публикации неизвестна.",
+        "Полный текст не получен.",
+        "Аналитика банка не предоставлена."
+      ]
+    }
+  ],
+  "selected_news_ids": [
+    "demo_news_01"
+  ],
+  "warnings": [
+    "Только демонстрация формата; не результат работы агента."
+  ]
+}

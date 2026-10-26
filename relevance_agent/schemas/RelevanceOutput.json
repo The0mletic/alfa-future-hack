@@ -1,0 +1,345 @@
+{
+  "$defs": {
+    "ArticleResult": {
+      "additionalProperties": false,
+      "properties": {
+        "news_id": {
+          "minLength": 1,
+          "title": "News Id",
+          "type": "string"
+        },
+        "status": {
+          "enum": [
+            "ok",
+            "unavailable",
+            "not_requested"
+          ],
+          "title": "Status",
+          "type": "string"
+        },
+        "requested_url": {
+          "title": "Requested Url",
+          "type": "string"
+        },
+        "final_url": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Final Url"
+        },
+        "text": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Text"
+        },
+        "truncated": {
+          "default": false,
+          "title": "Truncated",
+          "type": "boolean"
+        },
+        "error": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Error"
+        }
+      },
+      "required": [
+        "news_id",
+        "status",
+        "requested_url"
+      ],
+      "title": "ArticleResult",
+      "type": "object"
+    },
+    "BankReference": {
+      "additionalProperties": false,
+      "properties": {
+        "material_id": {
+          "minLength": 1,
+          "title": "Material Id",
+          "type": "string"
+        },
+        "fragment_id": {
+          "minLength": 1,
+          "title": "Fragment Id",
+          "type": "string"
+        }
+      },
+      "required": [
+        "material_id",
+        "fragment_id"
+      ],
+      "title": "BankReference",
+      "type": "object"
+    },
+    "CounterpartyEvidence": {
+      "additionalProperties": false,
+      "properties": {
+        "company_id": {
+          "minLength": 1,
+          "title": "Company Id",
+          "type": "string"
+        },
+        "direction": {
+          "enum": [
+            "outgoing",
+            "incoming"
+          ],
+          "title": "Direction",
+          "type": "string"
+        },
+        "share": {
+          "anyOf": [
+            {
+              "maximum": 1,
+              "minimum": 0,
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Share"
+        },
+        "features": {
+          "items": {
+            "$ref": "#/$defs/FeatureEvidence"
+          },
+          "minItems": 1,
+          "title": "Features",
+          "type": "array"
+        },
+        "connection": {
+          "minLength": 1,
+          "title": "Connection",
+          "type": "string"
+        },
+        "limitations": {
+          "items": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "title": "Limitations",
+          "type": "array"
+        }
+      },
+      "required": [
+        "company_id",
+        "direction",
+        "share",
+        "features",
+        "connection",
+        "limitations"
+      ],
+      "title": "CounterpartyEvidence",
+      "type": "object"
+    },
+    "FeatureEvidence": {
+      "additionalProperties": false,
+      "properties": {
+        "field_path": {
+          "minLength": 1,
+          "title": "Field Path",
+          "type": "string"
+        },
+        "kind": {
+          "enum": [
+            "source_fact",
+            "calculated",
+            "heuristic"
+          ],
+          "title": "Kind",
+          "type": "string"
+        },
+        "explanation": {
+          "minLength": 1,
+          "title": "Explanation",
+          "type": "string"
+        }
+      },
+      "required": [
+        "field_path",
+        "kind",
+        "explanation"
+      ],
+      "title": "FeatureEvidence",
+      "type": "object"
+    },
+    "NewsAssessment": {
+      "additionalProperties": false,
+      "properties": {
+        "news_id": {
+          "minLength": 1,
+          "title": "News Id",
+          "type": "string"
+        },
+        "status": {
+          "enum": [
+            "scored",
+            "not_scored"
+          ],
+          "title": "Status",
+          "type": "string"
+        },
+        "relevance_score": {
+          "anyOf": [
+            {
+              "maximum": 100,
+              "minimum": 0,
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Relevance Score"
+        },
+        "rank": {
+          "anyOf": [
+            {
+              "minimum": 1,
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Rank"
+        },
+        "selected": {
+          "title": "Selected",
+          "type": "boolean"
+        },
+        "reason": {
+          "minLength": 1,
+          "title": "Reason",
+          "type": "string"
+        },
+        "company_evidence": {
+          "items": {
+            "$ref": "#/$defs/FeatureEvidence"
+          },
+          "title": "Company Evidence",
+          "type": "array"
+        },
+        "counterparty_evidence": {
+          "items": {
+            "$ref": "#/$defs/CounterpartyEvidence"
+          },
+          "title": "Counterparty Evidence",
+          "type": "array"
+        },
+        "bank_evidence": {
+          "items": {
+            "$ref": "#/$defs/BankReference"
+          },
+          "title": "Bank Evidence",
+          "type": "array"
+        },
+        "article": {
+          "$ref": "#/$defs/ArticleResult"
+        },
+        "limitations": {
+          "items": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "title": "Limitations",
+          "type": "array"
+        }
+      },
+      "required": [
+        "news_id",
+        "status",
+        "relevance_score",
+        "rank",
+        "selected",
+        "reason",
+        "company_evidence",
+        "counterparty_evidence",
+        "bank_evidence",
+        "article",
+        "limitations"
+      ],
+      "title": "NewsAssessment",
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "const": "1.0",
+      "default": "1.0",
+      "title": "Schema Version",
+      "type": "string"
+    },
+    "request_id": {
+      "minLength": 1,
+      "title": "Request Id",
+      "type": "string"
+    },
+    "company_id": {
+      "minLength": 1,
+      "title": "Company Id",
+      "type": "string"
+    },
+    "as_of": {
+      "title": "As Of",
+      "type": "string"
+    },
+    "results": {
+      "items": {
+        "$ref": "#/$defs/NewsAssessment"
+      },
+      "title": "Results",
+      "type": "array"
+    },
+    "selected_news_ids": {
+      "items": {
+        "minLength": 1,
+        "type": "string"
+      },
+      "title": "Selected News Ids",
+      "type": "array"
+    },
+    "warnings": {
+      "items": {
+        "minLength": 1,
+        "type": "string"
+      },
+      "title": "Warnings",
+      "type": "array"
+    }
+  },
+  "required": [
+    "request_id",
+    "company_id",
+    "as_of",
+    "results",
+    "selected_news_ids",
+    "warnings"
+  ],
+  "title": "RelevanceOutput",
+  "type": "object",
+  "$schema": "https://json-schema.org/draft/2020-12/schema"
+}

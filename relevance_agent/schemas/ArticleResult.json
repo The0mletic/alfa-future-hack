@@ -1,0 +1,72 @@
+{
+  "additionalProperties": false,
+  "properties": {
+    "news_id": {
+      "minLength": 1,
+      "title": "News Id",
+      "type": "string"
+    },
+    "status": {
+      "enum": [
+        "ok",
+        "unavailable",
+        "not_requested"
+      ],
+      "title": "Status",
+      "type": "string"
+    },
+    "requested_url": {
+      "title": "Requested Url",
+      "type": "string"
+    },
+    "final_url": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Final Url"
+    },
+    "text": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Text"
+    },
+    "truncated": {
+      "default": false,
+      "title": "Truncated",
+      "type": "boolean"
+    },
+    "error": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Error"
+    }
+  },
+  "required": [
+    "news_id",
+    "status",
+    "requested_url"
+  ],
+  "title": "ArticleResult",
+  "type": "object",
+  "$schema": "https://json-schema.org/draft/2020-12/schema"
+}

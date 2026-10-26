@@ -1,0 +1,96 @@
+{
+  "$defs": {
+    "CounterpartyLink": {
+      "additionalProperties": false,
+      "properties": {
+        "company_id": {
+          "minLength": 1,
+          "title": "Company Id",
+          "type": "string"
+        },
+        "direction": {
+          "enum": [
+            "outgoing",
+            "incoming"
+          ],
+          "title": "Direction",
+          "type": "string"
+        },
+        "amount_rub": {
+          "minimum": 0,
+          "title": "Amount Rub",
+          "type": "number"
+        },
+        "payments_count": {
+          "minimum": 0,
+          "title": "Payments Count",
+          "type": "integer"
+        },
+        "share": {
+          "anyOf": [
+            {
+              "maximum": 1,
+              "minimum": 0,
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Share"
+        },
+        "source": {
+          "default": "applications/csv/df_Uid_payment_hack.csv",
+          "minLength": 1,
+          "title": "Source",
+          "type": "string"
+        }
+      },
+      "required": [
+        "company_id",
+        "direction",
+        "amount_rub",
+        "payments_count",
+        "share"
+      ],
+      "title": "CounterpartyLink",
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "company_id": {
+      "minLength": 1,
+      "title": "Company Id",
+      "type": "string"
+    },
+    "links": {
+      "items": {
+        "$ref": "#/$defs/CounterpartyLink"
+      },
+      "title": "Links",
+      "type": "array"
+    },
+    "complete": {
+      "title": "Complete",
+      "type": "boolean"
+    },
+    "limitations": {
+      "items": {
+        "minLength": 1,
+        "type": "string"
+      },
+      "title": "Limitations",
+      "type": "array"
+    }
+  },
+  "required": [
+    "company_id",
+    "links",
+    "complete",
+    "limitations"
+  ],
+  "title": "CounterpartiesResult",
+  "type": "object",
+  "$schema": "https://json-schema.org/draft/2020-12/schema"
+}

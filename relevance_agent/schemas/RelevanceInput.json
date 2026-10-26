@@ -1,0 +1,238 @@
+{
+  "$defs": {
+    "BankFragment": {
+      "additionalProperties": false,
+      "properties": {
+        "fragment_id": {
+          "minLength": 1,
+          "title": "Fragment Id",
+          "type": "string"
+        },
+        "page": {
+          "minimum": 1,
+          "title": "Page",
+          "type": "integer"
+        },
+        "text": {
+          "minLength": 1,
+          "title": "Text",
+          "type": "string"
+        }
+      },
+      "required": [
+        "fragment_id",
+        "page",
+        "text"
+      ],
+      "title": "BankFragment",
+      "type": "object"
+    },
+    "BankMaterial": {
+      "additionalProperties": false,
+      "properties": {
+        "material_id": {
+          "minLength": 1,
+          "title": "Material Id",
+          "type": "string"
+        },
+        "title": {
+          "minLength": 1,
+          "title": "Title",
+          "type": "string"
+        },
+        "source_file": {
+          "minLength": 1,
+          "title": "Source File",
+          "type": "string"
+        },
+        "document_date": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Document Date"
+        },
+        "fragments": {
+          "items": {
+            "$ref": "#/$defs/BankFragment"
+          },
+          "minItems": 1,
+          "title": "Fragments",
+          "type": "array"
+        }
+      },
+      "required": [
+        "material_id",
+        "title",
+        "source_file",
+        "document_date",
+        "fragments"
+      ],
+      "title": "BankMaterial",
+      "type": "object"
+    },
+    "CompanyProfile": {
+      "additionalProperties": true,
+      "properties": {
+        "company_id": {
+          "minLength": 1,
+          "title": "Company Id",
+          "type": "string"
+        }
+      },
+      "required": [
+        "company_id"
+      ],
+      "title": "CompanyProfile",
+      "type": "object"
+    },
+    "NewsItem": {
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "minLength": 1,
+          "title": "Id",
+          "type": "string"
+        },
+        "title": {
+          "minLength": 1,
+          "title": "Title",
+          "type": "string"
+        },
+        "summary": {
+          "title": "Summary",
+          "type": "string"
+        },
+        "link": {
+          "title": "Link",
+          "type": "string"
+        },
+        "published": {
+          "title": "Published",
+          "type": "string"
+        },
+        "source": {
+          "minLength": 1,
+          "title": "Source",
+          "type": "string"
+        },
+        "author": {
+          "default": "",
+          "title": "Author",
+          "type": "string"
+        },
+        "categories": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Categories",
+          "type": "array"
+        },
+        "language": {
+          "default": "",
+          "title": "Language",
+          "type": "string"
+        }
+      },
+      "required": [
+        "id",
+        "title",
+        "summary",
+        "link",
+        "published",
+        "source"
+      ],
+      "title": "NewsItem",
+      "type": "object"
+    },
+    "RunOptions": {
+      "additionalProperties": false,
+      "properties": {
+        "top_k": {
+          "default": 5,
+          "minimum": 1,
+          "title": "Top K",
+          "type": "integer"
+        },
+        "max_refinement_rounds": {
+          "default": 1,
+          "minimum": 0,
+          "title": "Max Refinement Rounds",
+          "type": "integer"
+        },
+        "max_article_fetches": {
+          "default": 15,
+          "minimum": 0,
+          "title": "Max Article Fetches",
+          "type": "integer"
+        },
+        "max_article_chars": {
+          "default": 20000,
+          "minimum": 1,
+          "title": "Max Article Chars",
+          "type": "integer"
+        },
+        "counterparty_depth": {
+          "const": 1,
+          "default": 1,
+          "title": "Counterparty Depth",
+          "type": "integer"
+        }
+      },
+      "title": "RunOptions",
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "const": "1.0",
+      "default": "1.0",
+      "title": "Schema Version",
+      "type": "string"
+    },
+    "request_id": {
+      "minLength": 1,
+      "title": "Request Id",
+      "type": "string"
+    },
+    "as_of": {
+      "title": "As Of",
+      "type": "string"
+    },
+    "company_profile": {
+      "$ref": "#/$defs/CompanyProfile"
+    },
+    "news": {
+      "items": {
+        "$ref": "#/$defs/NewsItem"
+      },
+      "title": "News",
+      "type": "array"
+    },
+    "bank_materials": {
+      "items": {
+        "$ref": "#/$defs/BankMaterial"
+      },
+      "title": "Bank Materials",
+      "type": "array"
+    },
+    "options": {
+      "$ref": "#/$defs/RunOptions"
+    }
+  },
+  "required": [
+    "request_id",
+    "as_of",
+    "company_profile",
+    "news",
+    "bank_materials"
+  ],
+  "title": "RelevanceInput",
+  "type": "object",
+  "$schema": "https://json-schema.org/draft/2020-12/schema"
+}
